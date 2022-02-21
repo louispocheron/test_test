@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecapitulatifController!{% endblock %}
+
+{% block body %}
+
+{{dump(actions)}}
+
+{% if (actions == true) and (app.user == true) %}
+    {% for action in actions %}
+        <ul>
+            <li>{{action.villeDepart}}</li>
+            <li>{{action.villeArrive}}</li>
+            <li>{{action.km}}</li>
+            <li>{{action.raisons}}</li>
+            <li>{{action.heureDepart|date('H:i:s')}}</li>
+            <li>{{action.heureArrivee|date('H:i:s')}}</li>
+            <li>{{action.date|date('m/d/Y')}}</li>
+        </ul>
+    {% endfor %}
+{% else %}
+    <p>Aucune action</p>
+{% endif %}
+
+
+{% endblock %}

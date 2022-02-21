@@ -1,0 +1,30 @@
+@import "~bootstrap/scss/bootstrap";
+ 
+
+body {
+    /* background-color: lightgray; */
+  }
+  
+  .associations {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .uniqueAssoc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 20rem;
+    width: 15rem;
+    margin: 1rem;
+    border-radius: 5px;
+  }
+  .uniqueAssoc img{
+    width: auto;
+    height: auto;
+  }

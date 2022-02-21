@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AssociationController!{% endblock %}
+
+{% block body %}
+{{dump(associations)}}
+
+<div class="associations">
+    {% for association in associations %}
+    <div class="uniqueAssoc">
+        <h3>{{association.name}}</h3>
+        <img src="{{asset('/build/logo_directory/' ~ association.logo)}}"></img>
+        <p>{{association.description}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

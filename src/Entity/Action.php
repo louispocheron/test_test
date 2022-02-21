@@ -1,0 +1,141 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ActionRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: ActionRepository::class)]
+class Action
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private $id;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $villeDepart;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $villeArrive;
+
+    #[ORM\Column(type: 'integer')]
+    private $km;
+
+    #[ORM\Column(type: 'string', length: 5000)]
+    private $raisons;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $heureDepart;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $heureArrivee;
+
+    #[ORM\Column(type: 'date')]
+    private $date;
+
+    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'actions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getVilleDepart(): ?string
+    {
+        return $this->villeDepart;
+    }
+
+    public function setVilleDepart(string $villeDepart): self
+    {
+        $this->villeDepart = $villeDepart;
+
+        return $this;
+    }
+
+    public function getVilleArrive(): ?string
+    {
+        return $this->villeArrive;
+    }
+
+    public function setVilleArrive(string $villeArrive): self
+    {
+        $this->villeArrive = $villeArrive;
+
+        return $this;
+    }
+
+    public function getKm(): ?int
+    {
+        return $this->km;
+    }
+
+    public function setKm(int $km): self
+    {
+        $this->km = $km;
+
+        return $this;
+    }
+
+    public function getRaisons(): ?string
+    {
+        return $this->raisons;
+    }
+
+    public function setRaisons(string $raisons): self
+    {
+        $this->raisons = $raisons;
+
+        return $this;
+    }
+
+    public function getHeureDepart(): ?\DateTimeInterface
+    {
+        return $this->heureDepart;
+    }
+
+    public function setHeureDepart(?\DateTimeInterface $heureDepart): self
+    {
+        $this->heureDepart = $heureDepart;
+
+        return $this;
+    }
+
+    public function getHeureArrivee(): ?\DateTimeInterface
+    {
+        return $this->heureArrivee;
+    }
+
+    public function setHeureArrivee(?\DateTimeInterface $heureArrivee): self
+    {
+        $this->heureArrivee = $heureArrivee;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getUserId(): ?user
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?user $users): self
+    {
+        $this->user = $users;
+
+        return $this;
+    }
+}
