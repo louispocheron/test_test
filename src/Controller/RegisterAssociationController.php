@@ -17,12 +17,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterAssociationController extends AbstractController
 {
-    #[Route('/register/association', name: 'register_association')]
+    #[Route('/register/associations', name: 'register_association')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
 
         $user = $this->getUser();
         $association = new Associations();
+        $setrole = new user();
 
         $form = $this->createFormBuilder($association)
                      ->add('name', TextType::class, ['label' => 'Nom de l\'association'])
@@ -47,7 +48,7 @@ class RegisterAssociationController extends AbstractController
 
                      $form->handleRequest($request);
 
-                        if($form->isSubmitted()){
+                        if($form->isSubmitted() && $form->isValid()){
                                 // RECUPERATION DE L'IMAGE
                             $file = $form->get('logo')->getData();
                                 // GENERATION DU NOM DU FICHIER
@@ -64,6 +65,11 @@ class RegisterAssociationController extends AbstractController
                             $entityManager->persist($association);
                             $entityManager->flush();
 
+                            
+                            // SET LE ROLE ADMIN A L'UTILISATEUR QUI CREER UNE ASSOCIATION
+                            $user->setRoles(['ROLE_ADMIN_' . strtoupper($association->getname())]);
+                            $entityManager->persist($user);
+                            $entityManager->flush();
                             // $admin->setUser($user);
                             // $admin->setAssociation($this->getUser()->getAssociation());
                             // $entityManager->persist($admin);
