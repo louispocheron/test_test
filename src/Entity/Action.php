@@ -38,6 +38,9 @@ class Action
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\ManyToOne(targetEntity: associations::class, inversedBy: 'actions')]
+    private $association;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +138,18 @@ class Action
     public function setUserId(?user $users): self
     {
         $this->user = $users;
+
+        return $this;
+    }
+
+    public function getAssociation(): ?associations
+    {
+        return $this->association;
+    }
+
+    public function setAssociation(?associations $association): self
+    {
+        $this->association = $association;
 
         return $this;
     }

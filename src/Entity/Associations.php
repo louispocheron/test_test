@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AssociationsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AssociationsRepository::class)]
@@ -22,8 +24,18 @@ class Associations
     #[ORM\Column(type: 'string', length: 5000, nullable: true)]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $password;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'association')]
+    private $users;
+
+    #[ORM\OneToMany(mappedBy: 'association', targetEntity: Action::class)]
+    private $actions;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->actions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,14 +78,60 @@ class Associations
         return $this;
     }
 
-    public function getPassword(): ?string
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
     {
-        return $this->password;
+        return $this->users;
     }
 
-    public function setPassword(string $password): self
+    public function addUser(User $user): self
     {
-        $this->password = $password;
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAssociation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAssociation($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Action>
+     */
+    public function getActions(): Collection
+    {
+        return $this->actions;
+    }
+
+    public function addAction(Action $action): self
+    {
+        if (!$this->actions->contains($action)) {
+            $this->actions[] = $action;
+            $action->setAssociation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAction(Action $action): self
+    {
+        if ($this->actions->removeElement($action)) {
+            // set the owning side to null (unless already changed)
+            if ($action->getAssociation() === $this) {
+                $action->setAssociation(null);
+            }
+        }
 
         return $this;
     }
