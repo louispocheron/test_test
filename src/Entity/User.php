@@ -38,11 +38,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: associations::class, inversedBy: 'users')]
     private $association;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: associations::class)]
+    private $admin;
+
 
     public function __construct()
     {
         $this->actions = new ArrayCollection();
         $this->association = new ArrayCollection();
+        $this->admin = new ArrayCollection();
     }
 
 
@@ -179,6 +183,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeAssociation(associations $association): self
     {
         $this->association->removeElement($association);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, associations>
+     */
+    public function getAdmin(): Collection
+    {
+        return $this->admin;
+    }
+
+    public function addAdmin(associations $admin): self
+    {
+        if (!$this->admin->contains($admin)) {
+            $this->admin[] = $admin;
+            $admin->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmin(associations $admin): self
+    {
+        if ($this->admin->removeElement($admin)) {
+            // set the owning side to null (unless already changed)
+            if ($admin->getUser() === $this) {
+                $admin->setUser(null);
+            }
+        }
 
         return $this;
     }

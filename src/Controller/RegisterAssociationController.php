@@ -62,6 +62,7 @@ class RegisterAssociationController extends AbstractController
                             // $association->setLogo($fileName);
                             $association->setLogo($fileName);
                             $association = $form->getData();
+                            $association->setUser($user);
                             $entityManager->persist($association);
                             $entityManager->flush();
 
@@ -70,20 +71,22 @@ class RegisterAssociationController extends AbstractController
                             $user->setRoles(['ROLE_ADMIN_' . strtoupper($association->getname())]);
                             $entityManager->persist($user);
                             $entityManager->flush();
+
+
                             // $admin->setUser($user);
                             // $admin->setAssociation($this->getUser()->getAssociation());
                             // $entityManager->persist($admin);
                             // $entityManager->flush();
 
 
-
-
                             return $this->redirectToRoute('association');
                         }
+
 
         return $this->render('register_association/index.html.twig', [
             'controller_name' => 'RegisterAssociationController',
             'form' => $form->createView(),
         ]);
+        
     }
 }

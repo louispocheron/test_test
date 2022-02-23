@@ -31,6 +31,9 @@ class Associations
     #[ORM\OneToMany(mappedBy: 'association', targetEntity: Action::class)]
     private $actions;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'admin')]
+    private $user;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -132,6 +135,18 @@ class Associations
                 $action->setAssociation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
