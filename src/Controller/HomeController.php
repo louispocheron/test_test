@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Associations;
+use App\Repository\AssociationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(AssociationsRepository $repo): Response
     {
 
         $securityContext = $this->container->get('security.authorization_checker');
@@ -34,6 +34,7 @@ class HomeController extends AbstractController
         
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'associations' => $repo->findAssociation($this->getUser()),
 
             // set variable if user is connected
             'userIsAdmin' => $userIsAdmin ?? false,

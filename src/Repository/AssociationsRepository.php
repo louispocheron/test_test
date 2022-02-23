@@ -19,6 +19,16 @@ class AssociationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Associations::class);
     }
 
+
+    public function findAssociation($user){
+        return $this->createQueryBuilder('association')
+            ->andWhere('association.user = :user')
+            ->setParameter('user', $user->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Associations[] Returns an array of Associations objects
     //  */
@@ -44,6 +54,7 @@ class AssociationsRepository extends ServiceEntityRepository
     //     ;
     // }
     /*
+
     public function findOneBySomeField($value): ?Associations
     {
         return $this->createQueryBuilder('a')

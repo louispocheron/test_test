@@ -3,11 +3,14 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
+
+
+
 {% if app.user == true %}
 <p> vous etes connecté avec {{ app.user.username }}</p>
 
 {% if userIsAdmin == true %}
-vous etes administrateur de , pour voir la valorisation de vos adhérants cliquez ici
+vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez ici
 {% endif %}
 
 {% else %}
