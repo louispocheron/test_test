@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MonCompte{% endblock %}
+
+{% block body %}
+{{ dump(user) }}
+
+<div class="infoPerso">
+    <div class="infoPerso-container">
+        <p>nom d'utilisateur : </p>
+        <p>{{ user.username }}</p>
+    </div>
+     <div class="infoPerso-container">
+        <p> adresse email : </p>
+        <p>{{ user.email }}</p>
+    </div>
+    <div class="infoPerso-container">
+        <p> mot de passe : </p>
+        <p>********</p>
+    </div>
+</div>
+{% endblock %}

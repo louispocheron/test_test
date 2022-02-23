@@ -12,7 +12,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -23,6 +23,7 @@ security:
             # custom_authenticator: App\Security\LoginAuthAuthenticator
             logout:
                 path: app_logout
+            custom_authenticator: App\Security\AuthAuthenticator
                 # where to redirect after logout
                 # target: app_any_route
                 # where to redirect after logout

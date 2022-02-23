@@ -4,9 +4,14 @@
 
 {% block body %}
 
-{{form_start(form)}}
-{{form_widget(form)}}
-{{form_end(form)}}
+
+{% if app.user == true %}
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+{% else %}
+    <h1>devez etre connectez pour faire une saisie</h1>
+{% endif %}
 
 
 {% endblock %}

@@ -13,9 +13,9 @@
             <li>{{action.villeArrive}}</li>
             <li>{{action.km}}</li>
             <li>{{action.raisons}}</li>
-            <li>{{action.heureDepart|date('H:i:s')}}</li>
-            <li>{{action.heureArrivee|date('H:i:s')}}</li>
-            <li>{{action.date|date('m/d/Y')}}</li>
+            <li>{{action.heureDepart|date('H:i')}}</li>
+            <li>{{action.heureArrivee|date('H:i')}}</li>
+            <li>{{action.date|date('d/m/Y')}}</li>
         </ul>
     {% endfor %}
 {% else %}
