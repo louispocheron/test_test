@@ -28,7 +28,6 @@ class AssociationsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
     // /**
     //  * @return Associations[] Returns an array of Associations objects
     //  */

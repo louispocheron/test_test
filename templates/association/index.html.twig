@@ -3,15 +3,42 @@
 {% block title %}Hello AssociationController!{% endblock %}
 
 {% block body %}
-{{dump(associations)}}
+{# {{dump(associations)}} #}
+{{dump(data)}}
 
 <div class="associations">
     {% for association in associations %}
-    <div class="uniqueAssoc">
-        <h3>{{association.name}}</h3>
-        <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
-        <p>{{association.description}}</p>
-    </div>
+   <a href="{{path('association_adherer', {'id': association.id} )}}" class="getAssocId">
+        <div class="uniqueAssoc">
+            <h3>{{association.name}}</h3>
+            <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
+            <p>{{association.description}}</p>
+        </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script> 
+
+        function onClickAssoc(event){
+            event.stopImmediatePropagation();
+
+            const url = this.href;
+            axios.get(url).then(function(response){
+                console.log(response.data);
+            });
+
+        }
+
+        document.querySelectorAll('a.getAssocId').forEach(function(link){
+            link.addEventListener('click', onClickAssoc);
+        });
+
+
+    </script>
+{% endblock %}
+

@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Repository\AssociationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -15,10 +16,14 @@ class HomeController extends AbstractController
     {
 
         $securityContext = $this->container->get('security.authorization_checker');
+        
+
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             
             $user = $this->getUser();
             $role = $user->getRoles()[0];
+            $associations = $repo->findAssociation($this->getUser());
+
     
     
             if(strpos($role, 'ROLE_ADMIN') !== false){
@@ -34,10 +39,14 @@ class HomeController extends AbstractController
         
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'associations' => $repo->findAssociation($this->getUser()),
+            'associations' => $associations ?? false,
+    
+                
+
 
             // set variable if user is connected
             'userIsAdmin' => $userIsAdmin ?? false,
         ]);
+        
     }
 }
