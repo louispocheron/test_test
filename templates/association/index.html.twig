@@ -3,42 +3,41 @@
 {% block title %}Hello AssociationController!{% endblock %}
 
 {% block body %}
-{# {{dump(associations)}} #}
-{{dump(data)}}
 
 <div class="associations">
     {% for association in associations %}
-   <a href="{{path('association_adherer', {'id': association.id} )}}" class="getAssocId">
-        <div class="uniqueAssoc">
+        <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
             <h3>{{association.name}}</h3>
             <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
             <p>{{association.description}}</p>
-        </div>
-    </a>
+        </a>
     {% endfor %}
 </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
 
-    <script> 
+ 
+    const getAssocId = document.getElementsByClassName('getAssocId');
+    {# console.log(getAssocId); #}
 
-        function onClickAssoc(event){
-            event.stopImmediatePropagation();
-
-            const url = this.href;
-            axios.get(url).then(function(response){
-                console.log(response.data);
+    for (let i = 0; i < getAssocId.length; i++) {
+        getAssocId[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            const assocId = this.getAttribute('id');
+            console.log(assocId);
+            axios.get('/association/' + assocId)
+            .then(function (response) {
+                console.log(response);
+                window.location.href = '/association/' + assocId;
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-
-        }
-
-        document.querySelectorAll('a.getAssocId').forEach(function(link){
-            link.addEventListener('click', onClickAssoc);
         });
-
-
+    }
     </script>
 {% endblock %}
 
