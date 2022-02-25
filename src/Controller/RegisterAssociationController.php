@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterAssociationController extends AbstractController
 {
-    #[Route('/register/associations', name: 'register_association')]
+    #[Route('/assocRegister', name: 'register_association')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
 

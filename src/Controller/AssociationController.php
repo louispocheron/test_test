@@ -18,6 +18,14 @@ class AssociationController extends AbstractController
     public function index(AssociationsRepository $repo, Request $request, EntityManagerInterface $entityManager): Response
     {
 
+        $user = $this->getUser();
+        $assoc = $repo->findAssociationByUser($user);
+
+        // TOUT LES ADHERANT D'UNE ASSOCIATION
+        // $associations = $entityManager->getRepository(Associations::class)->find('13')->getUsers()->getValues();
+        // dd($associations);
+     
+
         return $this->render('association/index.html.twig', [
             'controller_name' => 'AssociationController',
             'data' => $data ?? null,

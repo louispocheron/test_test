@@ -28,6 +28,37 @@ class AssociationsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    
+    public function findAssociationByUser($user)
+    {
+        return $this->createQueryBuilder('associations')
+            ->andWhere(':user MEMBER OF associations.users')
+            ->setParameter('user', $user->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    // public function findAllAssoc($user){
+    //     return $this->createQueryBuilder('association')
+    //         ->andWhere('association.users = :user')
+    //         ->setParameter('user', $user->getId())
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    // // find all users from associations 5
+    // public function findAllUsers(Associations $assoc){
+    //     return $this->createQueryBuilder('user')
+    //         ->andWhere('user.associations = :assoc')
+    //         ->setParameter('assoc', $assoc->getId())
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+  
     // /**
     //  * @return Associations[] Returns an array of Associations objects
     //  */
