@@ -45,7 +45,8 @@ class AssociationController extends AbstractController
 
             return $this->json([
                 'code' => 200,
-                'message' => 'Vous avez bien quitté l\'association'
+                'message' => 'Vous avez bien quitté l\'association',
+                'adherer' => false
             ], 200);
         }
 
@@ -55,7 +56,8 @@ class AssociationController extends AbstractController
         $entityManager->flush();
         return $this->json([
             'code' => 200,
-            'message' => 'Vous avez bien adhéré à l\'association'
+            'message' => 'Vous avez bien adhéré à l\'association',
+            'adherer' => true
         ], 200);
 
         

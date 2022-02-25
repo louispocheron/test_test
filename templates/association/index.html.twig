@@ -3,8 +3,10 @@
 {% block title %}Hello AssociationController!{% endblock %}
 
 {% block body %}
+    {{ dump(associations.0.users) }}
 
 <div class="associations">
+
     {% for association in associations %}
         <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
             <h3>{{association.name}}</h3>
@@ -20,24 +22,44 @@
     <script>
 
  
-    const getAssocId = document.getElementsByClassName('getAssocId');
-    {# console.log(getAssocId); #}
+  const getAssocId = document.querySelectorAll('a.uniqueAssoc');
+    console.log(getAssocId);
+  
 
-    for (let i = 0; i < getAssocId.length; i++) {
-        getAssocId[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            const assocId = this.getAttribute('id');
-            console.log(assocId);
-            axios.get('/association/' + assocId)
-            .then(function (response) {
-                console.log(response);
-                window.location.href = '/association/' + assocId;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+  {# FUNCTION APPEL AJAX #}
+  function ajaxGet(e){
+      e.preventDefault();
+      
+      const url = this.href;
+      
+      axios.get(url).then(function(response){
+            let adherer = response.data.adherer;
+            if(adherer == true){
+                confirm("voulez vous adhérer a cette association ?");
+            }
+            else{
+                confirm("voulez vous quitter cette association ?");
+            }
+      }).catch(function(error){
+            if(error.response.status === 403){
+                window.alert('vous devez etre connectez pour adhérer a une association');
+            }
+            else{
+                window.alert('une erreur est survenue');
+            }
         });
-    }
+      };
+
+
+
+  {# APPEL AJAX AU CLICK #}
+    getAssocId.forEach(function(link) {
+        link.addEventListener('click', ajaxGet);
+    });
+
+
+
+
     </script>
 {% endblock %}
 
