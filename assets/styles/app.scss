@@ -4,8 +4,12 @@
  
 
 body {
+  height: 100vh;
+  margin: 0;
+
     /* background-color: lightgray; */
   }
+
   
   .associations {
     display: flex;
@@ -80,8 +84,59 @@ body {
     display: block;
   }
   
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.header {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: red;
+  color: white;
+}
+.headerContent {
+  margin-left: 10px;
+}
+.page {
+  display: flex;
+  height: 100%;
+  /* calculate the height. Header is 30px */
+}
+
+.sidebar {
+  height: 100vh;
+  width: 5rem;
+}
+
+.content {
+  background: blue;
+  flex: 1 0 auto;
+  /* enable grow, disable shrink */
+}
+.sidebar div{
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+.sidebar p {
+  display: none;
+}
+.sidebar div:nth-last-child(-n+2){
+  margin-top: auto;
+}
+.sidebar:hover{
+  width: 10rem;
+}
+.sidebar:hover:nth-child(n-2) p{
+  display: block;
+}
+
+// last 2 divs of sidebar are in the bottom of the sidebar
+.sidebar div:nth-last-child(2){
+  color: red;
+  margin-top: 15rem;
+}
+//
+
+
+

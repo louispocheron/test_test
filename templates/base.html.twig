@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>{% block title %}Saved{% endblock %}</title>
                 {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {{ encore_entry_link_tags('app') }}
@@ -10,11 +11,48 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+       <div class="header">
+            <div class="headerContent">
+                <p> mon header</p>
+            </div>
+        </div>
+        <div class="page">
+            <div class="sidebar">
+                <div>
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <p>home</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-list"></i>
+                    <p>Récapitulatif</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-pen"></i>       
+                    <p>Saisie</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-paper-plane"></i>     
+                    <p>Contact</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-user"></i>     
+                    <p>Mon compte</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>    
+                    <p>Se déconnecter</p>
+                </div>
+            </div>
+            <div class="content">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
     </body>
     {{ encore_entry_script_tags('app') }}
 
     {% block javascripts %}
             
     {% endblock %}
+    
 </html>

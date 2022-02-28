@@ -2,12 +2,13 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
-{% block body %}
+{% block body %} 
 
 
-
-{% if app.user == true %}
+{# {% if app.user == true %}
 <p> vous etes connecté avec {{ app.user.username }}</p>
+
+
 
 {% if userIsAdmin == true %}
 vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez ici
@@ -15,5 +16,7 @@ vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation
 
 {% else %}
 <p> vous n'etes pas connecté, connectez vous <a href="{{ path('app_login') }}">ici</a></p>
-{% endif %}
+{% endif %} #}
+
+
 {% endblock %}
