@@ -11,7 +11,7 @@
         {% endblock %}
     </head>
     <body>
-       <div class="header">
+       {# <div class="header">
             <div class="headerContent">
                 <p> mon header</p>
             </div>
@@ -47,7 +47,9 @@
                 {% block body %}
                 {% endblock %}
             </div>
-        </div>
+        </div> #}
+          {% block body %}
+          {% endblock %}
     </body>
     {{ encore_entry_script_tags('app') }}
 

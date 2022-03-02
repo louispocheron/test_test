@@ -41,6 +41,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: associations::class)]
     private $admin;
 
+    #[ORM\Column(type: 'string', length: 1500, nullable: true)]
+    private $profilPicture;
+
 
     public function __construct()
     {
@@ -213,6 +216,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $admin->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfilPicture(): ?string
+    {
+        return $this->profilPicture;
+    }
+
+    public function setProfilPicture(?string $profilPicture): self
+    {
+        $this->profilPicture = $profilPicture;
 
         return $this;
     }

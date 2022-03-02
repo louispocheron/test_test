@@ -6,8 +6,10 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -46,6 +48,21 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('profilPicture', FileType::class, [
+                'label' => 'Photo de profil',
+                'multiple' => false,
+                'mapped' => false,
+                'constraints' => [   
+                    new Assert\File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Uploadez une image valide',
+                    ])
+                ]])
         ;
     }
 

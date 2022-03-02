@@ -29,11 +29,20 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // ON CHOPE L'IMAGE
+            $file = $form->get('profilPicture')->getData();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('profil_picture'),
+                $fileName
+            );
+            $user->setProfilPicture($fileName);
+
+
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('home');
+            // return $guard->authenticateUserAndHandleSuccess($user,$request,$login,'main');
         }
 
         return $this->render('registration/register.html.twig', [
