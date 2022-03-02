@@ -18,12 +18,18 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            form_login:
+                    login_path: app_login
+                    check_path: app_login
+                    username_parameter: username
+                    password_parameter: password
+                    enable_csrf: true
             lazy: true
             provider: app_user_provider
             # custom_authenticator: App\Security\LoginAuthAuthenticator
             logout:
                 path: app_logout
-            custom_authenticator: App\Security\AuthAuthenticator
+            # custom_authenticator: App\Security\AuthAuthenticator
                 # where to redirect after logout
                 # target: app_any_route
                 # where to redirect after logout
