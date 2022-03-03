@@ -68,7 +68,7 @@ class RegisterAssociationController extends AbstractController
 
                             
                             // SET LE ROLE ADMIN A L'UTILISATEUR QUI CREER UNE ASSOCIATION
-                            $user->setRoles(['ROLE_ADMIN_' . strtoupper($association->getname())]);
+                            $user->setRoles(['ROLE_ADMIN']);
                             $entityManager->persist($user);
                             $entityManager->flush();
 

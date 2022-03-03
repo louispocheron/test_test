@@ -31,8 +31,8 @@ class AdminController extends AbstractController
 
 
         return $this->render('admin/index.html.twig', [
-            'actions' => $action,
-            'assocs' => $assocs,
+            'actions' => $action ?? null,
+            'assocs' => $assocs ?? null,
             'controller_name' => 'AdminController',
         ]);
     }
