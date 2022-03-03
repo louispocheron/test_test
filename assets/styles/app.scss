@@ -83,7 +83,25 @@ body {
     text-decoration: none;
     display: block;
   }
-  
+  .tableau{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ligne{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: auto;
+    width: 15rem;
+    margin: 1rem;
+    border-radius: 5px;
+  }
 
 // .header {
 //   height: 30px;

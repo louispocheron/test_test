@@ -44,6 +44,16 @@ class ActionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+
+    public function findByAssociation($association){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.association = :association')
+            ->setParameter('association', $association->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     /*
     public function findOneBySomeField($value): ?Action
     {

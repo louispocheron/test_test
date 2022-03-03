@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+{# {{ dump(actions) }} #}
+
+
+
+
+{# CA MARCHE #}
+
+        <div class="tableau">
+
+            {% for action in actions  %}
+                {% for assoc in assocs %}
+                    
+                    <div class="ligne">
+                        <p>{{ action.villeDepart }}</p>
+                        <p>{{ action.villeArrive }}</p>
+                        <p>{{ action.km }}</p>
+                        <p>{{ action.raisons }}</p>
+                        <p>{{ action.heureDepart|date('H:i') }}</p>
+                        <p>{{ action.heureArrivee|date('H:i') }}</p>
+                        <p>{{ action.duree }}</p>
+                        <p>{{ action.frais }}</p>
+                        <p>{{ action.date|date('d/m/Y') }}</p>
+                        <p>{{ assoc.name }}</p>
+                    </div>
+
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+
+
+
+
+
+{% endblock %}

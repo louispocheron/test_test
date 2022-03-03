@@ -41,6 +41,12 @@ class Action
     #[ORM\ManyToOne(targetEntity: associations::class, inversedBy: 'actions')]
     private $association;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $duree;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $frais;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +156,30 @@ class Action
     public function setAssociation(?associations $association): self
     {
         $this->association = $association;
+
+        return $this;
+    }
+
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(?int $duree): self
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getFrais(): ?int
+    {
+        return $this->frais;
+    }
+
+    public function setFrais(?int $frais): self
+    {
+        $this->frais = $frais;
 
         return $this;
     }

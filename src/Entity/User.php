@@ -38,9 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: associations::class, inversedBy: 'users')]
     private $association;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: associations::class)]
-    private $admin;
-
     #[ORM\Column(type: 'string', length: 1500, nullable: true)]
     private $profilPicture;
 

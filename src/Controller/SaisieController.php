@@ -21,27 +21,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class SaisieController extends AbstractController
 {
 
-    #[Route('/saisie/{id}', name: 'saisie_ajax')]
-    public function ajaxDropDown(EntityManagerInterface $entityManager, UserRepository $repo, AssociationsRepository $assocRepo, Request $request): response
-    {
-        $user = $this->getUser();
-        $idAssoc = $request->get('id');
-
-        if(!$user) return $this->json([
-            'code' => 403,
-            'message' => 'Vous devez être connecté pour adhérer à une association'
-        ], 403);
-
-        return $this->json([
-            'code' => 200,
-            'associationId' => $idAssoc,
-            'adherer' => false
-        ], 200);
-
-        return $this->render('saisie/index.html.twig', [
-            
-        ]);
-    }
 
 
     #[Route('/saisie', name: 'saisie')]
@@ -51,12 +30,35 @@ class SaisieController extends AbstractController
         $action = new Action();
         
         $form = $this->createFormBuilder($action)
-                ->add('villeDepart', TextType::class, ['label' => 'Ville de départ'])
+                ->add('villeDepart', TextType::class, [
+                    'label' => 'Ville de départ',
+                    'attr' => [
+                        'class' => 'villeDepart',
+                    ],
+                    ])
                 ->add('villeArrive', TextType::class, ['label' => 'Ville d\'arrivée'])
                 ->add('km', null, ['label' => 'Kilomètres'])
                 ->add('raisons', null, ['label' => 'Raisons'])
-                ->add('heureDepart', TimeType::class, ['label' => 'Heure de départ'])
-                ->add('heureArrivee', TimeType::class, ['label' => 'Heure d\'arrivée'])
+                ->add('heureDepart', TimeType::class, [
+                    'label' => 'Heure de départ',
+                    'attr' => [
+                        'class' => 'heureDepart'
+                    ],
+                    ])
+                ->add('heureArrivee', TimeType::class, [
+                    'label' => 'Heure d\'arrivée',
+                    'attr' => [
+                        'class' => 'heureArrivee'
+                    ],
+                    ])
+                ->add('duree', null, [
+                    'label' => 'durée',
+                    'attr' => [
+                        'class' => 'duration'
+                    ],
+                    ])
+                ->add('frais', null, ['label' => 'Frais'])
+
 
                 ->add('date', DateType::class, [
                     'label' => 'Date',
