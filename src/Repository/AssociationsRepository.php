@@ -19,6 +19,15 @@ class AssociationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Associations::class);
     }
 
+    public function findAll(){
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Associations a
+            ORDER BY a.id ASC'
+        );
+        return $query;
+    }
 
     public function findAssociation($user){
         return $this->createQueryBuilder('association')

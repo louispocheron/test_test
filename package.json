@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "faker": "^6.6.6",
         "flatpickr": "^4.6.9"
     }
 }

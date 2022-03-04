@@ -14,6 +14,10 @@
         </a>
     {% endfor %}
 </div>
+
+<div class="pagination">
+    {{ knp_pagination_render(associations) }}
+</div>
 {% endblock %}
 
 {% block javascripts %}

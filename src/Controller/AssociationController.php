@@ -11,15 +11,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AssociationController extends AbstractController
 {
     #[Route('/associations', name: 'association')]
-    public function index(AssociationsRepository $repo, Request $request, EntityManagerInterface $entityManager): Response
+    public function index(AssociationsRepository $repo, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
 
         $user = $this->getUser();
         $assoc = $repo->findAssociationByUser($user);
+
+        $association = $paginator->paginate(
+            $repo->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
 
         // TOUT LES ADHERANT D'UNE ASSOCIATION
         // $associations = $entityManager->getRepository(Associations::class)->find('13')->getUsers()->getValues();
@@ -28,8 +35,7 @@ class AssociationController extends AbstractController
 
         return $this->render('association/index.html.twig', [
             'controller_name' => 'AssociationController',
-            'data' => $data ?? null,
-            'associations' => $repo->findAll(),
+            'associations' => $association,
 
         ]);
     }
