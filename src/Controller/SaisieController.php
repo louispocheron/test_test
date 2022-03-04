@@ -68,8 +68,6 @@ class SaisieController extends AbstractController
                     'attr' => ['class' => 'flatpickr'],
                     
                     ])
-                ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
-
                 // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
                     'label' => 'Association',
@@ -79,9 +77,12 @@ class SaisieController extends AbstractController
                         return $assocRepo->createQueryBuilder('associations')
                         ->andWhere(':user MEMBER OF associations.users')
                         ->setParameter('user', $user->getId())
+                
         ;
 
                     }])
+                ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
+
                 ->getForm();
 
         $form->handleRequest($request);

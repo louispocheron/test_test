@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ActionRepository;
+use App\Entity\Action;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\AssociationsRepository;
@@ -16,9 +17,18 @@ class AdminController extends AbstractController
         $user = $this->getUser();
         $assocs = $repo->findAssociation($user);
 
-        foreach ($assocs as $actions) {
-            $action = $actionRepo->findByAssociation($actions);
+
+        
+
+        foreach ($assocs as $assoc) {
+            
+            $action = $actionRepo->findByAssociation($assoc);
         }
+
+       
+
+        // dd($userAction);
+
         // $actions = $actionRepo->findByAssociation($assoc);
         
         // $actions = $assoc->getActions();
@@ -31,6 +41,7 @@ class AdminController extends AbstractController
 
 
         return $this->render('admin/index.html.twig', [
+            'users' => $userAction ?? null,
             'actions' => $action ?? null,
             'assocs' => $assocs ?? null,
             'controller_name' => 'AdminController',

@@ -136,9 +136,9 @@ class Action
         return $this;
     }
 
-    public function getUserId(): ?user
+    public function getUser(): ?user
     {
-        return $this->userId;
+        return $this->user;
     }
 
     public function setUserId(?user $users): self

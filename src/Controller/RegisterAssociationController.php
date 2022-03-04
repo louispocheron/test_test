@@ -79,7 +79,7 @@ class RegisterAssociationController extends AbstractController
                             // $entityManager->flush();
 
 
-                            return $this->redirectToRoute('association');
+                            return $this->redirectToRoute('home');
                         }
 
 
