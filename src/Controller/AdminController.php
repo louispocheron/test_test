@@ -16,13 +16,20 @@ class AdminController extends AbstractController
     {   
         $user = $this->getUser();
         $assocs = $repo->findAssociation($user);
+       
 
 
         
 
-        foreach ($assocs as $assoc) {
-            
-            $action = $actionRepo->findByAssociation($assoc);
+        // find all actions that are in $assocs
+        $actions = $actionRepo->findAll();
+        $actionsInAssoc = [];
+        foreach($actions as $action){
+            foreach($assocs as $assoc){
+                if($action->getAssociation() == $assoc){
+                    array_push($actionsInAssoc, $action);
+                }
+            }
         }
 
        
@@ -41,8 +48,7 @@ class AdminController extends AbstractController
 
 
         return $this->render('admin/index.html.twig', [
-            'users' => $userAction ?? null,
-            'actions' => $action ?? null,
+            'actions' => $actionsInAssoc ?? null,
             'assocs' => $assocs ?? null,
             'controller_name' => 'AdminController',
         ]);

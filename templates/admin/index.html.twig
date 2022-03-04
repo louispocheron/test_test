@@ -11,16 +11,20 @@
 
 {# CA MARCHE #}
 
+
+{# {% if assocs == 1 %}
 vous etes sur l'administration de 
  {% for assoc in assocs %}
     {{ assoc.name }}
 {% endfor %}
-
+{% else %}
+{% endif %} #}
 
         <div class="tableau">
+
             {% for action in actions %}
                     
-                        <div class="ligne">
+                        <div class="ligne" >
                             <p>{{ action.user.username }}</p>
                             <p>{{ action.villeDepart }}</p>
                             <p>{{ action.villeArrive }}</p>
@@ -39,7 +43,7 @@ vous etes sur l'administration de
         </div>
 
 
-
-
-
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('action.js') }}"></script>
 {% endblock %}
