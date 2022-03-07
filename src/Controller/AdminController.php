@@ -18,9 +18,9 @@ class AdminController extends AbstractController
         $assocs = $repo->findAssociation($user);
        
 
-        $form = $this->createFormBuilder(){
-            
-        }
+        // $form = $this->createFormBuilder(){
+
+        // }
         
 
         // find all actions that are in $assocs
@@ -33,6 +33,19 @@ class AdminController extends AbstractController
                 }
             }
         }
+
+    //  find all users that have subscribed to $assocs
+        $users = $repo->findAll();
+        $usersInAssoc = [];
+        foreach($users as $user){
+            foreach($assocs as $assoc){
+                if($user->getAssociations() == $assoc){
+                    array_push($usersInAssoc, $user);
+                }
+            }
+        }
+        dd($usersInAssoc);
+        
 
        
 

@@ -45,7 +45,7 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'associations' => $associations ?? false,
             'user' => $user ?? false,
-            'latest' => $latest,
+            'latest' => $latest ?? false,
 
 
             // set variable if user is connected
