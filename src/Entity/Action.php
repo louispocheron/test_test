@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ActionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: ActionRepository::class)]
 class Action
 {
@@ -46,6 +47,9 @@ class Action
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private $frais;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -180,6 +184,18 @@ class Action
     public function setFrais(?int $frais): self
     {
         $this->frais = $frais;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

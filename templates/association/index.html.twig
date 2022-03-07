@@ -4,6 +4,18 @@
 
 {% block body %}
 
+{% if associations == null %}
+
+    <h4>Aucune association</h4>
+
+{% else %}
+
+    <div class="count mt-4">
+        <h4> il y a {{associations.getTotalItemCount}} associations différentes </h4>
+    </div>
+
+{% endif %}
+
 <div class="associations">
 
     {% for association in associations %}
@@ -15,7 +27,7 @@
     {% endfor %}
 </div>
 
-<div class="pagination">
+<div class="pagination d-flex justify-content-center">
     {{ knp_pagination_render(associations) }}
 </div>
 {% endblock %}

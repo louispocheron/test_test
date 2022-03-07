@@ -49,6 +49,11 @@ class AssociationsRepository extends ServiceEntityRepository
     }
 
 
+
+ 
+    }
+
+
     // public function findAllAssoc($user){
     //     return $this->createQueryBuilder('association')
     //         ->andWhere('association.users = :user')
@@ -104,4 +109,4 @@ class AssociationsRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

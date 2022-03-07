@@ -4,7 +4,30 @@
 
 {% block body %}
 
-{{dump(actions)}}
+
+
+
+<div>
+ ma dernière saisie en date : 
+        {% for recent in latest %}
+            <ul>
+                <li>{{recent.villeDepart}}</li>
+                <li>{{recent.villeArrive}}</li>
+                <li>{{recent.km}}</li>
+                <li>{{recent.raisons}}</li>
+                <li>{{recent.heureDepart|date('H:i')}}</li>
+                <li>{{recent.heureArrivee|date('H:i')}}</li>
+                {# ON CHOPE L'ASSOCIATION DE LA SAISIE AVEC LE USER #}
+                <li>{{recent.association.name}}</li>
+                <li>{{recent.duree}}</li>
+                <li>{{recent.frais}}</li>
+                <li>{{recent.date|date('d/m/Y')}}</li>
+            </ul>
+
+        {% endfor %}
+</div>
+
+
 
 {% if (actions == true) and (app.user == true) %}
     {% for action in actions %}
@@ -19,7 +42,7 @@
         </ul>
     {% endfor %}
 {% else %}
-    <p>Aucune action</p>
+    <p>Aucune saisie</p>
 {% endif %}
 
 

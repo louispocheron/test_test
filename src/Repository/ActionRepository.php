@@ -54,6 +54,18 @@ class ActionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findLatestAction($user){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.user = :user')
+            ->setParameter('user', $user->getId())
+            ->orderBy('action.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
     /*
     public function findOneBySomeField($value): ?Action
     {

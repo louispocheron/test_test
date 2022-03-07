@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\AssociationsRepository;
+use App\Repository\ActionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(AssociationsRepository $repo): Response
+    public function index(AssociationsRepository $repo, ActionRepository $actionRepo): Response
     {
 
         $securityContext = $this->container->get('security.authorization_checker');
@@ -35,13 +36,16 @@ class HomeController extends AbstractController
         }
 
 
+        $latest = $actionRepo->findLatestAction($user);
+
+
 
         
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'associations' => $associations ?? false,
             'user' => $user ?? false,
-                
+            'latest' => $latest,
 
 
             // set variable if user is connected

@@ -80,17 +80,23 @@ class SaisieController extends AbstractController
                 
         ;
 
+
                     }])
+
                 ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
 
                 ->getForm();
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
+
+
             $action = $form->getData();
             $action->setUserID($user);
             
+            $action->setCreatedAt(new \DateTime());
+
             $entityManager->persist($action);
             $entityManager->flush();
             return $this->redirectToRoute('home');

@@ -12,9 +12,15 @@ class RecapitulatifController extends AbstractController
     #[Route('/recapitulatif', name: 'recapitulatif')]
     public function index(ActionRepository $repo): Response
     {
+
+        $user = $this->getUser();
+        $actions = $repo->findByUsers($user);
+        $latest = $repo->findLatestAction($user);	
+
         return $this->render('recapitulatif/index.html.twig', [
             'controller_name' => 'RecapitulatifController',
-            'actions' => $repo->findByUsers($this->getUser()),
+            'actions' => $actions,
+            'latest' => $latest,
         ]);
     }
 }
