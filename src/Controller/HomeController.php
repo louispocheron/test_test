@@ -19,11 +19,14 @@ class HomeController extends AbstractController
         $securityContext = $this->container->get('security.authorization_checker');
         
 
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             
+
+
             $user = $this->getUser();
             $role = $user->getRoles()[0];
             $associations = $repo->findAssociation($this->getUser());
+            $userIsAdmin = false;
 
     
     
@@ -33,10 +36,15 @@ class HomeController extends AbstractController
                 $userIsAdmin = false;
             }
 
+
+            $latest = $actionRepo->findLatestAction($user);
+
+
         }
 
 
-        $latest = $actionRepo->findLatestAction($user);
+        // check if user is connected first
+        
 
 
 

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+    <p>administration de l'utilisateur {{ user.username }}</p>
+    {% if userAction == null %}
+        <p>Aucune action n'a été effectuée par cet utilisateur</p>
+    {% else %}
+        {% for action in userAction %}
+            {{dump(action)}}
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}

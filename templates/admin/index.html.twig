@@ -12,13 +12,10 @@
 {# CA MARCHE #}
 
 
-{# {% if assocs == 1 %}
-vous etes sur l'administration de 
- {% for assoc in assocs %}
-    {{ assoc.name }}
-{% endfor %}
-{% else %}
-{% endif %} #}
+
+{% for user in users %}
+        <a href="{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}">{{ user.username }}</a>
+{% endfor %} 
 
         <div class="tableau">
 

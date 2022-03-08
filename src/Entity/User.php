@@ -187,35 +187,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, associations>
-     */
-    public function getAdmin(): Collection
-    {
-        return $this->admin;
-    }
-
-    public function addAdmin(associations $admin): self
-    {
-        if (!$this->admin->contains($admin)) {
-            $this->admin[] = $admin;
-            $admin->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdmin(associations $admin): self
-    {
-        if ($this->admin->removeElement($admin)) {
-            // set the owning side to null (unless already changed)
-            if ($admin->getUser() === $this) {
-                $admin->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getProfilPicture(): ?string
     {

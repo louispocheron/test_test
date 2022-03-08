@@ -12,11 +12,13 @@
 
 {% if userIsAdmin == true %}
 
-vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez ici
+vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez <a href="{{ path('admin', {'idAssoc': associations.0.id}) }}">ici</a>
+
 {% endif %}
 
+
 {% else %}
-<p> vous n'etes pas connecté, connectez vous <a href="{{ path('app_login') }}">ici</a></p>
+    <p> vous n'etes pas connecté, connectez vous <a href="{{ path('app_login') }}">ici</a></p>
 {% endif %}
 
 
