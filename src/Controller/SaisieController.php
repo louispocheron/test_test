@@ -40,7 +40,6 @@ class SaisieController extends AbstractController
                 ->add('km', null, ['label' => 'Kilomètres'])
                 ->add('raisons', null, ['label' => 'Raisons'])
                 ->add('heureDepart', TimeType::class, [
-                    'input'  => 'timestamp',
                     'label' => 'Heure de départ',
                     ])
                 ->add('heureArrivee', TimeType::class, [
@@ -66,6 +65,10 @@ class SaisieController extends AbstractController
                     'attr' => ['class' => 'flatpickr'],
                     
                     ])
+
+                ->add('fraisKilometrique', TextType::class, [
+                    'disabled' => true,
+                ])
                 // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
                     'label' => 'Association',

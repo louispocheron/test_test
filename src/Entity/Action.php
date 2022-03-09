@@ -26,10 +26,10 @@ class Action
     #[ORM\Column(type: 'string', length: 5000)]
     private $raisons;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: 'time', nullable: true)]
     private $heureDepart;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: 'time', nullable: true)]
     private $heureArrivee;
 
     #[ORM\Column(type: 'date')]
@@ -50,6 +50,9 @@ class Action
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $createdAt;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $fraisKilometrique;
 
     public function getId(): ?int
     {
@@ -196,6 +199,18 @@ class Action
     public function setCreatedAt(\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getFraisKilometrique(): ?int
+    {
+        return $this->fraisKilometrique;
+    }
+
+    public function setFraisKilometrique(?int $fraisKilometrique): self
+    {
+        $this->fraisKilometrique = $fraisKilometrique;
 
         return $this;
     }

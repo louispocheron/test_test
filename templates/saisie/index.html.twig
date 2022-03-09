@@ -17,19 +17,14 @@
             {{form_widget(form.villeArrive)}}
         </div>
 
-        <div class='rowSaisie' id="km">
-            <label>Kilomètres</label>
-            {{form_widget(form.km)}}
-        </div>
-
         <div class='rowSaisie'>
             <label>Raisons</label>
             {{form_widget(form.raisons)}}
         </div>
 
-        <div class='rowSaisie' id="depart">
+        <div class='rowSaisie'>
             <label>Heure de départ</label>
-            {{form_widget(form.heureDepart)}}
+            {{form_widget(form.heureDepart , {'attr': {'class': 'heureDepart'}}) }}
         </div>
 
         <div class='rowSaisie'>
@@ -37,9 +32,14 @@
             {{form_widget(form.heureArrivee)}}
         </div>
 
-        <div class='rowSaisie' id="duree">
+        <div class='rowSaisie'>
             <label>durée</label>
             {{form_widget(form.duree)}}
+        </div>
+
+        <div class='rowSaisie' id="km">
+            <label>Kilomètrage</label>
+            {{form_widget(form.km)}}
         </div>
 
         <div class='rowSaisie'>
@@ -50,6 +50,11 @@
         <div class='rowSaisie'>
             <label>Date</label>
             {{form_widget(form.date)}}
+        </div>
+        
+        <div class='rowSaisie'>
+            <label>frais kilométriques</label>
+            {{form_widget(form.fraisKilometrique, {'id' : 'frais'} )}}
         </div>
 
         <div class='rowSaisie'>

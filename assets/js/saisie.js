@@ -10,84 +10,45 @@ document.querySelector('.flatpickr').flatpickr({
 })
 
 
+// INPUT FRAIS KILOMETRAGE A FAIRE EN FONCTION DE CE QUE LUTILISATEUR RENTRE
+const frais = document.getElementById('frais');
+frais.value = 2;
 
+const departHeure = document.querySelector(".heureDepart");
+console.log(departHeure);
+// get selected value 
+departHeure.addEventListener("change", function() {
+    let vale = departHeure.options[departHeure.selectedIndex].value;
+    console.log(vale);
+});
+
+
+
+
+// CALCUL AUTO DE LA DUREE DU TRAJET
 // ON RECUPERE L'HEURE DE DEPART
-const departHours = document.querySelector('#form_heureDepart_hour');
-const departMinutes = document.querySelector('#form_heureDepart_minute');
-let value1
-let value2
-// get the value of the dropdown depart
-departHours.addEventListener('click', (e) => { 
-    const departHoursValue = e.target.value;
-    value1 = departHoursValue;
-});
-departMinutes.addEventListener('change', (e) => {
-    const departMinutesValue = e.target.value;
-    value2 = departMinutesValue;
-});
+// const heureDepart = document.querySelector('#form_heureDepart_hour');
+// const minuteDepart = document.querySelector('#form_heureDepart_minute');
+// const heureArrivee = document.querySelector('#form_heureArrivee_hour');
+// const minuteArrivee = document.querySelector('#form_heureArrivee_minute');
+// const temps = document.querySelector('#duree');
 
-function getHeureDepart(){
-    if(typeof value1 !== "undefined" && typeof value2 !== "undefined"){
-        if(value1 < 10){
-            value1 = '0' + value1;
-        }
-        if(value2 < 10){
-            value2 = '0' + value2;
-        }
-        return value1 + ":" + value2;
-    }
-    else{
-        console.log("undefined")
-        setTimeout(getHeureDepart, 250);
-    }
-}
-getHeureDepart();
+// // calculer l'heure la duree du trajet
+// heureDepart.addEventListener('change', () => {
+//     let heureDepart = parseInt(heureDepart.value);
+//     let minuteDepart = parseInt(minuteDepart.value);
+//     let heureArrivee = parseInt(heureArrivee.value);
+//     let minuteArrivee = parseInt(minuteArrivee.value);
 
+//     if (heureDepart > heureArrivee) {
+//         heureDepart = heureDepart - 24;
+//     }
 
+//     let duree = (heureArrivee - heureDepart) * 60 + (minuteArrivee - minuteDepart);
+//     temps.value = duree;
+//     console.log(temps.value);
+// });  
 
-// ON RECUPERE L'HEURE D'ARRIVEE
-const arriveHours = document.querySelector('#form_heureArrivee_hour');
-const arriveMinutes = document.querySelector('#form_heureArrivee_minute');
-const duree = document.querySelector('#duree');
-let value3
-let value4
-// get the value of the dropdown arrive
-arriveHours.addEventListener('change', (e) => {
-    const arriveHoursValue = e.target.value;
-    value3 = arriveHoursValue;
-}
-);
-arriveMinutes.addEventListener('change', (e) => {
-    const arriveMinutesValue = e.target.value;
-    value4 = arriveMinutesValue;
-});
-
-function getHeureArrivee(){
-    if(typeof value3 !== "undefined" && typeof value4 !== "undefined"){
-        if(value3 < 10){
-            value3 = "0" + value3;
-        }
-        if(value4 < 10){
-            value4 = "0" + value4;
-        }
-        return value3 + ":" + value4;
-    }
-    else{
-        console.log("undefined")
-        setTimeout(getHeureArrivee, 250);
-    }
-}
-getHeureArrivee();
-
-// la value de l'input duree est heureArrivee - heureDepart
-function getDuree(){
-    let dureeValue = value4 - value2;
-    if(dureeValue < 0){
-        dureeValue = 60 + dureeValue;
-    }
-    return dureeValue;
-}
-getDuree();
 
 
 
