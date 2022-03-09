@@ -14,7 +14,9 @@
 
 
 {% for user in users %}
-        <a href="{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}">{{ user.username }}</a>
+        <ul>
+        <li><a href="{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}">{{ user.username }}</a></li>
+        </ul>
 {% endfor %} 
 
         <div class="tableau">

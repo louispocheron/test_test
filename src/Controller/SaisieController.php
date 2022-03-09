@@ -41,9 +41,6 @@ class SaisieController extends AbstractController
                 ->add('raisons', null, ['label' => 'Raisons'])
                 ->add('heureDepart', TimeType::class, [
                     'label' => 'Heure de départ',
-                    'attr' => [
-                        'class' => 'heureDepart'
-                    ],
                     ])
                 ->add('heureArrivee', TimeType::class, [
                     'label' => 'Heure d\'arrivée',

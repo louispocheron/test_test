@@ -5,12 +5,69 @@
 {% block body %}
 
 {% if app.user == true %}
+<div class="form-saisie">
     {{form_start(form)}}
-    {{form_widget(form)}}
+        <div class='rowSaisie'>
+            <label>Ville de départ</label>
+            {{form_widget(form.villeDepart)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Ville d'Arrivée</label>
+            {{form_widget(form.villeArrive)}}
+        </div>
+
+        <div class='rowSaisie' id="km">
+            <label>Kilomètres</label>
+            {{form_widget(form.km)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Raisons</label>
+            {{form_widget(form.raisons)}}
+        </div>
+
+        <div class='rowSaisie' id="depart">
+            <label>Heure de départ</label>
+            {{form_widget(form.heureDepart)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Heure d'arrivée</label>
+            {{form_widget(form.heureArrivee)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>durée</label>
+            {{form_widget(form.duree)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Frais</label>
+            {{form_widget(form.frais)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Date</label>
+            {{form_widget(form.date)}}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>Association</label>
+            {{form_widget(form.association)}}
+        </div>
+
     {{form_end(form)}}
+</div>
 {% else %}
     <h1>devez etre connectez pour faire une saisie</h1>
 {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('saisie') }}
 
 {% endblock %}
+
