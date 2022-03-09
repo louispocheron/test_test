@@ -17,7 +17,7 @@ const departMinutes = document.querySelector('#form_heureDepart_minute');
 let value1
 let value2
 // get the value of the dropdown depart
-departHours.addEventListener('change', (e) => {
+departHours.addEventListener('click', (e) => { 
     const departHoursValue = e.target.value;
     value1 = departHoursValue;
 });
@@ -34,7 +34,7 @@ function getHeureDepart(){
         if(value2 < 10){
             value2 = '0' + value2;
         }
-        console.log(value1 + ":" + value2);
+        return value1 + ":" + value2;
     }
     else{
         console.log("undefined")
@@ -48,6 +48,7 @@ getHeureDepart();
 // ON RECUPERE L'HEURE D'ARRIVEE
 const arriveHours = document.querySelector('#form_heureArrivee_hour');
 const arriveMinutes = document.querySelector('#form_heureArrivee_minute');
+const duree = document.querySelector('#duree');
 let value3
 let value4
 // get the value of the dropdown arrive
@@ -69,7 +70,7 @@ function getHeureArrivee(){
         if(value4 < 10){
             value4 = "0" + value4;
         }
-        console.log(value3 + ":" + value4);
+        return value3 + ":" + value4;
     }
     else{
         console.log("undefined")
@@ -77,6 +78,17 @@ function getHeureArrivee(){
     }
 }
 getHeureArrivee();
+
+// la value de l'input duree est heureArrivee - heureDepart
+function getDuree(){
+    let dureeValue = value4 - value2;
+    if(dureeValue < 0){
+        dureeValue = 60 + dureeValue;
+    }
+    return dureeValue;
+}
+getDuree();
+
 
 
 

@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<input type="text" id="search" placeholder="Rechercher...">
 {% if associations == null %}
 
     <h4>Aucune association</h4>
@@ -16,16 +17,17 @@
 
 {% endif %}
 
-<div class="associations">
-
-    {% for association in associations %}
-        <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
-            <h3>{{association.name}}</h3>
-            <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
-            <p>{{association.description}}</p>
-        </a>
-    {% endfor %}
-</div>
+    <ul class="associations">
+        {% for association in associations %}
+            <li class="assoc-li">
+                <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
+                    <h3 class="assoc-name">{{association.name}}</h3>
+                    <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
+                    <p>{{association.description}}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 
 <div class="pagination d-flex justify-content-center">
     {{ knp_pagination_render(associations) }}
@@ -33,6 +35,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ encore_entry_script_tags('search') }}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
