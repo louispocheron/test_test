@@ -69,7 +69,7 @@ class SaisieController extends AbstractController
                     ])
 
                 ->add('fraisKilometrique', TextType::class, [
-                    'disabled' => true,
+                    // 'disabled' => true,
                     'attr' => [
                         'value' => $someValue
                     ],

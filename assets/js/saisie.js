@@ -10,10 +10,6 @@ document.querySelector('.flatpickr').flatpickr({
 })
 
 
-// INPUT FRAIS KILOMETRAGE A FAIRE EN FONCTION DE CE QUE LUTILISATEUR RENTRE
-const frais = document.getElementsByClassName('fraisKilometrique');
-console.log(frais);
-
 
 
 

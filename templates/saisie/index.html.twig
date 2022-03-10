@@ -29,7 +29,7 @@
 
         <div class='rowSaisie'>
             <label>Heure d'arrivée</label>
-            {{form_widget(form.heureArrivee)}}
+            {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
         </div>
 
         <div class='rowSaisie'>
@@ -54,8 +54,7 @@
         
         <div class='rowSaisie'>
             <label>frais kilométriques</label>
-            <a href=' {{path('saisie', { 'someValue': '8' })}}'></a>
-            {{form_widget(form.fraisKilometrique , {'attr': {'class': 'fraisKilometrique'}}) }}
+            {{form_widget(form.fraisKilometrique) }}
         </div>
 
         <div class='rowSaisie'>
@@ -73,6 +72,60 @@
 {% endblock %}
 
 {% block javascripts %}
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    const heuredepart = document.querySelector('#form_heureDepart_hour');
+    const minutesdepart = document.querySelector('#form_heureDepart_minute');
+    const heurearrivee = document.querySelector('#form_heureArrivee_hour');
+    const minutesarrivee = document.querySelector('#form_heureArrivee_minute');
+    const duree = document.querySelector('.duration');
+    //set default value to heuredepart to 00
+
+   let heureDepartBase =  heuredepart.value = 0;
+    let minutesDepartBase = minutesdepart.value = 0;
+
+
+    [heuredepart, minutesdepart].forEach(evt => {
+        evt.addEventListener('change', () => {
+
+                heureDepartBase = heuredepart.value;
+                minutesDepartBase = minutesdepart.value;
+
+            });
+    });
+
+    //do the same for heurearrivee && minute arrive
+    let heureArriveeBase = heurearrivee.value = 0;
+    let minutesArriveeBase = minutesarrivee.value = 0;
+
+
+    [heurearrivee, minutesarrivee].forEach(evt => {
+        evt.addEventListener('change', () => {
+
+                heureArriveeBase = heurearrivee.value;
+                minutesArriveeBase = minutesarrivee.value;
+
+
+        let dureeHeure = heureArriveeBase - heureDepartBase;
+        let dureeMinute = minutesArriveeBase - minutesDepartBase;
+        if(dureeMinute < 0){
+            dureeHeure = dureeHeure - 1;
+            dureeMinute = 60 + dureeMinute;
+        }
+        
+});
+
+    });
+
+    //calculate the duration
+
+
+
+
+
+    </script>
+
 
     {{ encore_entry_script_tags('saisie') }}
 
