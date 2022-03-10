@@ -11,16 +11,8 @@ document.querySelector('.flatpickr').flatpickr({
 
 
 // INPUT FRAIS KILOMETRAGE A FAIRE EN FONCTION DE CE QUE LUTILISATEUR RENTRE
-const frais = document.getElementById('frais');
-frais.value = 2;
-
-const departHeure = document.querySelector(".heureDepart");
-console.log(departHeure);
-// get selected value 
-departHeure.addEventListener("change", function() {
-    let vale = departHeure.options[departHeure.selectedIndex].value;
-    console.log(vale);
-});
+const frais = document.getElementsByClassName('fraisKilometrique');
+console.log(frais);
 
 
 

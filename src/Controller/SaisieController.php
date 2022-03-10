@@ -26,6 +26,7 @@ class SaisieController extends AbstractController
     #[Route('/saisie', name: 'saisie')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $someValue = $request->query->get('someValue');
         $user = $this->getUser();
         $action = new Action();
         
@@ -54,8 +55,9 @@ class SaisieController extends AbstractController
                         'class' => 'duration'
                     ],
                     ])
-                ->add('frais', null, ['label' => 'Frais'])
-
+                ->add('frais', null, [
+                    'label' => 'Frais',
+                    ])
 
                 ->add('date', DateType::class, [
                     'label' => 'Date',
@@ -68,6 +70,9 @@ class SaisieController extends AbstractController
 
                 ->add('fraisKilometrique', TextType::class, [
                     'disabled' => true,
+                    'attr' => [
+                        'value' => $someValue
+                    ],
                 ])
                 // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
@@ -80,7 +85,6 @@ class SaisieController extends AbstractController
                         ->setParameter('user', $user->getId())
                 
         ;
-
 
                     }])
 

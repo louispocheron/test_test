@@ -54,7 +54,8 @@
         
         <div class='rowSaisie'>
             <label>frais kilométriques</label>
-            {{form_widget(form.fraisKilometrique, {'id' : 'frais'} )}}
+            <a href=' {{path('saisie', { 'someValue': '8' })}}'></a>
+            {{form_widget(form.fraisKilometrique , {'attr': {'class': 'fraisKilometrique'}}) }}
         </div>
 
         <div class='rowSaisie'>
@@ -67,6 +68,7 @@
 {% else %}
     <h1>devez etre connectez pour faire une saisie</h1>
 {% endif %}
+
 
 {% endblock %}
 

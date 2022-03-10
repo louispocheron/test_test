@@ -9,12 +9,33 @@
     {% if userAction == null %}
         <p>Aucune action n'a été effectuée par cet utilisateur</p>
     {% else %}
+
+    <div class="totalDiv">
+    <p class="totalP"></p>
+    </div>
+
+     <div class="tableau">
         {% for action in userAction %}
-            {{dump(action)}}
+            <div class="ligne" >
+                            <p>{{ action.user.username }}</p>
+                            <p>{{ action.villeDepart }}</p>
+                            <p>{{ action.villeArrive }}</p>
+                            <p>{{ action.km }}</p>
+                            <p>{{ action.raisons }}</p>
+                            <p>{{ action.heureDepart|date('H:i') }}</p>
+                            <p>{{ action.heureArrivee|date('H:i') }}</p>
+                            <p class="duree" data-duree="{{ action.duree }}">durée : {{ action.duree }}</p>
+                            <p>{{ action.frais }}</p>
+                            <p>{{ action.date|date('d/m/Y') }}</p>
+            </div>
         {% endfor %}
+    </div>
     {% endif %}
 
 
 {% endblock %}
-{% block javascript %}
+{% block javascripts %}
+
+  {{ encore_entry_script_tags('admin') }}
+
 {% endblock %}
