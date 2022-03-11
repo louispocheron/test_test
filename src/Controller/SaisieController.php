@@ -26,7 +26,7 @@ class SaisieController extends AbstractController
     #[Route('/saisie', name: 'saisie')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $someValue = $request->query->get('someValue');
+
         $user = $this->getUser();
         $action = new Action();
         
@@ -49,12 +49,6 @@ class SaisieController extends AbstractController
                         'class' => 'heureArrivee'
                     ],
                     ])
-                ->add('duree', null, [
-                    'label' => 'durée',
-                    'attr' => [
-                        'class' => 'duration'
-                    ],
-                    ])
                 ->add('frais', null, [
                     'label' => 'Frais',
                     ])
@@ -70,9 +64,9 @@ class SaisieController extends AbstractController
 
                 ->add('fraisKilometrique', TextType::class, [
                     // 'disabled' => true,
-                    'attr' => [
-                        'value' => $someValue
-                    ],
+                    // 'attr' => [
+                    //     'value' => $duree
+                    // ],
                 ])
                 // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
@@ -96,6 +90,12 @@ class SaisieController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+        //get dureeHeure from axios
+        $dureeHeure = $request->request->get('dureeHeure');
+        $dureeHeure = json_decode($dureeHeure);
+        
+
+
 
             $action = $form->getData();
             $action->setUserID($user);
@@ -118,4 +118,5 @@ class SaisieController extends AbstractController
             'assocs' => $userAssoc
         ]);
     }
+
 }

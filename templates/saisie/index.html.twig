@@ -32,11 +32,6 @@
             {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
         </div>
 
-        <div class='rowSaisie'>
-            <label>durée</label>
-            {{form_widget(form.duree)}}
-        </div>
-
         <div class='rowSaisie' id="km">
             <label>Kilomètrage</label>
             {{form_widget(form.km)}}
@@ -61,6 +56,10 @@
             <label>Association</label>
             {{form_widget(form.association)}}
         </div>
+        <div class='rowSaisie'>
+                {{form_widget(form.enregistrer , {'attr': {'class': 'btnSubmitSaisie'}}) }}
+        </div>
+
 
     {{form_end(form)}}
 </div>
@@ -80,29 +79,20 @@
     const heurearrivee = document.querySelector('#form_heureArrivee_hour');
     const minutesarrivee = document.querySelector('#form_heureArrivee_minute');
     const duree = document.querySelector('.duration');
+    const btnSubmitSaisie = document.querySelector('.btnSubmitSaisie');
     //set default value to heuredepart to 00
 
    let heureDepartBase =  heuredepart.value = 0;
     let minutesDepartBase = minutesdepart.value = 0;
-
-
-    [heuredepart, minutesdepart].forEach(evt => {
-        evt.addEventListener('change', () => {
-
-                heureDepartBase = heuredepart.value;
-                minutesDepartBase = minutesdepart.value;
-
-            });
-    });
-
-    //do the same for heurearrivee && minute arrive
     let heureArriveeBase = heurearrivee.value = 0;
     let minutesArriveeBase = minutesarrivee.value = 0;
 
 
-    [heurearrivee, minutesarrivee].forEach(evt => {
+    [heuredepart, minutesdepart, heurearrivee, minutesarrivee].forEach(evt => {
         evt.addEventListener('change', () => {
 
+                heureDepartBase = heuredepart.value;
+                minutesDepartBase = minutesdepart.value;
                 heureArriveeBase = heurearrivee.value;
                 minutesArriveeBase = minutesarrivee.value;
 
@@ -113,9 +103,18 @@
             dureeHeure = dureeHeure - 1;
             dureeMinute = 60 + dureeMinute;
         }
-        
-});
 
+        //send dureeHeure and dureeMinute to the server
+
+    //send dureeHeure and dureeMinute to the server
+            axios.post('/saisie', {
+                dureeHeure: dureeHeure,
+                dureeMinute: dureeMinute
+            }).then(response => {
+                console.log(response.data);
+            });
+
+    });
     });
 
     //calculate the duration
