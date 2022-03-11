@@ -17,7 +17,6 @@
      <div class="tableau">
      <h4        >détails des saisie de l'utilisateur {{ user.username }}</h4        >
         {% for action in userAction %}
-            {{dump(action)}}
             <div class="ligne" >
                             <p>{{ action.user.username }}</p>
                             <p>{{ action.villeDepart }}</p>
@@ -26,7 +25,7 @@
                             <p>{{ action.raisons }}</p>
                             <p>{{ action.heureDepart|date('H:i') }}</p>
                             <p>{{ action.heureArrivee|date('H:i') }}</p>
-                            <p class="duree" data-duree="{{ action.duree|date('H:i') }}">durée : {{ action.duree|date('H:i:s') }}</p>
+                            <p class="duree" data-duree="{{ action.duree }}">durée : {{ action.duree }}</p>
                             <p>{{ action.frais }}</p>
                             <p>{{ action.date|date('d/m/Y') }}</p>
             </div>

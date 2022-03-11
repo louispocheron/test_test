@@ -51,7 +51,7 @@ class Action
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $createdAt;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'decimal', nullable: true)]
     private $fraisKilometrique;
 
     public function getId(): ?int
@@ -203,12 +203,12 @@ class Action
         return $this;
     }
 
-    public function getFraisKilometrique(): ?int
+    public function getFraisKilometrique(): ?string
     {
         return $this->fraisKilometrique;
     }
 
-    public function setFraisKilometrique(?int $fraisKilometrique): self
+    public function setFraisKilometrique(?string $fraisKilometrique): self
     {
         $this->fraisKilometrique = $fraisKilometrique;
 

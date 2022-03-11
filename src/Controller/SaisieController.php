@@ -49,7 +49,10 @@ class SaisieController extends AbstractController
                         'class' => 'heureArrivee'
                     ],
                     ])
-                ->add('duree', null, ['label' => 'Durée'])
+                ->add('duree', null, [
+                    'disabled' => true,
+                    'label' => 'Durée'
+                    ])
                 ->add('frais', null, [
                     'label' => 'Frais',
                     ])

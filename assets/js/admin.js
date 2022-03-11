@@ -1,33 +1,31 @@
-
+//NOMBRE D'HEURE ET MINUTES PAR ADHERENT
 const duree = document.getElementsByClassName('duree');
 const totalDiv = document.getElementsByClassName('total');
 const totalP = document.querySelector('.totalP');
 
-
-    console.log('test pc');
-
-    console.log(duree);
     // CALCUL DU TOTAL D'HEURES
     // get data attributes 'data-hihi' from test
     const data = Array.from(duree).map(el => el.dataset.duree);
-    // sum all value from data
+
     window.onload = () => {
-    if(data !== undefined){
-    const total = data.reduce((acc, val) => acc + parseInt(val), 0);
-    totalP.innerHTML = `nombre total d'heures qu'a saisie l'utilisateur : ${total}`;
+    //parse int hours and minutes from data 
+    const hours = data.map(el => parseInt(el.split(':')[0]));
+    const minutes = data.map(el => parseInt(el.split('h')[1]));
+    // sum hours and minutes
+    let totalHours = hours.reduce((acc, cur) => acc + cur);
+    let totalMinutes = minutes.reduce((acc, cur) => acc + cur);
+   
+    // as long as minutes are more than 60, add 1 to hours and subtract 60 from minutes
+    while (totalMinutes >= 60) {
+        totalHours++;
+        totalMinutes -= 60;
     }
-    else{
-        totalP.innerHTML = `l'utilisateur n'a pas encore saisi d'heures`;
+    // if minutes are less than 10, add 0 before minutes
+    if (totalMinutes < 10) {
+        totalMinutes = `0${totalMinutes}`;
     }
-    };
+    // innerhtml of totalP
+    totalP.innerHTML = `cet adhérants a saisie ${totalHours}h${totalMinutes} au total`;
 
-
-
-
-
-// get all data-duree attributes
-// for (let i = 0; i < duree.length; i++) {
-//     const duree_value = duree[i].getAttribute('data-duree');
-//     console.log(duree_value);
-// }
+    }
 
