@@ -54,6 +54,21 @@ class Action
     #[ORM\Column(type: 'decimal', nullable: true)]
     private $fraisKilometrique;
 
+    #[ORM\Column(type: 'string')]
+    private $charges;
+
+    #[ORM\Column(type: 'string', length: 100)]
+    private $groupe;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $dons;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $heuresValorisees;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $aPayer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -211,6 +226,66 @@ class Action
     public function setFraisKilometrique(?string $fraisKilometrique): self
     {
         $this->fraisKilometrique = $fraisKilometrique;
+
+        return $this;
+    }
+
+    public function getCharges(): ?string
+    {
+        return $this->charges;
+    }
+
+    public function setCharges(string $charges): self
+    {
+        $this->charges = $charges;
+
+        return $this;
+    }
+
+    public function getGroupe(): ?string
+    {
+        return $this->groupe;
+    }
+
+    public function setGroupe(string $groupe): self
+    {
+        $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    public function getDons(): ?string
+    {
+        return $this->dons;
+    }
+
+    public function setDons(?string $dons): self
+    {
+        $this->dons = $dons;
+
+        return $this;
+    }
+
+    public function getHeuresValorisees(): ?string
+    {
+        return $this->heuresValorisees;
+    }
+
+    public function setHeuresValorisees(?string $heuresValorisees): self
+    {
+        $this->heuresValorisees = $heuresValorisees;
+
+        return $this;
+    }
+
+    public function getAPayer(): ?string
+    {
+        return $this->aPayer;
+    }
+
+    public function setAPayer(?string $aPayer): self
+    {
+        $this->aPayer = $aPayer;
 
         return $this;
     }

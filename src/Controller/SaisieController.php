@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -29,7 +30,8 @@ class SaisieController extends AbstractController
 
         $user = $this->getUser();
         $action = new Action();
-        
+        $charge = "1.42";
+
         $form = $this->createFormBuilder($action)
                 ->add('villeDepart', TextType::class, [
                     'label' => 'Ville de départ',
@@ -49,16 +51,34 @@ class SaisieController extends AbstractController
                         'class' => 'heureArrivee'
                     ],
                     ])
+                ->add('groupe', ChoiceType::class, [
+                    'choices' => [
+                        '1' => 10.04,
+                        '2' => 10.33,
+                        '3' => 11.22,
+                        '4' => 11.91,
+                        '5' => 13.33,
+                        '6' => 16.64
+                    ]
+                ])
+                ->add('charges', null, [
+                    'label' => 'Charge',
+                    'attr' => [
+                        'value' => '42%',
+                        'readonly' => true
+                    ],
+                    ])
                 ->add('duree', null, [
-                    'disabled' => true,
-                    'label' => 'Durée'
+                    'label' => 'Durée',
+                    'attr' => [
+                        'readonly' => true,
+                    ],
                     ])
                 ->add('frais', null, [
                     'label' => 'Frais',
                     ])
 
                 ->add('date', DateType::class, [
-                    'label' => 'Date',
                     'widget' => 'single_text',
                     'format' => 'dd/MM/yyyy',
                     'html5' => false,
@@ -68,9 +88,9 @@ class SaisieController extends AbstractController
 
                 ->add('fraisKilometrique', TextType::class, [
                     // 'disabled' => true,
-                    // 'attr' => [
-                    //     'value' => $duree
-                    // ],
+                    'attr' => [
+                        'readonly' => true,
+                    ],
                 ])
                 // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
@@ -85,6 +105,17 @@ class SaisieController extends AbstractController
         ;
 
                     }])
+                ->add('dons', TextType::class, [
+                    'attr' => [
+                        'readonly' => true,
+                    ],
+                ])
+                ->add('heuresValorisees', TextType::class,[
+                    'attr' => [
+                        'readonly' => true,
+                    ],
+                ])
+                ->add('aPayer', TextType::class)
 
                 ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
 
@@ -95,10 +126,11 @@ class SaisieController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             $action = $form->getData();
-        
+            
             $action->setUserID($user);
             
             $action->setCreatedAt(new \DateTime());
+            $action->setCharges($charge);
 
             $entityManager->persist($action);
             $entityManager->flush();
@@ -113,7 +145,8 @@ class SaisieController extends AbstractController
         return $this->render('saisie/index.html.twig', [
             'controller_name' => 'SaisieController',
             'form' => $form->createView(),
-            'assocs' => $userAssoc
+            'assocs' => $userAssoc,
+            'charges' => $charge
         ]);
     }
 

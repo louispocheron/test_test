@@ -7,66 +7,104 @@
 {% if app.user == true %}
 <div class="form-saisie">
     {{form_start(form)}}
-        <div class='rowSaisie'>
-            <label>Ville de départ</label>
-            {{form_widget(form.villeDepart)}}
-        </div>
 
-        <div class='rowSaisie'>
-            <label>Ville d'Arrivée</label>
-            {{form_widget(form.villeArrive)}}
-        </div>
+        <div class="evenement">
 
-        <div class='rowSaisie'>
-            <label>Raisons</label>
-            {{form_widget(form.raisons)}}
-        </div>
+            <div class='rowSaisie'>
+                <label>Date</label>
+                {{form_widget(form.date)}}
+            </div>
+            <div class='rowSaisie'>
+                <label>Association</label>
+                {{form_widget(form.association)}}
+            </div>
 
-        <div class='rowSaisie'>
-            <label>Heure de départ</label>
-            {{form_widget(form.heureDepart , {'attr': {'class': 'heureDepart'}}) }}
-        </div>
+            <div class='rowSaisie'>
+                <label>Ville de départ</label>
+                {{form_widget(form.villeDepart)}}
+            </div>
 
-        <div class='rowSaisie'>
-            <label>Heure d'arrivée</label>
-            {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
-        </div>
-        <div class='rowSaisie'>
-            <label>duree</label>
-            {{form_widget(form.duree, {'attr': {'class': 'dureeInput'}}) }}
-        </div>
+            <div class='rowSaisie'>
+                <label>Ville d'Arrivée</label>
+                {{form_widget(form.villeArrive)}}
+            </div>
 
+            <div class='rowSaisie'>
+                <label>Raisons</label>
+                {{form_widget(form.raisons)}}
+            </div>
+        </div>
+        <div class="evenement1">
+            <div class='rowSaisie'>
+                <label>Heure de départ</label>
+                {{form_widget(form.heureDepart , {'attr': {'class': 'heureDepart'}}) }}
+            </div>
+
+            <div class='rowSaisie'>
+                <label>Heure d'arrivée</label>
+                {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
+            </div>
+            <div class='rowSaisie'>
+                <label>duree</label>
+                {{form_widget(form.duree, {'attr': {'class': 'dureeInput'}}) }}
+            </div>
+             <div class='rowSaisie'>
+                <label>groupe</label>
+                {{form_widget(form.groupe, {'attr': {'class': 'groupeSelect'}}) }}
+            </div>
+            <div class='rowSaisie' id="chargeInputId" data-test='{{charges}}' >
+                <label>charges</label>
+                {{form_widget(form.charges, {'attr': {'class': 'chargesInput' }}) }}
+            </div>
+        </div>
+    <div class="evenement1">
         <div class='rowSaisie' id="km">
             <label>Kilomètrage</label>
             {{form_widget(form.km, {'attr': {'class': 'kmInput'}}) }}
         </div>
-             <div class='rowSaisie'>
+
+        <div class='rowSaisie'>
             <label>barème</label>
             <input class="bareme" type="text" name="barème">
         </div>
 
         <div class='rowSaisie'>
             <label>Frais</label>
-            {{form_widget(form.frais)}}
+            {{form_widget(form.frais, {'attr': {'class': 'coutInput'}}) }}
         </div>
 
-        <div class='rowSaisie'>
-            <label>Date</label>
-            {{form_widget(form.date)}}
-        </div>
         
         <div class='rowSaisie'>
             <label>frais kilométriques</label>
             {{form_widget(form.fraisKilometrique, {'attr': {'class': 'fraisInput'}}) }}
         </div>
+</div>
+<div class="evenement1">
+        <div class='rowSaisie'>
+            <label>total note de frais</label>
+            <input  class="totalNote" type="text" name="totalNote" value="0">
+        </div>
 
         <div class='rowSaisie'>
-            <label>Association</label>
-            {{form_widget(form.association)}}
+            <label>Dons</label>
+            {{form_widget(form.dons, {'attr': {'class': 'donsInput'}}) }}
         </div>
+
+        <div class='rowSaisie'>
+            <label>A payer</label>
+            {{form_widget(form.aPayer, {'attr': {'class': 'apayerInput'}}) }}
+        </div>
+
+        <div class='rowSaisie'>
+            <label>heures valorisées</label>
+            {{form_widget(form.heuresValorisees, {'attr': {'class': 'heureValoriseesInput'}}) }}
+        </div>
+
+</div>
         <div class='rowSaisie'>
                 {{form_widget(form.enregistrer , {'attr': {'class': 'btnSubmitSaisie'}}) }}
         </div>
+</div>
 
 
     {{form_end(form)}}

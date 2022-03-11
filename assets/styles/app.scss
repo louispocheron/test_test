@@ -129,9 +129,8 @@ body {
   }
   .form-saisie{
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+    flex-direction: row;
+  } 
 
 // .header {
 //   height: 30px;
