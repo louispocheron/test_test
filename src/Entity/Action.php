@@ -42,7 +42,7 @@ class Action
     #[ORM\ManyToOne(targetEntity: associations::class, inversedBy: 'actions')]
     private $association;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private $duree;
 
     #[ORM\Column(type: 'integer', nullable: true)]
@@ -167,12 +167,12 @@ class Action
         return $this;
     }
 
-    public function getDuree(): ?int
+    public function getDuree(): ?string
     {
         return $this->duree;
     }
 
-    public function setDuree(?int $duree): self
+    public function setDuree(string $duree): self
     {
         $this->duree = $duree;
 

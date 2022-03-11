@@ -49,6 +49,7 @@ class SaisieController extends AbstractController
                         'class' => 'heureArrivee'
                     ],
                     ])
+                ->add('duree', null, ['label' => 'Durée'])
                 ->add('frais', null, [
                     'label' => 'Frais',
                     ])
@@ -90,14 +91,8 @@ class SaisieController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-        //get dureeHeure from axios
-        $dureeHeure = $request->request->get('dureeHeure');
-        $dureeHeure = json_decode($dureeHeure);
-        
-
-
-
             $action = $form->getData();
+        
             $action->setUserID($user);
             
             $action->setCreatedAt(new \DateTime());

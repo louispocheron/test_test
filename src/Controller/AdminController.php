@@ -25,6 +25,9 @@ class AdminController extends AbstractController
         $association = $repo->find($assocId);
         $actions = $actionRepo->findByAssociation($association);
         $userAction = $actionRepo->findByUsers($user);
+    
+        //convert getDuree to hours and minutes
+      
 
 
         // get all users from $assocation

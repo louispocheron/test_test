@@ -31,6 +31,10 @@
             <label>Heure d'arrivée</label>
             {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
         </div>
+        <div class='rowSaisie'>
+            <label>duree</label>
+            {{form_widget(form.duree, {'attr': {'class': 'dureeInput'}}) }}
+        </div>
 
         <div class='rowSaisie' id="km">
             <label>Kilomètrage</label>
@@ -71,60 +75,6 @@
 {% endblock %}
 
 {% block javascripts %}
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-    const heuredepart = document.querySelector('#form_heureDepart_hour');
-    const minutesdepart = document.querySelector('#form_heureDepart_minute');
-    const heurearrivee = document.querySelector('#form_heureArrivee_hour');
-    const minutesarrivee = document.querySelector('#form_heureArrivee_minute');
-    const duree = document.querySelector('.duration');
-    const btnSubmitSaisie = document.querySelector('.btnSubmitSaisie');
-    //set default value to heuredepart to 00
-
-   let heureDepartBase =  heuredepart.value = 0;
-    let minutesDepartBase = minutesdepart.value = 0;
-    let heureArriveeBase = heurearrivee.value = 0;
-    let minutesArriveeBase = minutesarrivee.value = 0;
-
-
-    [heuredepart, minutesdepart, heurearrivee, minutesarrivee].forEach(evt => {
-        evt.addEventListener('change', () => {
-
-                heureDepartBase = heuredepart.value;
-                minutesDepartBase = minutesdepart.value;
-                heureArriveeBase = heurearrivee.value;
-                minutesArriveeBase = minutesarrivee.value;
-
-
-        let dureeHeure = heureArriveeBase - heureDepartBase;
-        let dureeMinute = minutesArriveeBase - minutesDepartBase;
-        if(dureeMinute < 0){
-            dureeHeure = dureeHeure - 1;
-            dureeMinute = 60 + dureeMinute;
-        }
-
-        //send dureeHeure and dureeMinute to the server
-
-    //send dureeHeure and dureeMinute to the server
-            axios.post('/saisie', {
-                dureeHeure: dureeHeure,
-                dureeMinute: dureeMinute
-            }).then(response => {
-                console.log(response.data);
-            });
-
-    });
-    });
-
-    //calculate the duration
-
-
-
-
-
-    </script>
-
 
     {{ encore_entry_script_tags('saisie') }}
 

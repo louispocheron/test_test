@@ -4,8 +4,9 @@ const totalDiv = document.getElementsByClassName('total');
 const totalP = document.querySelector('.totalP');
 
 
+    console.log('test pc');
 
-
+    console.log(duree);
     // CALCUL DU TOTAL D'HEURES
     // get data attributes 'data-hihi' from test
     const data = Array.from(duree).map(el => el.dataset.duree);
@@ -19,6 +20,7 @@ const totalP = document.querySelector('.totalP');
         totalP.innerHTML = `l'utilisateur n'a pas encore saisi d'heures`;
     }
     };
+
 
 
 
