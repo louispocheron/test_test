@@ -18,6 +18,11 @@ document.querySelector('.flatpickr').flatpickr({
     const dureeInput = document.querySelector('.dureeInput');
     const btnSubmitSaisie = document.querySelector('.btnSubmitSaisie');
 
+    let chargeData = document.querySelector('#chargeInputId').dataset.charges;
+    const chargesInput = document.querySelector('.chargesInput');
+    let groupeSelect = document.querySelector('.groupeSelect');
+    const heureValoriseesInput = document.querySelector('.heureValoriseesInput');
+
 
     //set default value to heuredepart to 00
 
@@ -28,7 +33,7 @@ document.querySelector('.flatpickr').flatpickr({
     let minutesArriveeBase = minutesarrivee.value = 0;
 
 
-    [heuredepart, minutesdepart, heurearrivee, minutesarrivee].forEach(evt => {
+    [heuredepart, minutesdepart, heurearrivee, minutesarrivee, groupeSelect].forEach(evt => {
         evt.addEventListener('change', () => {
 
             heureDepartBase = heuredepart.value;
@@ -46,7 +51,16 @@ document.querySelector('.flatpickr').flatpickr({
             if(dureeMinute < 10){
                 dureeMinute = '0' + dureeMinute;
             }
+
+
             dureeInput.value = dureeHeure + 'h' + dureeMinute;
+
+            let dureeHeureValorisee = dureeHeure + '.' + dureeMinute;
+            // parseFloat(dureeHeureValorisee); 
+
+
+            heureValoriseesInput.value = (groupeSelect.value * chargeData * dureeHeureValorisee).toFixed(2);
+            console.log(chargeData * dureeHeureValorisee);
 
 
     });
@@ -89,7 +103,7 @@ document.querySelector('.flatpickr').flatpickr({
 
             fraisInput.value = (kmValue * baremeValue).toFixed(2);
 
-            donsInput.value = parseFloat(fraisInput.value) + parseInt(coutValue);
+            donsInput.value = parseInt(fraisInput.value) + parseInt(coutValue);
             // put donsInput.value in localStorage
             localStorage.setItem('donsInput', donsInput.value);
             totalNote.value = parseFloat(fraisInput.value) + parseInt(coutValue);
@@ -108,24 +122,14 @@ document.querySelector('.flatpickr').flatpickr({
             //get value from localStorage and put it into donsinput.value
             donsInput.value = localStorage.getItem('donsInput');
         }
-
-
+        
         donsInput.value = donsInput.value - parseInt(apayerValue);
         
     });     
         
+
         
 
 
 
-
-
-    // MULTIPLICATEUR DES CHARGES  == 1.42;
-    let chargeData = document.querySelector('#chargeInputId').dataset.test;
-    const chargesInput = document.querySelector('.chargesInput');
-    
-
-
-
-    
 

@@ -11,6 +11,7 @@
  ma dernière saisie en date : 
         {% for recent in latest %}
             <ul>
+                <li>{{ recent.association.name }}</li>
                 <li>{{recent.villeDepart}}</li>
                 <li>{{recent.villeArrive}}</li>
                 <li>{{recent.km}}</li>
@@ -32,6 +33,7 @@
 {% if (actions == true) and (app.user == true) %}
     {% for action in actions %}
         <ul>
+            <li>{{ action.association.name }}</li>
             <li>{{action.villeDepart}}</li>
             <li>{{action.villeArrive}}</li>
             <li>{{action.km}}</li>

@@ -67,13 +67,70 @@ class AdminController extends AbstractController
   $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser);
 
     return $this->render('admin/user.html.twig', [
+        'association' => $uniqueAssociation,
         'user' => $uniqueUser,
         'userAction' => $userAction,
         'controller_name' => 'AdminController',
     ]);
+    }
 
 
+     #[Route('/admin/{idAssoc}/user/{id}/year', name: 'admin_year')]
+    public function sortYear(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
+    {   
+    $user = $this->getUser();
+
+    $userId = $request->attributes->get('id');
+    $uniqueUser = $userRepo->find($userId);
+
+    $assocationId = $request->attributes->get('idAssoc');
+    $uniqueAssociation = $repo->find($assocationId);
+    
+    $thisYear = $actionRepo->findByAssociationAndUserThisYear($uniqueAssociation, $uniqueUser);
+
+    foreach($thisYear as $action){
+        $duree[] = $action->getDuree();
+        $date[] = $action->getDate();
+    }
+    // dd($duree);
+    // dd($thisYear);   
+
+    return $this->json([
+        'status' => 'success',
+        'message' => 'ok',
+        'data' => $duree,
+        'date' => $date,
+        
+    ]);
+    }
+        #[Route('/admin/{idAssoc}/user/{id}/month', name: 'admin_month')]
+    public function sortMonth(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
+    {   
+    $user = $this->getUser();
+
+    $userId = $request->attributes->get('id');
+    $uniqueUser = $userRepo->find($userId);
+
+    $assocationId = $request->attributes->get('idAssoc');
+    $uniqueAssociation = $repo->find($assocationId);
+    
+    $thisYear = $actionRepo->findByAssociationAndUserThisMonth($uniqueAssociation, $uniqueUser);
+
+    foreach($thisYear as $action){
+        $duree[] = $action->getDuree();
+        $date[] = $action->getDate();
 
     }
+    // dd($duree);
+    // dd($thisYear);   
+
+    return $this->json([
+        'status' => 'success',
+        'message' => 'ok',
+        'data' => $duree,
+        'date' => $date
+    ]);
+    }
+
 
 }

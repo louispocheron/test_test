@@ -23,7 +23,7 @@
                 <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
                     <h3 class="assoc-name">{{association.name}}</h3>
                     <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
-                    <p>{{association.description}}</p>
+                    <p class="card-description">{{association.description}}</p>
                 </a>
             </li>
         {% endfor %}

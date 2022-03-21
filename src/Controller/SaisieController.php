@@ -65,7 +65,8 @@ class SaisieController extends AbstractController
                     'label' => 'Charge',
                     'attr' => [
                         'value' => '42%',
-                        'readonly' => true
+                        'readonly' => true,
+                        'placeholder' => '42%',
                     ],
                     ])
                 ->add('duree', null, [

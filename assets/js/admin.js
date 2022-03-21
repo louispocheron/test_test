@@ -29,3 +29,44 @@ const totalP = document.querySelector('.totalP');
 
     }
 
+    const dateAdmin = document.getElementsByClassName('dateAdmin');
+    console.log(dateAdmin);
+    // get dataset of all html elements
+    const dataDate = Array.from(dateAdmin).map(el => el.dataset.date);
+    console.log(dataDate);
+
+
+
+    //AJAX CHOPER LES SAISIE DE L'ANNEE ACTUELLE
+    const yearbtn = document.querySelector('.yearbtn');
+    console.log(yearbtn);
+    function ajaxAxios(e){
+        e.preventDefault();
+
+        const url = this.href;
+        axios.get(url).then(res => {
+            // FAIRE CE QUE JE VEUX AVEC ANNEE ICI 
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    yearbtn.addEventListener('click', ajaxAxios);
+
+    const monthbtn = document.querySelector(".monthbtn");
+
+    function ajaxMonth(e){
+        e.preventDefault();
+        
+        const url = this.href;
+        axios.get(url).then(res => {
+            //FAIRE CE QUE JE VEUX AVEC LE MOIS ICI
+            console.log(res.data);
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+
+    monthbtn.addEventListener('click', ajaxMonth);
+

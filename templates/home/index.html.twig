@@ -22,22 +22,51 @@ vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation
 {% endif %}
 
 
-<div class="homeContainer">
+    <h3>Dernière saisie :</h3>
+<div class="homeContainer"> 
 {% for recent in latest %}
-
+    {# {% if recent is null %}
     <div class="homeCard">
-        
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <h2>00€</h2>
+        <h3>Dons</h3>
     </div>
     <div class="homeCard">
-        1
+        <i class="fa-solid fa-money-check-dollar"></i>
+        <h2>00€</h2>
+        <h3>Remboursement</h3>
     </div>
     <div class="homeCard">
-        <i class="fa-thin fa-clock"></i>
+        <i class="fa-solid fa-clock-eight"></i>
+        <h2>00h00</h2>
+        <h3>Bénévolat</h3>
+    </div>
+    <div class="homeCard">
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+        <h2>00€</h2>
+        <h3>Bénévolat</h3>
+    </div>
+{% endif %} #}
+    <div class="homeCard">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <h2>{{ recent.dons }}€</h2>
+        <h3>Dons</h3>
+    </div>
+    <div class="homeCard">
+        <i class="fa-solid fa-money-check-dollar"></i>
+        <h2>{{ recent.aPayer }}€</h2>
+        <h3>Remboursement</h3>
+    </div>
+    <div class="homeCard">
+        <i class="fa-solid fa-clock-eight"></i>
         <h2>{{ recent.duree }}</h2>
         <h3>Bénévolat</h3>
     </div>
     <div class="homeCard">
-    3   
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+        
+        <h2>{{ recent.heuresValorisees }}</h2>
+        <h3>Bénévolat</h3>
     </div>
 
 
