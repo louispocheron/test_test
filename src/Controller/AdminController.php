@@ -103,7 +103,7 @@ class AdminController extends AbstractController
         
     ]);
     }
-        #[Route('/admin/{idAssoc}/user/{id}/month', name: 'admin_month')]
+        #[Route('/admin/{idAssoc}/user/{id}/test', name: 'admin_month')]
     public function sortMonth(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
     {   
     $user = $this->getUser();
@@ -114,7 +114,8 @@ class AdminController extends AbstractController
     $assocationId = $request->attributes->get('idAssoc');
     $uniqueAssociation = $repo->find($assocationId);
     
-    $thisYear = $actionRepo->findByAssociationAndUserThisMonth($uniqueAssociation, $uniqueUser);
+    $thisYear = $actionRepo->findByAssociationAndUserByMonthAndYear($uniqueAssociation, $uniqueUser, date(4), date('2022'));
+    dd($thisYear);
 
     foreach($thisYear as $action){
         $duree[] = $action->getDuree();

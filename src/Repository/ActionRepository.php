@@ -113,6 +113,32 @@ class ActionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findByAssociationAndUserByMonth($association, $user, $month){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.association = :association')
+            ->andWhere('action.user = :user')
+            ->andWhere('action.date >= :date')
+            ->setParameter('association', $association->getId())
+            ->setParameter('user', $user->getId())
+            ->setParameter('date', date('Y-'.$month.'-01'))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByAssociationAndUserByMonthAndYear($association, $user, $month, $year){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.association = :association')
+            ->andWhere('action.user = :user')
+            ->andWhere('action.date >= :date')
+            ->setParameter('association', $association->getId())
+            ->setParameter('user', $user->getId())
+            ->setParameter('date', date('Y-'.$month.'-01', strtotime($year)))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     
     /*
     public function findOneBySomeField($value): ?Action
