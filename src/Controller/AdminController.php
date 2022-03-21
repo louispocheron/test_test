@@ -128,7 +128,7 @@ class AdminController extends AbstractController
         'status' => 'success',
         'message' => 'ok',
         'data' => $duree,
-        'date' => $date
+        'date' => $date,
     ]);
     }
 

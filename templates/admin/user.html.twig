@@ -11,7 +11,7 @@
     {% else %}
 
     <div class="totalDiv">
-    <p class="totalP"></p>
+
 
     <p> voir les saisie de cette année seulement</p><a class="yearbtn"href="{{ path('admin_year', {'idAssoc': association.id, 'id': user.id}) }}">ici</a>
         <p> voir les saisie du dernier mois seulement</p><a class="monthbtn"href="{{ path('admin_month', {'idAssoc': association.id, 'id': user.id}) }}">ici</a>
@@ -19,10 +19,12 @@
     </div>
         {# {{dump(userAction)}} #}
 
+    <h4 class="upperTableau">détails des saisie de l'utilisateur {{ user.username }}</h4>
+    <h3 class="totalP"></h3>
      <div class="tableau">
-     <h4>détails des saisie de l'utilisateur {{ user.username }}</h4>
+     
         {% for action in userAction %}
-            <div class="ligne" >
+            <div class="ligne">
                             <p>{{ action.user.username }}</p>
                             <p>{{ action.villeDepart }}</p>
                             <p>{{ action.villeArrive }}</p>
@@ -43,7 +45,5 @@
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   {{ encore_entry_script_tags('admin') }}
-
-
 
 {% endblock %}
