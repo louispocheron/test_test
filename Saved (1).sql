@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 11 mars 2022 à 07:18
+-- Généré le : mar. 22 mars 2022 à 11:54
 -- Version du serveur :  8.0.28-0ubuntu0.20.04.3
 -- Version de PHP : 7.4.28
 
@@ -39,40 +39,44 @@ CREATE TABLE `action` (
   `date` date NOT NULL,
   `user_id` int NOT NULL,
   `association_id` int DEFAULT NULL,
-  `duree` time DEFAULT NULL,
+  `duree` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `frais` int DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
-  `frais_kilometrique` int DEFAULT NULL
+  `frais_kilometrique` decimal(10,0) DEFAULT NULL,
+  `charges` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `groupe` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dons` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `heures_valorisees` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `a_payer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `action`
 --
 
-INSERT INTO `action` (`id`, `ville_depart`, `ville_arrive`, `km`, `raisons`, `heure_depart`, `heure_arrivee`, `date`, `user_id`, `association_id`, `duree`, `frais`, `created_at`, `frais_kilometrique`) VALUES
-(1, 'Dijon', 'Strasbourg', 300, 'personelles', '03:00:00', '08:00:00', '2017-03-01', 4, NULL, NULL, NULL, NULL, NULL),
-(2, 'bourg en bresse', 'arbois', 150, 'test test test tes', '03:00:00', '04:05:00', '2019-03-03', 5, NULL, NULL, NULL, NULL, NULL),
-(3, 'une autre ville', 'moncku', 540, 'idk', '05:00:00', '05:00:00', '2023-07-04', 5, NULL, NULL, NULL, NULL, NULL),
-(4, 'dijon', 'arbois', 70, 'association sporgt handball', '03:00:00', '04:00:00', '2017-01-01', 4, NULL, NULL, NULL, NULL, NULL),
-(5, 'test lol', 'dsqjkdfsjfdskl', 50, 'ntm', '06:00:00', '11:00:00', '2027-01-01', 10, 8, NULL, NULL, NULL, NULL),
-(6, 'louistestaction', 'qsdqsdqsdsq', 500, 'hihihi', '04:00:00', '04:00:00', '2025-06-04', 4, 8, '00:00:40', 100, NULL, NULL),
-(7, 'testadmin', 'testadmin1', 100, 'admin test', '05:00:00', '03:00:00', '2011-03-10', 4, 17, '00:00:50', 150, NULL, NULL),
-(8, 'test 12234559578975', 'sdfdss', 50, 'dsfdsf', '02:00:00', '04:00:00', '2010-03-05', 4, 17, '00:00:50', 50, NULL, NULL),
-(9, 'une eniemeine saisie', 'qsddqsdqsdqs', 10000000, 'salut salut', '04:00:00', '02:00:00', '2022-03-31', 22, 17, '00:00:20', 10, NULL, NULL),
-(12, 'ayayaya', 'auauaua', 132, 'dsqzdqsd', '01:00:00', '01:00:00', '2022-03-01', 4, 8, '00:00:12', 12, NULL, NULL),
-(13, 'plswork', 'dsqdsqdqs', 21, 'qsdqsd', '03:00:00', '02:00:00', '2022-03-01', 4, 8, '00:01:32', 1122, '2022-03-07 10:36:42', NULL),
-(14, 'latest ?', 'dsqdqsd', 12, 'dqsdqs', '02:00:00', '02:00:00', '2022-03-08', 23, NULL, '00:00:12', 12, '2022-03-07 10:43:44', NULL),
-(15, 'latest saisie', 'dsqsdqs', 12, '123', '01:00:00', '02:00:00', '2022-03-01', 4, 9, '00:00:12', 12, '2022-03-07 10:49:44', NULL),
-(16, 'test1adminlololol', 'qsdqsdqs', 123, 'sqdsqdsq', '02:00:00', '03:00:00', '2022-03-01', 24, 17, '00:00:54', 12, '2022-03-08 11:38:36', NULL),
-(17, 'fdptest', 'dqsdqsdqs', 12, 'test test', '02:00:00', '03:00:00', '2028-03-03', 24, 17, '00:00:12', 12, '2022-03-08 11:46:19', NULL),
-(18, 'fraiskm', 'qsdqsdqs', 23, 'qsdqsdqs', '04:05:00', '04:05:00', '2022-03-24', 24, 17, '00:00:12', 50, '2022-03-09 15:35:39', 34),
-(19, 'fraiskmsqdq', 'qsdqsdqsd', 4, 'qsdqsdqsd', '03:00:00', '02:00:00', '2012-03-16', 24, 16, '00:00:12', 23, '2022-03-09 15:43:02', NULL),
-(20, 'dqsd', 'qsdqsd', 23, 'test2', '01:00:00', '02:00:00', '2022-03-09', 4, 10, '00:01:22', 12, '2022-03-10 10:14:15', NULL),
-(21, 'hellllooobg', 'qsdqsdqs', 44, 'dsfdsfs', '02:00:00', '04:00:00', '2022-03-01', 4, 10, '00:00:12', 44, '2022-03-10 10:15:33', NULL),
-(22, '10value', 'qsdqs', 99, 'qsdqsdqs', '04:00:00', '04:00:00', '2022-03-09', 4, 9, '00:00:12', 10, '2022-03-10 10:38:11', NULL),
-(23, 'testSomeValue', 'ahahahah', 33, 'aeazezaeaea', '02:00:00', '02:00:00', '2022-03-16', 4, 9, '00:00:33', 33, '2022-03-10 10:47:39', NULL),
-(24, 'qsdqsdqs', 'qsdqsdqs', 323, 'dqsdqs', '05:06:00', '06:06:00', '2022-03-14', 4, 8, NULL, 323, '2022-03-10 15:57:13', 423423),
-(25, 'qsdqsd', 'qsdqd', 23, 'sqdqdq', '00:00:00', '00:00:00', '2022-03-08', 4, 8, NULL, 23, '2022-03-10 16:18:45', 32);
+INSERT INTO `action` (`id`, `ville_depart`, `ville_arrive`, `km`, `raisons`, `heure_depart`, `heure_arrivee`, `date`, `user_id`, `association_id`, `duree`, `frais`, `created_at`, `frais_kilometrique`, `charges`, `groupe`, `dons`, `heures_valorisees`, `a_payer`) VALUES
+(2, 'bourg en bresse', 'arbois', 150, 'test test test tes', '03:00:00', '04:05:00', '2019-03-03', 5, NULL, NULL, NULL, NULL, NULL, '0', '', NULL, NULL, NULL),
+(3, 'une autre ville', 'moncku', 540, 'idk', '05:00:00', '05:00:00', '2023-07-04', 5, NULL, NULL, NULL, NULL, NULL, '0', '', NULL, NULL, NULL),
+(5, 'test lol', 'dsqjkdfsjfdskl', 50, 'ntm', '06:00:00', '11:00:00', '2027-01-01', 10, 8, NULL, NULL, NULL, NULL, '0', '', NULL, NULL, NULL),
+(9, 'une eniemeine saisie', 'qsddqsdqsdqs', 10000000, 'salut salut', '04:00:00', '02:00:00', '2022-03-31', 22, 17, '00:00:20', 10, NULL, NULL, '0', '', NULL, NULL, NULL),
+(14, 'latest ?', 'dsqdqsd', 12, 'dqsdqs', '02:00:00', '02:00:00', '2022-03-08', 23, NULL, '00:00:12', 12, '2022-03-07 10:43:44', NULL, '0', '', NULL, NULL, NULL),
+(16, 'test1adminlololol', 'qsdqsdqs', 123, 'sqdsqdsq', '02:00:00', '03:00:00', '2022-03-01', 24, 17, '00:00:54', 12, '2022-03-08 11:38:36', NULL, '0', '', NULL, NULL, NULL),
+(17, 'fdptest', 'dqsdqsdqs', 12, 'test test', '02:00:00', '03:00:00', '2028-03-03', 24, 17, '00:00:12', 12, '2022-03-08 11:46:19', NULL, '0', '', NULL, NULL, NULL),
+(18, 'fraiskm', 'qsdqsdqs', 23, 'qsdqsdqs', '04:05:00', '04:05:00', '2022-03-24', 24, 17, '00:00:12', 50, '2022-03-09 15:35:39', '34', '0', '', NULL, NULL, NULL),
+(19, 'fraiskmsqdq', 'qsdqsdqsd', 4, 'qsdqsdqsd', '03:00:00', '02:00:00', '2012-03-16', 24, 16, '00:00:12', 23, '2022-03-09 15:43:02', NULL, '0', '', NULL, NULL, NULL),
+(27, 'premiere saisie', '123456', 420, 'salut bg', '08:00:00', '10:30:00', '2022-03-02', 25, 17, '2h30', 50, '2022-03-11 10:16:46', '12', '0', '', NULL, NULL, NULL),
+(28, 'premiere saisie', '123456', 420, 'salut bg', '08:00:00', '10:30:00', '2022-03-02', 25, 17, '2h30', 50, '2022-03-11 10:16:46', '12', '0', '', NULL, NULL, NULL),
+(29, 'deuxieme saisie', 'galardo', 40, 'une raison', '11:00:00', '15:45:00', '2022-03-01', 25, 17, '4h45', 60, '2022-03-11 10:17:51', '1', '0', '', NULL, NULL, NULL),
+(33, 'test readlon boy', 'sdqdsqdqs', 15, 'dsqdsqdqs', '04:00:00', '08:00:00', '2022-03-09', 4, 17, '4h00', 45, '2022-03-11 16:44:55', '5', '1.42', '10.33', '33.79', NULL, '15'),
+(34, 'paris', 'roubaix', 20, 'salut salut', '10:00:00', '23:00:00', '2022-03-03', 26, 8, '13h00', 18, '2022-03-21 10:13:36', '14', '1.42', '10.04', '10', NULL, '20'),
+(35, 'test heures valorisées', 'fsfsdf', 15, 'fsdfsd', '12:00:00', '17:30:00', '2022-03-31', 4, 8, '5h30', 25, '2022-03-21 11:13:30', '15', '1.42', '11.22', '18', '84.44', '20'),
+(36, 'cette année', 'qdsqd', 15, 'sqdqsd', '03:00:00', '05:00:00', '2022-03-26', 4, 17, '2h00', 20, '2022-03-21 11:45:06', '5', '1.42', '11.22', '24.79', '31.86', '0'),
+(37, 'pas cette année', 'fqfsdf', 10, 'sdfdsfds', '10:00:00', '11:00:00', '2021-03-18', 4, 8, '1h00', 5, '2022-03-21 11:45:55', '3', '1.42', '10.04', '3.1899999999999995', '14.26', '5'),
+(38, 'assoc and user this year', 'fdskjhfdsjkf', 15, 'fsddsfds', '04:00:00', '07:00:00', '2022-12-17', 4, 8, '3h00', 20, '2022-03-21 14:21:47', '5', '1.42', '10.04', '24', '42.77', '0'),
+(39, 'dijon', 'lol', 12, 'dsqsqd', '05:00:00', '08:00:00', '2021-03-12', 27, 17, '3h00', 14, '2022-03-21 14:59:37', '4', '1.42', '11.22', '17', '47.80', '0'),
+(40, '2022', 'sqdsd', 12, 'sqdsqdsq', '09:00:00', '11:00:00', '2022-03-19', 27, 17, '2h00', 22, '2022-03-21 15:00:16', '4', '1.42', '11.91', '20', '33.82', '5'),
+(41, 'sqdsqdq', 'sqdsqd', 15, 'sqdqs', '02:00:00', '04:00:00', '2021-03-12', 27, 17, '2h00', 12, '2022-03-21 15:19:35', '5', '1.42', '13.33', '15', '37.86', '1'),
+(42, 'arbois', 'galardo', 15, 'fdsfklsdmf', '03:00:00', '06:00:00', '2013-01-11', 4, 10, '3h00', 10, '2022-03-21 16:13:35', '8', '1.42', '16.64', '10', '70.89', '7');
 
 -- --------------------------------------------------------
 
@@ -105,7 +109,8 @@ INSERT INTO `associations` (`id`, `name`, `logo`, `description`, `user_id`) VALU
 (15, 'une assoc dans le dd', '6c03a64a4e3b7b21b185ee3166dc45b7.jpg', 'salut ca va ?', 10),
 (16, 'une assoc dans le dd', '32294eeee986568719eae71d4efe74af.jpg', 'qsdqsdqs', 10),
 (17, 'deuxieme assoc', 'd692b9736f445a175f48864a4b0bf2db.jpg', 'dsqdqsdqs', 4),
-(18, 'issou', '83da4c876074b6d3945fc2d85b7d6293.png', 'dqsdqsdqs', 12);
+(18, 'issou', '83da4c876074b6d3945fc2d85b7d6293.png', 'dqsdqsdqs', 12),
+(19, 'testimg', '991c806a2ead8bd6895dd03e54175d02.png', 'une petite description', 4);
 
 -- --------------------------------------------------------
 
@@ -143,7 +148,10 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20220303094940', '2022-03-03 10:49:55', 73),
 ('DoctrineMigrations\\Version20220303100400', '2022-03-03 11:04:06', 49),
 ('DoctrineMigrations\\Version20220307090138', '2022-03-09 15:21:18', 29),
-('DoctrineMigrations\\Version20220309141952', '2022-03-09 15:21:18', 31);
+('DoctrineMigrations\\Version20220309141952', '2022-03-09 15:21:18', 31),
+('DoctrineMigrations\\Version20220311124507', '2022-03-11 13:45:42', 207),
+('DoctrineMigrations\\Version20220311132147', '2022-03-11 14:21:54', 226),
+('DoctrineMigrations\\Version20220311135344', '2022-03-11 14:53:53', 126);
 
 -- --------------------------------------------------------
 
@@ -177,8 +185,8 @@ INSERT INTO `messenger_messages` (`id`, `body`, `headers`, `queue_name`, `create
 CREATE TABLE `reset_password_request` (
   `id` int NOT NULL,
   `user_id` int NOT NULL,
-  `selector` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hashed_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selector` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hashed_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `requested_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `expires_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -202,7 +210,7 @@ CREATE TABLE `user` (
   `roles` json NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `profil_picture` varchar(1500) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `profil_picture` varchar(1500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -230,7 +238,9 @@ INSERT INTO `user` (`id`, `username`, `roles`, `password`, `email`, `profil_pict
 (22, 'testadminahaha', '[]', '$2y$13$XYkt0K9Zc5jCyBd8nzm0gem84huVMH44CcmCjio769fzxgjP4cwuO', 'testadmin@gmail.com', '557fdf2c0f5e5cc04328ce48a08e7463.png'),
 (23, 'testASC', '[]', '$2y$13$O3gZvtNUS7pONQc9Jxx5teSON5WqnXT9bDm0qoQMYyY2tWm.nMy2u', 'testASC@gmail.com', 'a80ee1811bc2e542b59ef7a11c4fdba6.jpg'),
 (24, 'ayayaya', '[]', '$2y$13$AvzIbfpZTCmYyQg.vU.wE.tSKzzqkpPBgr2G1i2B8z1Aj58LGqhHi', 'yayayay@gmail.com', '3fc0bc6a0aa1af7bcd099c1fa733eba6.png'),
-(25, 'pasadmindutout', '[]', '$2y$13$XImRCj44j5Y0aIyySQyoEuMhQJ0T0kf0HXC4LGwp126JfaAX3CaLm', 'jsuispasadmin@gmail.com', '2edbffb57d1843b727458d8a5b3b5ad1.jpg');
+(25, 'pasadmindutout', '[]', '$2y$13$XImRCj44j5Y0aIyySQyoEuMhQJ0T0kf0HXC4LGwp126JfaAX3CaLm', 'jsuispasadmin@gmail.com', '2edbffb57d1843b727458d8a5b3b5ad1.jpg'),
+(26, 'noValue', '[]', '$2y$13$dVK9JLxJydHWdgwA9KyecuA/EtQgo85sw93kGsGFDaBSXcBaMHhrm', 'novalue@gmail.com', 'b633c0373a1f717eaeaf7ef7951babc1.png'),
+(27, 'test2022', '[]', '$2y$13$IdjOJkg3ZcEQIxYbfumoAO8sstIyF98myG1Ea1t91aRKC299Bjwi2', 'test2022@gmail.Com', '024abab89c0a171b72e0298f700ed30a.png');
 
 -- --------------------------------------------------------
 
@@ -252,6 +262,7 @@ INSERT INTO `user_associations` (`user_id`, `associations_id`) VALUES
 (4, 9),
 (4, 10),
 (4, 12),
+(4, 16),
 (4, 17),
 (10, 4),
 (10, 7),
@@ -270,7 +281,10 @@ INSERT INTO `user_associations` (`user_id`, `associations_id`) VALUES
 (24, 15),
 (24, 16),
 (24, 17),
-(25, 17);
+(25, 17),
+(26, 8),
+(26, 19),
+(27, 17);
 
 --
 -- Index pour les tables déchargées
@@ -334,13 +348,13 @@ ALTER TABLE `user_associations`
 -- AUTO_INCREMENT pour la table `action`
 --
 ALTER TABLE `action`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `associations`
 --
 ALTER TABLE `associations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
@@ -358,7 +372,7 @@ ALTER TABLE `reset_password_request`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Contraintes pour les tables déchargées
