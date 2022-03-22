@@ -20,6 +20,9 @@ class AssociationController extends AbstractController
     {
 
         $user = $this->getUser();
+
+
+
         $assoc = $repo->findAssociationByUser($user);
 
         $association = $paginator->paginate(

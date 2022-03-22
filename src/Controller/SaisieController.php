@@ -110,6 +110,8 @@ class SaisieController extends AbstractController
                         'readonly' => true,
                     ],
                 ])
+                ])
+                
                 ->add('heuresValorisees', TextType::class,[
                     'attr' => [
                         'readonly' => true,
