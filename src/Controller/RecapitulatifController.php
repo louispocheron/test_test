@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ActionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,5 +23,14 @@ class RecapitulatifController extends AbstractController
             'actions' => $actions,
             'latest' => $latest,
         ]);
+    }
+
+#[Route('/recapitulatif/remove/{id}', name: 'recapitulatif_remove')]
+    public function removeAction(ActionRepository $repo, $id, EntityManagerInterface $entityManager){
+        $action = $repo->find($id);
+        $entityManager->remove($action);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('recapitulatif');
     }
 }

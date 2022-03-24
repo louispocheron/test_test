@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Repository\ActionRepository;
 use App\Repository\UserRepository;
-
 use App\Entity\Action;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,6 +74,31 @@ class AdminController extends AbstractController
     }
 
 
+    #[Route('/admin/{idAssoc}/user/remove/{id}', name: 'remove_user')]
+    public function removeUserFromAssoc(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
+    {
+
+        // DELETE USER FROM ASSOC AND ALL ACTIONS HE HAS DONE WITH THIS ASSOC
+        $user = $this->getUser();
+        $userId = $request->attributes->get('id');
+        $uniqueUser = $userRepo->find($userId);
+        $association = $request->attributes->get('idAssoc');
+        $uniqueAssociation = $repo->find($association);
+
+        $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser);
+
+        foreach($userAction as $action){
+            $entityManager->remove($action);
+        }
+
+        // remove selected user from association
+        $uniqueAssociation->removeUser($uniqueUser);
+        $entityManager->flush();
+    
+
+        return $this->redirectToRoute('admin', ['idAssoc' => $association]);
+    }
+
      #[Route('/admin/{idAssoc}/user/{id}/year', name: 'admin_year')]
     public function sortYear(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
     {   
@@ -103,7 +127,11 @@ class AdminController extends AbstractController
         
     ]);
     }
-        #[Route('/admin/{idAssoc}/user/{id}/test', name: 'admin_month')]
+
+
+
+
+        #[Route('/admin/{idAssoc}/user/{id}/month', name: 'admin_month')]
     public function sortMonth(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
     {   
     $user = $this->getUser();
@@ -114,8 +142,7 @@ class AdminController extends AbstractController
     $assocationId = $request->attributes->get('idAssoc');
     $uniqueAssociation = $repo->find($assocationId);
     
-    $thisYear = $actionRepo->findByAssociationAndUserByMonthAndYear($uniqueAssociation, $uniqueUser, date(4), date('2022'));
-    dd($thisYear);
+    $thisYear = $actionRepo->findByAssociationAndUserByMonthAndYear($uniqueAssociation, $uniqueUser, date('m'), date('Y'));
 
     foreach($thisYear as $action){
         $duree[] = $action->getDuree();

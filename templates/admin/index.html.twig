@@ -15,7 +15,8 @@
 
 {% for user in users %}
         <ul>
-        <li><a href="{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}">{{ user.username }}</a></li>
+            <a href=" {{path('remove_user', {'idAssoc': association.id, 'id': user.id } )}} "<i class="fa-solid fa-trash"></i></a>
+            <li><a href="{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}">{{ user.username }}</a></li>
         </ul>
 {% endfor %} 
 

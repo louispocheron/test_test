@@ -56,30 +56,6 @@ const totalP = document.querySelector('.totalP');
         const url = this.href;
         axios.get(url).then(res => {
             console.log(res.data);
-            // FAIRE CE QUE JE VEUX AVEC ANNEE ICI
-            for(let i = 0; i < ligne.length; i++){
-                ligne[i].style.display = "none";
-            }
-            let data = res.data.data;
-            // sum hours and minutes from data
-            let totalHours = data.map(el => parseInt(el.split('h')[0]));
-            let totalMinutes = data.map(el => parseInt(el.split('h')[1]));
-
-            totalHours = totalHours.reduce((acc, cur) => acc + cur);
-            totalMinutes = totalMinutes.reduce((acc, cur) => acc + cur);
-            // as long as minutes are more than 60, add 1 to hours and subtract 60 from minutes
-            while (totalMinutes >= 60) {
-                totalHours++;
-                totalMinutes -= 60;
-            }
-            // if minutes are less than 10, add 0 before minutes
-            if (totalMinutes < 10) {
-                totalMinutes = `0${totalMinutes}`;
-            }
-
-            // innerhtml of totalP
-            totalP.innerHTML = `cet adhérants a saisie ${totalHours}h${totalMinutes} au total pour ce mois-ci`;
-            console.log(res.data.data);
         }).catch(err =>{
             console.log(err);
         })
