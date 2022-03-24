@@ -42,6 +42,7 @@ const totalP = document.querySelector('.totalP');
             console.log(res.data);
         }).catch(err => {
             console.log(err);
+            console.log('error');
         });
     }
 

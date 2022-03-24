@@ -102,7 +102,7 @@ class AdminController extends AbstractController
      #[Route('/admin/{idAssoc}/user/{id}/year', name: 'admin_year')]
     public function sortYear(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
     {   
-    $user = $this->getUser();
+    // $user = $this->getUser();
 
     $userId = $request->attributes->get('id');
     $uniqueUser = $userRepo->find($userId);
@@ -122,8 +122,8 @@ class AdminController extends AbstractController
     return $this->json([
         'status' => 'success',
         'message' => 'ok',
-        'data' => $duree,
-        'date' => $date,
+        'data' => $duree ?? false,
+        'date' => $date ?? false,
         
     ]);
     }
@@ -155,8 +155,8 @@ class AdminController extends AbstractController
     return $this->json([
         'status' => 'success',
         'message' => 'ok',
-        'data' => $duree,
-        'date' => $date,
+        'data' => $duree ?? false,
+        'date' => $date ?? false,
     ]);
     }
 
