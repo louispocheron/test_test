@@ -34,7 +34,8 @@
     {% for action in actions %}
     <div class="ligne">
         <ul>
-            <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} "><i class="fa-solid fa-trash"></i></a>
+            <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " target="_blank" ><i class="fa-solid fa-trash"></i></a>
+            <a href="{{ path("recapitulatif_pdf", {'id': action.id } ) }}"><i class="fa-solid fa-file"></i></a>
             <li>{{ action.association.name }}</li>
             <li>{{action.villeDepart}}</li>
             <li>{{action.villeArrive}}</li>

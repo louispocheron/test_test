@@ -61,7 +61,6 @@ class AdminController extends AbstractController
 
     // CODE POUR MANAGER UN USER DANS L'ASSOC AVEC L'ID PASSÉ EN PARAMETRE ICI
 
-
 // PAR ASSOCIATION ET PAR USER CA MARCHE
   $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser);
 
@@ -71,7 +70,7 @@ class AdminController extends AbstractController
         'userAction' => $userAction,
         'controller_name' => 'AdminController',
     ]);
-    }
+}
 
 
     #[Route('/admin/{idAssoc}/user/remove/{id}', name: 'remove_user')]
@@ -99,66 +98,22 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin', ['idAssoc' => $association]);
     }
 
-     #[Route('/admin/{idAssoc}/user/{id}/year', name: 'admin_year')]
-    public function sortYear(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
+
+
+    #[Route('/admin/{idAssoc}/user/{id}/year/', name: 'year_user')]
+    public function findUserActionByYear(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
     {   
-    // $user = $this->getUser();
+        $user = $this->getUser();   
+        $userId = $request->attributes->get('id');  
+        $uniqueUser = $userRepo->find($userId);
+        $association = $request->attributes->get('idAssoc');
+        $assocation = $repo->find($association);
 
-    $userId = $request->attributes->get('id');
-    $uniqueUser = $userRepo->find($userId);
+        $actionYear = $actionRepo->findByAssociationAndUserAndYear($assocation, $uniqueUser, 1965);
 
-    $assocationId = $request->attributes->get('idAssoc');
-    $uniqueAssociation = $repo->find($assocationId);
-    
-    $thisYear = $actionRepo->findByAssociationAndUserThisYear($uniqueAssociation, $uniqueUser);
-
-    foreach($thisYear as $action){
-        $duree[] = $action->getDuree();
-        $date[] = $action->getDate();
+        return $this->json([
+            'salut' => 'salut bg',  
+            'status' => 'success',
+        ]);
     }
-    // dd($duree);
-    // dd($thisYear);   
-
-    return $this->json([
-        'status' => 'success',
-        'message' => 'ok',
-        'data' => $duree ?? false,
-        'date' => $date ?? false,
-        
-    ]);
-    }
-
-
-
-
-        #[Route('/admin/{idAssoc}/user/{id}/month', name: 'admin_month')]
-    public function sortMonth(Request $request, UserRepository $userRepo, ActionRepository $actionRepo, AssociationsRepository $repo): Response
-    {   
-    $user = $this->getUser();
-
-    $userId = $request->attributes->get('id');
-    $uniqueUser = $userRepo->find($userId);
-
-    $assocationId = $request->attributes->get('idAssoc');
-    $uniqueAssociation = $repo->find($assocationId);
-    
-    $thisYear = $actionRepo->findByAssociationAndUserByMonthAndYear($uniqueAssociation, $uniqueUser, date('m'), date('Y'));
-
-    foreach($thisYear as $action){
-        $duree[] = $action->getDuree();
-        $date[] = $action->getDate();
-
-    }
-    // dd($duree);
-    // dd($thisYear);   
-
-    return $this->json([
-        'status' => 'success',
-        'message' => 'ok',
-        'data' => $duree ?? false,
-        'date' => $date ?? false,
-    ]);
-    }
-
-
 }

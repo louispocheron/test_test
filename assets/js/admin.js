@@ -29,38 +29,29 @@ const totalP = document.querySelector('.totalP');
     }
 
 
+const selectYear = document.getElementById('selectYear');
+let currentYear = new Date().getFullYear();    
+let earliestYear = 1970;     
+while (currentYear >= earliestYear) {      
+    let dateOption = document.createElement('option');          
+    dateOption.text = currentYear;      
+    dateOption.value = currentYear;        
+    selectYear.add(dateOption);      
+    currentYear -= 1;    
+}
 
+let option = selectYear.options[selectYear.selectedIndex];
 
-    //AJAX CHOPER LES SAISIE DE L'ANNEE ACTUELLE
-    const yearbtn = document.querySelector('.yearbtn');
-    function ajaxAxios(e){
-        e.preventDefault();
+selectYear.addEventListener('change', sendYear);
 
-        const url = this.href;
-        axios.get(url).then(res => {
-            // FAIRE CE QUE JE VEUX AVEC ANNEE ICI 
-            console.log(res.data);
-        }).catch(err => {
-            console.log(err);
-            console.log('error');
-        });
-    }
+function sendYear(){
+    const url = this.href;
 
-    yearbtn.addEventListener('click', ajaxAxios);
-
-    const monthbtn = document.querySelector(".monthbtn");
-    const ligne = document.getElementsByClassName('ligne');
-
-    function ajaxMonth(e){
-        e.preventDefault();
-        
-        const url = this.href;
-        axios.get(url).then(res => {
-            console.log(res.data);
-        }).catch(err =>{
-            console.log(err);
+    axios.post(url, {
+        test: "ayaya"
+        // year: option.value
+    })
+    .then(res => {
+        console.log(res);
         })
-    }
-
-    monthbtn.addEventListener('click', ajaxMonth);
-
+}

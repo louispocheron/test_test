@@ -12,9 +12,9 @@
 
     <div class="totalDiv">
 
+         <select class="selectYear" id="selectYear"> 
 
-    <p> voir les saisie de cette année seulement</p><a class="yearbtn"href="{{ path('admin_year', {'idAssoc': association.id, 'id': user.id}) }}">ici</a>
-        <p> voir les saisie du dernier mois seulement</p><a class="monthbtn"href="{{ path('admin_month', {'idAssoc': association.id, 'id': user.id}) }}">ici</a>
+        </select>
 
     </div>
         {# {{dump(userAction)}} #}
@@ -25,6 +25,7 @@
      
         {% for action in userAction %}
             <div class="ligne">
+                            <p>{{ action.association.name }}</p>
                             <p>{{ action.user.username }}</p>
                             <p>{{ action.villeDepart }}</p>
                             <p>{{ action.villeArrive }}</p>

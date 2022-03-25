@@ -7,6 +7,7 @@ use App\Repository\ActionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\PdfService;
 
 class RecapitulatifController extends AbstractController
 {
@@ -33,4 +34,17 @@ class RecapitulatifController extends AbstractController
 
         return $this->redirectToRoute('recapitulatif');
     }
+
+
+    #[Route('/recapitulatif/pdf/{id}', name: 'recapitulatif_pdf')]
+    public function pdfAction(ActionRepository $repo, $id, PdfService $pdfService){
+
+        $action = $repo->find($id);
+        $html = $this->render('recapitulatif/pdf.html.twig', [
+            'action' => $action
+        ]);
+
+        $pdfService->generatePdf($html);
+    }
+
 }

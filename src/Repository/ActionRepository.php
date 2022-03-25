@@ -103,6 +103,22 @@ class ActionRepository extends ServiceEntityRepository
 
 
 
+    public function findByAssociationAndUserAndYear($association, $user, $year){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.association = :association')
+            ->andWhere('action.user = :user')
+            ->andWhere('action.date BETWEEN :date1 AND :date2')
+            ->setParameter('association', $association->getId())
+            ->setParameter('user', $user->getId())
+            ->setParameter('date1', $year.'-01-01')
+            ->setParameter('date2', $year.'-12-31')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
 
     public function findByAssociationAndUserByMonthAndYear($association, $user, $month, $year){
         return $this->createQueryBuilder('action')
