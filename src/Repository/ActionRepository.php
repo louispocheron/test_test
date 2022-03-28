@@ -66,6 +66,8 @@ class ActionRepository extends ServiceEntityRepository
         ;
     }
 
+
+
     public function findByAssociationAndUser($association, $user){
         return $this->createQueryBuilder('action')
             ->andWhere('action.association = :association')
@@ -75,7 +77,9 @@ class ActionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
+
+        }
+    
 
     // public function findActionFromThisYear($user){
     //     return $this->createQueryBuilder('action')
@@ -116,6 +120,7 @@ class ActionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
 
 
 

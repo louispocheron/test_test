@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Repository\AssociationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminController extends AbstractController
 {
@@ -57,12 +58,27 @@ class AdminController extends AbstractController
 
     $association = $request->attributes->get('idAssoc');
     $uniqueAssociation = $repo->find($association);
+    $year = $request->get("year");
 
+    $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser, $year);
+    $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
 
-    // CODE POUR MANAGER UN USER DANS L'ASSOC AVEC L'ID PASSÉ EN PARAMETRE ICI
+    foreach($actionYear as $action){
+        $duree[] = $action->getDuree();
+    }
+//    dd($actionYear);
+//   ON VERIFIE SI IL Y A DE l'AJAX 
+    if($request->get("ajax")){
+        
+        // get every actionYear
 
-// PAR ASSOCIATION ET PAR USER CA MARCHE
-  $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser);
+    
+        return new JsonResponse([
+            'actionYear' => $duree,
+        ]);
+    }
+    
+
 
     return $this->render('admin/user.html.twig', [
         'association' => $uniqueAssociation,
@@ -100,20 +116,25 @@ class AdminController extends AbstractController
 
 
 
-    #[Route('/admin/{idAssoc}/user/{id}/year/', name: 'year_user')]
+    #[Route('/admin/{idAssoc}/user/{id}/test', name: 'year_user')]
     public function findUserActionByYear(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
     {   
-        $user = $this->getUser();   
+        // $user = $this->getUser();   
         $userId = $request->attributes->get('id');  
         $uniqueUser = $userRepo->find($userId);
         $association = $request->attributes->get('idAssoc');
         $assocation = $repo->find($association);
+        $year = $request->attributes->get('year');
+        // dd($year);
 
         $actionYear = $actionRepo->findByAssociationAndUserAndYear($assocation, $uniqueUser, 1965);
 
+        
         return $this->json([
-            'salut' => 'salut bg',  
-            'status' => 'success',
+            
+            'actionYear' => $actionYear
         ]);
     }
 }
+
+// MET CA AU DESSUS DANS LE FUNCTION PAS /YEAR, ET GET LES VARIABLES QUE TU AS PASSE EN AJAX PIS LA FUNCTION DU REPO
