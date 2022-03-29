@@ -64,7 +64,19 @@ class AdminController extends AbstractController
     $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
 
     foreach($actionYear as $action){
+        $villeDepart[] = $action->getVilleDepart();
+        $villeArrive[] = $action->getVilleArrive();
+        $km[] = $action->getKm();
+        $raisons[] = $action->getRaisons();
         $duree[] = $action->getDuree();
+        $date[] = $action->getDate();
+        $userYear[] = $action->getUser();
+        $frais[] = $action->getFrais();
+        $fraisKilometrique[] = $action->getFraisKilometrique();
+        $charges[] = $action->getCharges();
+        $don[] = $action->getDons();
+        $heuresValorisees[] = $action->getHeuresValorisees();
+        $aPayer[] = $action->getAPayer();
     }
 //    dd($actionYear);
 //   ON VERIFIE SI IL Y A DE l'AJAX 
@@ -74,7 +86,19 @@ class AdminController extends AbstractController
 
     
         return new JsonResponse([
-            'actionYear' => $duree,
+            'villeDepart' => $villeDepart ?? false,
+            'villeArrive' => $villeArrive ?? false,
+            'km' => $km ?? false,
+            'raisons' => $raisons ?? false,
+            'duree' => $duree ?? false,
+            'date' => $date ?? false,
+            'userYear' => $userYear ?? false,
+            'frais' => $frais ?? false,
+            'fraisKilometrique' => $fraisKilometrique ?? false,
+            'charges' => $charges ?? false,
+            'don' => $don ?? false,
+            'heuresValorisees' => $heuresValorisees ?? false,
+            'aPayer' => $aPayer ?? false,
         ]);
     }
     

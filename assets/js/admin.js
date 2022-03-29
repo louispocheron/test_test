@@ -47,6 +47,10 @@ let salut = selectYear.options[selectYear.selectedIndex];
 selectYear.addEventListener('change', sendYear);
 // console.log(salut.value);
 
+const p = document.querySelectorAll('.ligne p');
+const tableau = document.querySelectorAll('.tableau');
+const ligne = document.querySelector('.ligne'); 
+
 
 function sendYear(){
 let data = selectYear.options[selectYear.selectedIndex];
@@ -54,13 +58,39 @@ let queryString = new URLSearchParams();
 queryString.append('year', data.value);
 let url = new URL(window.location.href);
 
+
 axios.post(url.pathname + "?" + queryString.toString() + "&ajax=1", {
     'year': data.value,
     })
     .then(data => {
-       for(let i in data){
-            console.log(data[i]);
-       }
+        // replace p with data
+        ligne.style.display = 'none';
+        let values = Object.values(data.data);
+        // check if object is not false
+        if (values[0] !== false) {
+        
+            // create p for each object
+            for (let i = 0; i < values.length; i++) {
+                let p = document.createElement('p');
+                p.innerHTML = values[i];
+                tableau.appendChild(p);
+            
+            }
+
+        }
+        else{
+            alert('aucune saisie trouvé cette annee la')
+        }
+        
+
+        // let result = data.data;
+        // for (const [key, value] of Object.entries(result)) {
+        //     console.log(`${key}: ${value}`);
+        //   }
+//         result.forEach(element => {
+//             console.log(element);
+// })
+
     })
 
         // const content = document.querySelector('.ligne');
