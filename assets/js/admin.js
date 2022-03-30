@@ -47,59 +47,74 @@ let salut = selectYear.options[selectYear.selectedIndex];
 selectYear.addEventListener('change', sendYear);
 // console.log(salut.value);
 
-const p = document.querySelectorAll('.ligne p');
 const tableau = document.querySelectorAll('.tableau');
-const ligne = document.querySelector('.ligne'); 
+const ligne = document.querySelectorAll('.ligne'); 
+
 
 
 function sendYear(){
-let data = selectYear.options[selectYear.selectedIndex];
-let queryString = new URLSearchParams();
-queryString.append('year', data.value);
-let url = new URL(window.location.href);
+    let data = selectYear.options[selectYear.selectedIndex];
+    let queryString = new URLSearchParams();
+    queryString.append('year', data.value);
+    let url = new URL(window.location.href);
 
 
-axios.post(url.pathname + "?" + queryString.toString() + "&ajax=1", {
-    'year': data.value,
-    })
-    .then(data => {
-        // replace p with data
-        ligne.style.display = 'none';
-        let values = Object.values(data.data);
-        // check if object is not false
-        if (values[0] !== false) {
-        
-            // create p for each object
-            for (let i = 0; i < values.length; i++) {
-                let p = document.createElement('p');
-                p.innerHTML = values[i];
-                tableau.appendChild(p);
+    axios.post(url.pathname + "?" + queryString.toString() + "&ajax=1", {
+        'year': data.value,
+        })
+        .then(data => {
+
+
+            const content = document.querySelector('.ajaxDivContent');
+            let dataUser = data.data.content;
+            content.innerHTML = dataUser;
+
+
+
+
+
+        // A UTILISER
+            // // replace p with data
+            // let values = Object.values(data.data);
+            // // check if object is not false
+            // if (values[0] !== false) {
+
+            //     ligne.forEach(el => {
+            //         el.style.display = "none";
+            //     });
+
+                
             
-            }
+            //     for(let i = 0; i < values.length; i++){
+            //         for(let j = 0; j < values[i].length; j++){
+            //             console.log(values[i][j]);
+            //         }
+            //     }
+                
+            //     console.log('des saisies');
+            // }
+            // else{
+            //     console.log("aucune saisie");
+            // }
+            
 
-        }
-        else{
-            alert('aucune saisie trouvé cette annee la')
-        }
-        
+            // let result = data.data;
+            // for (const [key, value] of Object.entries(result)) {
+            //     console.log(`${key}: ${value}`);
+            //   }
+    //         result.forEach(element => {
+    //             console.log(element);
+    // })
 
-        // let result = data.data;
-        // for (const [key, value] of Object.entries(result)) {
-        //     console.log(`${key}: ${value}`);
-        //   }
-//         result.forEach(element => {
-//             console.log(element);
-// })
+        })
 
-    })
-
-        // const content = document.querySelector('.ligne');
-        // content.innerHTML = data.data.actionYear;
-        // console.log(content.data);
-        
-    .catch(err => {
-        console.log(err);
-    })
+            // const content = document.querySelector('.ligne');
+            // content.innerHTML = data.data.actionYear;
+            // console.log(content.data);
+            
+        .catch(err => {
+            console.log(err);
+        })
 }
 
 
