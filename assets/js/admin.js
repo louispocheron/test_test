@@ -29,16 +29,21 @@ const totalP = document.querySelector('.totalP');
     }
 
 
-const selectYear = document.getElementById('selectYear');
-let currentYear = new Date().getFullYear();    
-let earliestYear = 1965;     
-while (currentYear >= earliestYear) {      
-    let dateOption = document.createElement('option');          
-    dateOption.text = currentYear;      
-    dateOption.value = currentYear;        
-    selectYear.add(dateOption);      
-    currentYear -= 1;    
+
+
+function dropdown(){
+    const selectYear = document.getElementById('selectYear');
+    let currentYear = new Date().getFullYear();    
+    let earliestYear = 1965;     
+    while (currentYear >= earliestYear) {      
+        let dateOption = document.createElement('option');          
+        dateOption.text = currentYear;      
+        dateOption.value = currentYear;        
+        selectYear.add(dateOption);      
+        currentYear -= 1;    
+    }
 }
+
 
 
 let salut = selectYear.options[selectYear.selectedIndex];
@@ -66,9 +71,11 @@ function sendYear(){
 
 
             const content = document.querySelector('.ajaxDivContent');
+
+            console.log(data.data);
             let dataUser = data.data.content;
             content.innerHTML = dataUser;
-
+      
 
 
 

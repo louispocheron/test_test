@@ -3,20 +3,21 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<div class="ajaxDivContent">
 
 
-    <p>administration de l'utilisateur {{ user.username }}</p>
-    {% if userAction == null %}
-        <p>Aucune action n'a été effectuée par cet utilisateur</p>
-    {% else %}
-
-    <div class="totalDiv">
+ <div class="totalDiv">
 
          <select class="selectYear" id="selectYear"> 
         </select>
 
     </div>
+    
+<div class="ajaxDivContent">
+
+    {% if userAction == null %}
+        <p>Aucune action n'a été effectuée par cet utilisateur</p>
+    {% else %}
+
         {# {{dump(userAction)}} #}
 
     <h4 class="upperTableau">détails des saisie de l'utilisateur {{ user.username }}</h4>
