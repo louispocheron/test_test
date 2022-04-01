@@ -125,26 +125,17 @@ class AdminController extends AbstractController
     }
 
 
-
-    #[Route('/admin/{idAssoc}/user/{id}/test', name: 'year_user')]
-    public function findUserActionByYear(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
-    {   
-        // $user = $this->getUser();   
-        $userId = $request->attributes->get('id');  
-        $uniqueUser = $userRepo->find($userId);
+    #[Route('/admin/{idAssoc}/user/{id}/remove/{action}', name: 'remove_action')]
+    public function removeAction(EntityManagerInterface $em, Request $request, ActionRepository $actionRepo, AssociationsRepository $repo, $action): Response
+    {
         $association = $request->attributes->get('idAssoc');
-        $assocation = $repo->find($association);
-        $year = $request->attributes->get('year');
-        // dd($year);
+        $userId = $request->attributes->get('id');
+        $actionId = $actionRepo->find($action);
+        $em -> remove($actionId);
+        $em -> flush();
 
-        $actionYear = $actionRepo->findByAssociationAndUserAndYear($assocation, $uniqueUser, 1965);
-
-        
-        return $this->json([
-            
-            'actionYear' => $actionYear
-        ]);
+        return $this->redirectToRoute('admin_user', ['idAssoc' => $association, 'id' => $userId]);
     }
+
 }
 
-// MET CA AU DESSUS DANS LE FUNCTION PAS /YEAR, ET GET LES VARIABLES QUE TU AS PASSE EN AJAX PIS LA FUNCTION DU REPO

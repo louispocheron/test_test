@@ -27,6 +27,8 @@
      
         {% for action in userAction %}
             <div class="ligne">
+                    <a href=" {{path("remove_action", { 'id': user.id, 'idAssoc': association.id,'action' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
+
                             <p>{{ action.association.name }}</p>
                             <p>{{ action.user.username }}</p>
                             <p>{{ action.villeDepart }}</p>

@@ -14,14 +14,13 @@ class PdfService {
 
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
-
         $this->domPdf->setOptions($pdfOptions);
     }
 
     public function generatePdf($html){
         $this->domPdf->loadHtml($html);
         $this->domPdf->render();
-        $this->domPdf->stream("my_pdf.pdf", [
+        $this->domPdf->stream("mon_pdf.pdf", [
             "Attachment" => false
         ]);
     }

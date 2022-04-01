@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\User;
 use App\Entity\Associations;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,7 +58,6 @@ class RegisterAssociationController extends AbstractController
                                 $fileName
                                 );
                                 // ENREGISTREMENT DU NOM DU FICHIER DANS L'ENTITE
-                            // $association->setLogo($fileName);
                             $association->setLogo($fileName);
                             $association = $form->getData();
                             $association->setUser($user);
@@ -67,17 +65,11 @@ class RegisterAssociationController extends AbstractController
                             $entityManager->flush();
 
                             
+                            // ERROR : QUAND JE FLUSH ET PERSIST L'ENTITE, LE USER EST DECONNECTE
                             // SET LE ROLE ADMIN A L'UTILISATEUR QUI CREER UNE ASSOCIATION
-                            $user->setRoles(['ROLE_ADMIN' . $association->getId()]);
-                            $entityManager->persist($user);
-                            $entityManager->flush();
-
-
-                            // $admin->setUser($user);
-                            // $admin->setAssociation($this->getUser()->getAssociation());
-                            // $entityManager->persist($admin);
+                            // $user->setRoles(['ROLE_ADMIN' . $association->getId()]);
+                            // $entityManager->persist($user);
                             // $entityManager->flush();
-
 
                             return $this->redirectToRoute('home');
                         }
