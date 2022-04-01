@@ -5,22 +5,24 @@
 {% block body %}
 
 
-    <p>administration de l'utilisateur {{ user.username }}</p>
-    {% if userAction == null %}
-        <p>Aucune action n'a été effectuée par cet utilisateur</p>
-    {% else %}
-
-    <div class="totalDiv">
+ <div class="totalDiv">
 
          <select class="selectYear" id="selectYear"> 
         </select>
 
     </div>
+    
+<div class="ajaxDivContent">
+
+    {% if userAction == null %}
+        <p>Aucune action n'a été effectuée par cet utilisateur</p>
+    {% else %}
+
         {# {{dump(userAction)}} #}
 
     <h4 class="upperTableau">détails des saisie de l'utilisateur {{ user.username }}</h4>
     <h3 class="totalP"></h3>
-    <div id="allDataUser">
+    <div class="allDataUser">
      <div class="tableau">
      
         {% for action in userAction %}
@@ -44,7 +46,7 @@
     {% endif %}
 
 
-
+</div>
 {% endblock %}
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
