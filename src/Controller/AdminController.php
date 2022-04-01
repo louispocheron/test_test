@@ -63,6 +63,7 @@ class AdminController extends AbstractController
     $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser, $year);
     $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
 
+    
     foreach($actionYear as $action){
         $duree[] = $action->getDuree();
     }
