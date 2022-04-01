@@ -75,7 +75,14 @@ class AdminController extends AbstractController
 
     
         return new JsonResponse([
-            'actionYear' => $duree,
+             'content' => $this->renderView(
+                'admin/user.html.twig', [
+                    'association' => $uniqueAssociation,
+                    'user' => $uniqueUser,
+                    'userAction' => $actionYear,
+                    'controller_name' => 'AdminController',
+                ]
+            )
         ]);
     }
     

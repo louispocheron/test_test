@@ -31,7 +31,6 @@ const totalP = document.querySelector('.totalP');
 
 
 
-function dropdown(){
     const selectYear = document.getElementById('selectYear');
     let currentYear = new Date().getFullYear();    
     let earliestYear = 1965;     
@@ -42,7 +41,7 @@ function dropdown(){
         selectYear.add(dateOption);      
         currentYear -= 1;    
     }
-}
+
 
 
 
@@ -71,48 +70,11 @@ function sendYear(){
 
 
             const content = document.querySelector('.ajaxDivContent');
-
-            console.log(data.data);
             let dataUser = data.data.content;
             content.innerHTML = dataUser;
       
 
-
-
-
-        // A UTILISER
-            // // replace p with data
-            // let values = Object.values(data.data);
-            // // check if object is not false
-            // if (values[0] !== false) {
-
-            //     ligne.forEach(el => {
-            //         el.style.display = "none";
-            //     });
-
-                
-            
-            //     for(let i = 0; i < values.length; i++){
-            //         for(let j = 0; j < values[i].length; j++){
-            //             console.log(values[i][j]);
-            //         }
-            //     }
-                
-            //     console.log('des saisies');
-            // }
-            // else{
-            //     console.log("aucune saisie");
-            // }
-            
-
-            // let result = data.data;
-            // for (const [key, value] of Object.entries(result)) {
-            //     console.log(`${key}: ${value}`);
-            //   }
-    //         result.forEach(element => {
-    //             console.log(element);
-    // })
-
+     
         })
 
             // const content = document.querySelector('.ligne');
@@ -124,7 +86,7 @@ function sendYear(){
         })
 }
 
-
+console.log('test');
 //     axios.post(url, {
 //         'year': salut.value
 //     })
