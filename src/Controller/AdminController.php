@@ -20,6 +20,9 @@ class AdminController extends AbstractController
     {   
         $user = $this->getUser();
         $assocId = $request->attributes->get('idAssoc');
+        
+        // controller l'acces a la page admin
+        $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$assocId, null, 'Vous n\'avez pas accès à cette page');
 
 
         $association = $repo->find($assocId);
@@ -57,9 +60,11 @@ class AdminController extends AbstractController
   
 
     $association = $request->attributes->get('idAssoc');
+    // RESTREINT L'ACCES A LA PAGE ADMIN . IDASSOC
+    $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$association, null, 'Vous n\'avez pas accès à cette page');
+
     $uniqueAssociation = $repo->find($association);
     $year = $request->get("year");
-
     $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser, $year);
     $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
 
@@ -70,9 +75,6 @@ class AdminController extends AbstractController
 //    dd($actionYear);
 //   ON VERIFIE SI IL Y A DE l'AJAX 
     if($request->get("ajax")){
-        
-        // get every actionYear
-
     
         return new JsonResponse([
              'content' => $this->renderView(

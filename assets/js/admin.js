@@ -67,37 +67,16 @@ function sendYear(){
         'year': data.value,
         })
         .then(data => {
-
-
             const content = document.querySelector('.ajaxDivContent');
             let dataUser = data.data.content;
+            console.log(dataUser);
             content.innerHTML = dataUser;
-      
 
-     
+            
+      
         })
 
-            // const content = document.querySelector('.ligne');
-            // content.innerHTML = data.data.actionYear;
-            // console.log(content.data);
-            
         .catch(err => {
             console.log(err);
         })
 }
-
-console.log('test');
-//     axios.post(url, {
-//         'year': salut.value
-//     })
-//     .then(res => {
-//         // console.log(res);
-//         })
-//     .catch(err => {
-//         console.log(err);
-//     })
-// }
-
-
-// const ligne = document.getElementsByClassName('ligne');
-// console.log(ligne[0]);
