@@ -1,4 +1,4 @@
 - restriction page admin : tout le monde peut y acceder
 - mailer dsn qui ne marche pas : chiant pour les récup de mot de passe
 - ajax quelques beug mais marche, element du dom ne charge plus apres ajax call
-- front UI UX de l'applis.
+- front UI UX de l'applis

@@ -1,4 +1,4 @@
-<?php
+?php
 
 namespace App\Controller;
 
@@ -28,7 +28,6 @@ class AdminController extends AbstractController
     
         //convert getDuree to hours and minutes
       
-
 
         // get all users from $assocation
         foreach($association->getUsers() as $user){
