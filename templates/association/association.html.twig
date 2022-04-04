@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AssociationIdController!{% endblock %}
+
+{% block body %}
+
+{{ dump(association)}}
+
+<div> 
+    {{ association.name }} 
+    <img src="{{asset('/build/logo_directory/' ~ association.logo) }}" alt="{{association.name}}" />
+    {{ association.description }}
+    <a class="btnAdherer" href="{{ path('association_adherer', {'id': association.id}) }}">
+        <button type="button" class="btn btn-primary">adherer</button>
+    </a>
+
+
+
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+         const getAssocId = document.querySelector('a.btnAdherer');
+        console.log(getAssocId);
+
+  {# FUNCTION APPEL AJAX #}
+   function ajaxGet(e){
+      e.preventDefault();
+      
+      const url = this.href;
+      
+      axios.get(url).then(function(response){
+            let adherer = response.data.adherer;
+            if(adherer == true){
+                confirm("voulez vous adhérer a cette association ?");
+                console.log("t'as adhéré frero");
+            }
+            else{
+                confirm("voulez vous quitter cette association ?");
+                console.log("t'as  frero");
+            }
+      }).catch(function(error){
+            if(error.response.status === 403){
+                window.alert('vous devez etre connectez pour adhérer a une association');
+            }
+            else{
+                window.alert('une erreur est survenue');
+            }
+        });
+      }; 
+
+
+
+  {# APPEL AJAX AU CLICK #}
+        getAssocId.addEventListener('click', ajaxGet);
+    
+
+
+
+
+    </script>
+{% endblock %}

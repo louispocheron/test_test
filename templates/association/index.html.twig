@@ -19,7 +19,7 @@
     <ul class="associations">
         {% for association in associations %}
             <li class="assoc-li">
-                <a class="getAssocId uniqueAssoc" href=" {{path('association_adherer', {'id': association.id})}} " id="{{association.id}}">
+                <a class="getAssocId uniqueAssoc" href=" {{path('unique_association', {'id': association.id})}} " id="{{association.id}}">
                     <h3 class="assoc-name">{{association.name}}</h3>
                     <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
                     <p class="card-description">{{association.description}}</p>
@@ -35,46 +35,5 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('search') }}
-    <script>
-
- 
-  const getAssocId = document.querySelectorAll('a.uniqueAssoc');
-  
-
-  {# FUNCTION APPEL AJAX #}
-  function ajaxGet(e){
-      e.preventDefault();
-      
-      const url = this.href;
-      
-      axios.get(url).then(function(response){
-            let adherer = response.data.adherer;
-            if(adherer == true){
-                confirm("voulez vous adhérer a cette association ?");
-            }
-            else{
-                confirm("voulez vous quitter cette association ?");
-            }
-      }).catch(function(error){
-            if(error.response.status === 403){
-                window.alert('vous devez etre connectez pour adhérer a une association');
-            }
-            else{
-                window.alert('une erreur est survenue');
-            }
-        });
-      };
-
-
-
-  {# APPEL AJAX AU CLICK #}
-    getAssocId.forEach(function(link) {
-        link.addEventListener('click', ajaxGet);
-    });
-
-
-
-
-    </script>
 {% endblock %}
 

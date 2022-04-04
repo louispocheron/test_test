@@ -1,4 +1,4 @@
-?php
+<?php
 
 namespace App\Controller;
 
@@ -20,6 +20,9 @@ class AdminController extends AbstractController
     {   
         $user = $this->getUser();
         $assocId = $request->attributes->get('idAssoc');
+        
+        // controller l'acces a la page admin
+        $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$assocId, null, 'Vous n\'avez pas accès à cette page');
 
 
         $association = $repo->find($assocId);
@@ -56,23 +59,24 @@ class AdminController extends AbstractController
   
 
     $association = $request->attributes->get('idAssoc');
+    // RESTREINT L'ACCES A LA PAGE ADMIN . IDASSOC
+    $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$association, null, 'Vous n\'avez pas accès à cette page');
+
     $uniqueAssociation = $repo->find($association);
     $year = $request->get("year");
-
     $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser, $year);
     $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
 
-
+    
+    foreach($actionYear as $action){
+        $duree[] = $action->getDuree();
+    }
 //    dd($actionYear);
 //   ON VERIFIE SI IL Y A DE l'AJAX 
     if($request->get("ajax")){
-        
-        // get every actionYear
-
     
         return new JsonResponse([
-
-            'content' => $this->renderView(
+             'content' => $this->renderView(
                 'admin/user.html.twig', [
                     'association' => $uniqueAssociation,
                     'user' => $uniqueUser,
@@ -80,20 +84,6 @@ class AdminController extends AbstractController
                     'controller_name' => 'AdminController',
                 ]
             )
-
-            // 'villeDepart' => $villeDepart ?? false,
-            // 'villeArrive' => $villeArrive ?? false,
-            // 'km' => $km ?? false,
-            // 'raisons' => $raisons ?? false,
-            // 'duree' => $duree ?? false,
-            // 'date' => $date ?? false,
-            // 'userYear' => $userYear ?? false,
-            // 'frais' => $frais ?? false,
-            // 'fraisKilometrique' => $fraisKilometrique ?? false,
-            // 'charges' => $charges ?? false,
-            // 'don' => $don ?? false,
-            // 'heuresValorisees' => $heuresValorisees ?? false,
-            // 'aPayer' => $aPayer ?? false,
         ]);
     }
     
@@ -134,26 +124,17 @@ class AdminController extends AbstractController
     }
 
 
-
-    #[Route('/admin/{idAssoc}/user/{id}/test', name: 'year_user')]
-    public function findUserActionByYear(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
-    {   
-        // $user = $this->getUser();   
-        $userId = $request->attributes->get('id');  
-        $uniqueUser = $userRepo->find($userId);
+    #[Route('/admin/{idAssoc}/user/{id}/remove/{action}', name: 'remove_action')]
+    public function removeAction(EntityManagerInterface $em, Request $request, ActionRepository $actionRepo, AssociationsRepository $repo, $action): Response
+    {
         $association = $request->attributes->get('idAssoc');
-        $assocation = $repo->find($association);
-        $year = $request->attributes->get('year');
-        // dd($year);
+        $userId = $request->attributes->get('id');
+        $actionId = $actionRepo->find($action);
+        $em -> remove($actionId);
+        $em -> flush();
 
-        $actionYear = $actionRepo->findByAssociationAndUserAndYear($assocation, $uniqueUser, 1965);
-
-        
-        return $this->json([
-            
-            'actionYear' => $actionYear
-        ]);
+        return $this->redirectToRoute('admin_user', ['idAssoc' => $association, 'id' => $userId]);
     }
+
 }
 
-// MET CA AU DESSUS DANS LE FUNCTION PAS /YEAR, ET GET LES VARIABLES QUE TU AS PASSE EN AJAX PIS LA FUNCTION DU REPO

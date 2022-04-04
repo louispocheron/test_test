@@ -21,6 +21,7 @@ class RecapitulatifController extends AbstractController
 
         return $this->render('recapitulatif/index.html.twig', [
             'controller_name' => 'RecapitulatifController',
+            'user' => $user,
             'actions' => $actions,
             'latest' => $latest,
         ]);
@@ -36,15 +37,24 @@ class RecapitulatifController extends AbstractController
     }
 
 
-    #[Route('/recapitulatif/pdf/{id}', name: 'recapitulatif_pdf')]
-    public function pdfAction(ActionRepository $repo, $id, PdfService $pdfService){
+    #[Route('/recapitulatif/pdf/{id}/{userId}', name: 'recapitulatif_pdf')]
+    public function pdfAction(ActionRepository $repo, $id, PdfService $pdfService, $userId){
 
-        $action = $repo->find($id);
-        $html = $this->render('recapitulatif/pdf.html.twig', [
-            'action' => $action
-        ]);
+        $user = $this->getUser();
+        $userRealId = $user->getId();
 
-        $pdfService->generatePdf($html);
+        if($userId != $userRealId){
+            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+            return $this->redirectToRoute('home');
+        }
+        else{
+            $action = $repo->find($id);
+            $html = $this->renderView('recapitulatif/pdf.html.twig', [
+                'action' => $action,
+                'user' => $user,
+            ]);
+            $pdfService->generatePdf($html);
+        }
     }
 
 }
