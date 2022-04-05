@@ -10,6 +10,7 @@
         
             {% for action in actions %}
                 <div class="ligne">
+                    <a href="{{path('super_admin_action_delete',{ 'id':user.id, 'actionId': action.id })}}" target="_blank"><i class="fa-solid fa-file"></i></a>
                                 <p>{{ action.user.username }}</p>
                                 <p>{{ action.villeDepart }}</p>
                                 <p>{{ action.villeArrive }}</p>
