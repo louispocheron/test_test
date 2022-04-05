@@ -107,7 +107,8 @@ class SuperAdminController extends AbstractController
     }
 
     #[Route('/superadmin/{id}/deleteAction/{actionId}', name: 'super_admin_action_delete')]
-    public function pdfAction(PdfService $pdf, ActionRepository $actionRepo, $actionId){
+    public function pdfAction(PdfService $pdf, ActionRepository $actionRepo, $actionId)
+    {
         $action = $actionRepo->find($actionId);
         $html = $this->renderView('super_admin/pdf.html.twig', [
             'action' => $action,
