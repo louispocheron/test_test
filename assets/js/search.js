@@ -16,11 +16,8 @@ function ajax(filter){
     queryString.append('search', filter);
     let url = new URL(window.location.href);
 
-
     axios.get(url.pathname + "?" + queryString.toString() + "&ajax=1", null)
          .then(data => {
-            console.log(data);
-            const content = document.querySelector('.ajaxDivContent');
             let dataUser = data.data;
             ajaxAssocContent.innerHTML = dataUser;
         })  

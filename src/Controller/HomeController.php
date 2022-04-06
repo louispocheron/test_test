@@ -21,24 +21,18 @@ class HomeController extends AbstractController
 
         if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             
-
-
             $user = $this->getUser();
             $role = $user->getRoles()[0];
             $associations = $repo->findAssociation($this->getUser());
             $userIsAdmin = false;
 
-    
-    
             if(strpos($role, 'ROLE_ADMIN') !== false){
                 $userIsAdmin = true;
             }else{
                 $userIsAdmin = false;
             }
 
-
             $latest = $actionRepo->findLatestAction($user);
-
 
         }
 

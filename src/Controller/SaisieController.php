@@ -102,7 +102,6 @@ class SaisieController extends AbstractController
                         return $assocRepo->createQueryBuilder('associations')
                         ->andWhere(':user MEMBER OF associations.users')
                         ->setParameter('user', $user->getId())
-                
         ;
 
                     }])
@@ -121,7 +120,7 @@ class SaisieController extends AbstractController
                 ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
 
                 ->getForm();
-
+                
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
