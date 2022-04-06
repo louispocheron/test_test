@@ -1,0 +1,15 @@
+    <ul class="associations">
+        {% for association in associations %}
+            <li class="assoc-li">
+                <a class="getAssocId uniqueAssoc" href=" {{path('unique_association', {'id': association.id})}} " id="{{association.id}}">
+                    <h3 class="assoc-name">{{association.name}}</h3>
+                    <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
+                    <p class="card-description">{{association.description}}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(associations) }}
+</div>

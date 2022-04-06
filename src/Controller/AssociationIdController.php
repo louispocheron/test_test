@@ -22,8 +22,11 @@ class AssociationIdController extends AbstractController
 
         $association = $request->attributes->get('id');
         $association = $repo->find($association);
+
+
         
         return $this->render('association/association.html.twig', [
+            
             'association' => $association,
             'controller_name' => 'AssociationIdController',
         ]);

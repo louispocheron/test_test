@@ -47,7 +47,6 @@ class SuperAdminController extends AbstractController
         $actions = $actionRepo->findByAssociation($association);
         $userAction = $actionRepo->findByUsers($user);
 
-        //convert getDuree to hours and minutes
 
         // get all users from $assocation
         foreach($association->getUsers() as $user){

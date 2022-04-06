@@ -21,28 +21,45 @@ class AssociationController extends AbstractController
 
         $user = $this->getUser();
         $assoc = $repo->findAssociationByUser($user);
+        $assocList = array();
 
+        if($request->query->has('search')){
+            $search = $request->query->get('search');
+            $assocList = $repo->filterAssociationByname($search);
+        }
+        else{
+            $assocList = $repo->findAll();
+        }
+
+        $isAjax = $request->query->get('ajax') == "1";
+
+        $request->query->remove('ajax');
         $association = $paginator->paginate(
-            $repo->findAll(),
+            $assocList,
             $request->query->getInt('page', 1),
             10
         );
+        
+        if( $isAjax == true){
+            return $this->render('association/ajax_view.html.twig', [
+                'controller_name' => 'AssociationController',
+                'associations' => $association,
+            ]);
+        }
+        else{ 
+            return $this->render('association/index.html.twig', [
+                'controller_name' => 'AssociationController',
+                'associations' => $association,
+            ]);
+        }
 
-        // TOUT LES ADHERANT D'UNE ASSOCIATION
-        // $associations = $entityManager->getRepository(Associations::class)->find('13')->getUsers()->getValues();
-        // dd($associations);
-     
-
-        return $this->render('association/index.html.twig', [
-            'controller_name' => 'AssociationController',
-            'associations' => $association,
-
-        ]);
+    
+    
     }
 
 
     // PERMET D'ADHERER A UNE ASSOCIATION
-    #[Route('/associations/adherer/{id} ', name: 'association_adherer')]
+    #[Route('/associations/adherer/{id}', name: 'association_adherer')]
     public function adhererAssociation(Associations $assoc, EntityManagerInterface $entityManager, UserRepository $repo, AssociationsRepository $assocRepo): response
     {
         $user = $this->getUser();

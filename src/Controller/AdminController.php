@@ -15,21 +15,34 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminController extends AbstractController
 {
+
+    private function denyeAcess(Request $request, AssociationsRepository $repo){
+        $user = $this->getUser();
+        $userId = $user->getId();
+
+        $assocId = $request->attributes->get('idAssoc');
+        $association = $repo->find($assocId);
+        
+        return $userId != $association->getUser()->getId();
+    }
+
+
     #[Route('/admin/{idAssoc}', name: 'admin')]
     public function index(AssociationsRepository $repo, ActionRepository $actionRepo, Request $request): Response
     {   
         $user = $this->getUser();
+        $userId = $user->getId();
         $assocId = $request->attributes->get('idAssoc');
-        
-        // controller l'acces a la page admin
-        $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$assocId, null, 'Vous n\'avez pas accès à cette page');
-
-
         $association = $repo->find($assocId);
+
+        if($this->denyeAcess($request, $repo)){
+            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+            return $this->redirectToRoute('home');
+        }
+
         $actions = $actionRepo->findByAssociation($association);
         $userAction = $actionRepo->findByUsers($user);
     
-        //convert getDuree to hours and minutes
       
 
         // get all users from $assocation
@@ -53,6 +66,11 @@ class AdminController extends AbstractController
     #[Route('/admin/{idAssoc}/user/{id}', name: 'admin_user')]
     public function userInfo(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
 {   
+    if($this->denyeAcess($request, $repo)){
+        // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+        return $this->redirectToRoute('home');
+    }
+
     $user = $this->getUser();
     $userId = $request->attributes->get('id');  
     $uniqueUser = $userRepo->find($userId);
@@ -77,7 +95,7 @@ class AdminController extends AbstractController
     
         return new JsonResponse([
              'content' => $this->renderView(
-                'admin/user.html.twig', [
+                'admin/action_user.html.twig', [
                     'association' => $uniqueAssociation,
                     'user' => $uniqueUser,
                     'userAction' => $actionYear,
@@ -101,6 +119,12 @@ class AdminController extends AbstractController
     #[Route('/admin/{idAssoc}/user/remove/{id}', name: 'remove_user')]
     public function removeUserFromAssoc(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
     {
+
+        if($this->denyeAcess($request, $repo)){
+            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+            return $this->redirectToRoute('home');
+        }
+
 
         // DELETE USER FROM ASSOC AND ALL ACTIONS HE HAS DONE WITH THIS ASSOC
         $user = $this->getUser();
@@ -127,6 +151,13 @@ class AdminController extends AbstractController
     #[Route('/admin/{idAssoc}/user/{id}/remove/{action}', name: 'remove_action')]
     public function removeAction(EntityManagerInterface $em, Request $request, ActionRepository $actionRepo, AssociationsRepository $repo, $action): Response
     {
+
+        if($this->denyeAcess($request, $repo)){
+            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+            return $this->redirectToRoute('home');
+        }
+
+        
         $association = $request->attributes->get('idAssoc');
         $userId = $request->attributes->get('id');
         $actionId = $actionRepo->find($action);

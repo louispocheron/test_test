@@ -7,12 +7,11 @@
 
  <div class="totalDiv">
 
-         <select class="selectYear" id="selectYear"> 
+        <select class="selectYear" id="selectYear"> 
         </select>
 
-    </div>
+</div>
     
-<div class="ajaxDivContent">
 
     {% if userAction == null %}
         <p>Aucune action n'a été effectuée par cet utilisateur</p>
@@ -22,33 +21,17 @@
 
     <h4 class="upperTableau">détails des saisie de l'utilisateur {{ user.username }}</h4>
     <h3 class="totalP"></h3>
-    <div class="allDataUser">
-     <div class="tableau">
-     
-        {% for action in userAction %}
-            <div class="ligne">
-                    <a href=" {{path("remove_action", { 'id': user.id, 'idAssoc': association.id,'action' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
+        <div class="allDataUser">
+            <div class="tableau">
+                <div class="ajaxDivContent">
+                    {% include "admin/action_user.html.twig" %} 
+                </div>
 
-                            <p>{{ action.association.name }}</p>
-                            <p>{{ action.user.username }}</p>
-                            <p>{{ action.villeDepart }}</p>
-                            <p>{{ action.villeArrive }}</p>
-                            <p>{{ action.km }}</p>
-                            <p>{{ action.raisons }}</p>
-                            <p>{{ action.heureDepart|date('H:i') }}</p>
-                            <p>{{ action.heureArrivee|date('H:i') }}</p>
-                            <p class="duree" data-duree="{{ action.duree }}">durée : {{ action.duree }}</p>
-                            <p>{{ action.frais }}</p>
-                            <p class="dateAdmin" data-date="{{action.date|date('d/m/Y')}}">{{ action.date|date('d/m/Y') }}</p>
             </div>
-
-        {% endfor %}
-    </div>
-    </div>
+        </div>
     {% endif %}
 
 
-</div>
 {% endblock %}
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

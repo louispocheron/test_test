@@ -15,8 +15,6 @@
     </a>
 
 
-
-
 </div>
 
 {% endblock %}
@@ -38,11 +36,9 @@
             let adherer = response.data.adherer;
             if(adherer == true){
                 confirm("voulez vous adhérer a cette association ?");
-                console.log("t'as adhéré frero");
             }
             else{
                 confirm("voulez vous quitter cette association ?");
-                console.log("t'as  frero");
             }
       }).catch(function(error){
             if(error.response.status === 403){
@@ -56,8 +52,8 @@
 
 
 
-  {# APPEL AJAX AU CLICK #}
-        getAssocId.addEventListener('click', ajaxGet);
+    {# APPEL AJAX AU CLICK #}
+    getAssocId.addEventListener('click', ajaxGet);
     
 
 

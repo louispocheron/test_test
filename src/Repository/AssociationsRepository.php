@@ -49,6 +49,16 @@ class AssociationsRepository extends ServiceEntityRepository
     }
 
 
+    public function filterAssociationByname($name){
+        return $this->createQueryBuilder('association')
+            ->andWhere('association.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 
  
     }
