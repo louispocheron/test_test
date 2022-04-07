@@ -14,6 +14,7 @@
             <li class="assoc-li">
                 <a class="getAssocId uniqueAssoc" href=" {{path('super_admin_assoc', {'id': association.id})}} " id="{{association.id}}">
                     <h3 class="assoc-name">{{association.name}}</h3>
+                    {# <a href=""<i class="fa-solid fa-trash"></i></a> #}
                     <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
                     <p class="card-description">{{association.description}}</p>
                 </a>

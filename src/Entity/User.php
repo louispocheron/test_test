@@ -35,7 +35,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'userID', targetEntity: Action::class)]
     private $actions;
 
-    #[ORM\ManyToMany(targetEntity: associations::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Associations::class, inversedBy: 'users')]
     private $association;
 
     #[ORM\Column(type: 'string', length: 1500, nullable: true)]

@@ -35,11 +35,11 @@ class Action
     #[ORM\Column(type: 'date')]
     private $date;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'actions')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'actions')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: associations::class, inversedBy: 'actions')]
+    #[ORM\ManyToOne(targetEntity: Associations::class, inversedBy: 'actions')]
     private $association;
 
     #[ORM\Column(type: 'string', nullable: true)]

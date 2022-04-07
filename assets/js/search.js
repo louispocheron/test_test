@@ -1,3 +1,4 @@
+// BAR DE RECHERCHE AVEC AJAX
 let searchBar = document.getElementById('search');
 let list = document.querySelectorAll('.assoc-li');
 
@@ -9,7 +10,6 @@ searchBar.addEventListener('keyup', (e) => {
     ajax(search);
 
 })
-
 
 function ajax(filter){
     let queryString = new URLSearchParams();
