@@ -21,6 +21,7 @@
 
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="dist/notiflix-aio-3.2.5.min.js"></script>
     <script>
 
          const getAssocId = document.querySelector('a.btnAdherer');
@@ -35,7 +36,7 @@
       axios.get(url).then(function(response){
             let adherer = response.data.adherer;
             if(adherer == true){
-                confirm("voulez vous adhérer a cette association ?");
+                Notiflix.Notify.success('Sol lucet omnibus');
             }
             else{
                 confirm("voulez vous quitter cette association ?");

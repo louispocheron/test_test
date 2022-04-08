@@ -2,45 +2,47 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+<div class="main-login">
+    <div class="form-container">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Email</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control inputlogin" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control inputlogin" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+            
+                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+                <label for="inputUsername">Email</label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control inputlogin" autocomplete="username" required autofocus>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control inputlogin" autocomplete="current-password" required>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-  
-</form>
-<a href="/register"><button class="btn btn-lg btn-secondary">
-        s'inscrire
-    </button> </a>
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label>
+            </div> 
+        
+            <div class="btn-submit">
+                <button class="btn-signin" type="submit">
+                    Se connecter
+                </button>
+                <a href="/reset-password">mot de passe oublié ?</a>
+                <a href='/register'>Pas de compte ? S'inscrire</a>
+            </div>
+        </form>
+    </div>
+    <div class="form-container aside">
+        <h1>Bienvenue sur Saved !</h1>
+        <p> Votre plateforme qui valorise vos heures de bénévolats !</p>
+    </div>
+</div>
 {% endblock %}
