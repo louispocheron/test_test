@@ -9,16 +9,22 @@
 
         {{ encore_entry_link_tags('app') }}
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
         {% block stylesheets %}
         {% endblock %}
+
+
     </head>
     <body>
-      <div class="sidebar">
+        <div class="test">
+            salut
+        </div>
+        <main>
+            {% block body %}
+            {% endblock %}
+        </main>
 
-      </div>
-          {% block body %}
-          {% endblock %}
     </body>
     {{ encore_entry_script_tags('app') }}
 
