@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 22 mars 2022 à 11:54
+-- Généré le : mar. 19 avr. 2022 à 17:18
 -- Version du serveur :  8.0.28-0ubuntu0.20.04.3
 -- Version de PHP : 7.4.28
 
@@ -67,16 +67,17 @@ INSERT INTO `action` (`id`, `ville_depart`, `ville_arrive`, `km`, `raisons`, `he
 (27, 'premiere saisie', '123456', 420, 'salut bg', '08:00:00', '10:30:00', '2022-03-02', 25, 17, '2h30', 50, '2022-03-11 10:16:46', '12', '0', '', NULL, NULL, NULL),
 (28, 'premiere saisie', '123456', 420, 'salut bg', '08:00:00', '10:30:00', '2022-03-02', 25, 17, '2h30', 50, '2022-03-11 10:16:46', '12', '0', '', NULL, NULL, NULL),
 (29, 'deuxieme saisie', 'galardo', 40, 'une raison', '11:00:00', '15:45:00', '2022-03-01', 25, 17, '4h45', 60, '2022-03-11 10:17:51', '1', '0', '', NULL, NULL, NULL),
-(33, 'test readlon boy', 'sdqdsqdqs', 15, 'dsqdsqdqs', '04:00:00', '08:00:00', '2022-03-09', 4, 17, '4h00', 45, '2022-03-11 16:44:55', '5', '1.42', '10.33', '33.79', NULL, '15'),
 (34, 'paris', 'roubaix', 20, 'salut salut', '10:00:00', '23:00:00', '2022-03-03', 26, 8, '13h00', 18, '2022-03-21 10:13:36', '14', '1.42', '10.04', '10', NULL, '20'),
 (35, 'test heures valorisées', 'fsfsdf', 15, 'fsdfsd', '12:00:00', '17:30:00', '2022-03-31', 4, 8, '5h30', 25, '2022-03-21 11:13:30', '15', '1.42', '11.22', '18', '84.44', '20'),
-(36, 'cette année', 'qdsqd', 15, 'sqdqsd', '03:00:00', '05:00:00', '2022-03-26', 4, 17, '2h00', 20, '2022-03-21 11:45:06', '5', '1.42', '11.22', '24.79', '31.86', '0'),
 (37, 'pas cette année', 'fqfsdf', 10, 'sdfdsfds', '10:00:00', '11:00:00', '2021-03-18', 4, 8, '1h00', 5, '2022-03-21 11:45:55', '3', '1.42', '10.04', '3.1899999999999995', '14.26', '5'),
 (38, 'assoc and user this year', 'fdskjhfdsjkf', 15, 'fsddsfds', '04:00:00', '07:00:00', '2022-12-17', 4, 8, '3h00', 20, '2022-03-21 14:21:47', '5', '1.42', '10.04', '24', '42.77', '0'),
 (39, 'dijon', 'lol', 12, 'dsqsqd', '05:00:00', '08:00:00', '2021-03-12', 27, 17, '3h00', 14, '2022-03-21 14:59:37', '4', '1.42', '11.22', '17', '47.80', '0'),
 (40, '2022', 'sqdsd', 12, 'sqdsqdsq', '09:00:00', '11:00:00', '2022-03-19', 27, 17, '2h00', 22, '2022-03-21 15:00:16', '4', '1.42', '11.91', '20', '33.82', '5'),
 (41, 'sqdsqdq', 'sqdsqd', 15, 'sqdqs', '02:00:00', '04:00:00', '2021-03-12', 27, 17, '2h00', 12, '2022-03-21 15:19:35', '5', '1.42', '13.33', '15', '37.86', '1'),
-(42, 'arbois', 'galardo', 15, 'fdsfklsdmf', '03:00:00', '06:00:00', '2013-01-11', 4, 10, '3h00', 10, '2022-03-21 16:13:35', '8', '1.42', '16.64', '10', '70.89', '7');
+(42, 'arbois', 'galardo', 15, 'fdsfklsdmf', '03:00:00', '06:00:00', '2013-01-11', 4, 10, '3h00', 10, '2022-03-21 16:13:35', '8', '1.42', '16.64', '10', '70.89', '7'),
+(43, 'Dijon', 'Paris', 15, 'une raison', '07:00:00', '09:00:00', '2022-03-03', 4, 12, '2h00', 20, '2022-03-25 11:17:10', '5', '1.42', '16.64', '13', '47.26', '10'),
+(44, 'tm', 'dsqdq', 15, 'sqdsqdsq', '02:00:00', '05:00:00', '1999-03-04', 4, 8, '3h00', 13, '2022-03-25 14:58:38', '5', '1.42', '11.91', '17', '50.74', '0'),
+(47, 'dsqdsqd', 'sqdsqdsqdqsq', 15, 'sqdsqsq', '05:00:00', '11:00:00', '1987-04-11', 4, 17, '6h00', 12, '2022-04-01 16:26:21', '5', '1.42', '13.33', '5', '113.57', '10');
 
 -- --------------------------------------------------------
 
@@ -87,30 +88,39 @@ INSERT INTO `action` (`id`, `ville_depart`, `ville_arrive`, `km`, `raisons`, `he
 CREATE TABLE `associations` (
   `id` int NOT NULL,
   `name` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(3000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` int DEFAULT NULL
+  `user_id` int DEFAULT NULL,
+  `numero_siret` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `associations`
 --
 
-INSERT INTO `associations` (`id`, `name`, `logo`, `description`, `user_id`) VALUES
-(4, 'rugby Arbois', 'ccfc95e05d44a2f446fdcae757a715e5.png', 'une petite description de l\'association ehehe', NULL),
-(5, 'rugby Dijon', '633550bca9534817e84ae383fd444d77.png', 'club de rugby de dijon', NULL),
-(7, 'rugby all blacks', '29bd588b51a0c9818b7ce3daefef3a32.png', 'dsfkjds  dsfkljsdkflds dskfldsjfkdlsfj sdklfjsdkflmdsf sdlkfjdskfldjs sdklfjdsklfjds lskdfj dklsfjds sdlfjksdklf lmksdjf lsdf', NULL),
-(8, 'handball besancon', 'f6531770110e43a0fbd21d719aaaf2fb.jpg', 'dkljqskldqskldmq', NULL),
-(9, 'test', '722098a4736d6889b622aaef2bda71a9.jpg', 'ddm;qsdùmqs', NULL),
-(10, 'testlouis', '8e92f619a173aa652863e49ca14dc7fd.jpg', 'ddm;qsdùmqs', NULL),
-(11, 'rugby club arbois', '24b9bc4ebb8c093c633361a5cf8c209e.jpg', 'ddm;qsdùmqs', NULL),
-(12, 'une assoc', '541719e06c8f0f4ff496b913d39e8c70.png', 'qsdqsdqsdqs', 9),
-(14, 'une autre assoc dans le dd', 'a93bee28c423df8190044f11b5c8a782.jpg', 'ljhkjkhjk', 10),
-(15, 'une assoc dans le dd', '6c03a64a4e3b7b21b185ee3166dc45b7.jpg', 'salut ca va ?', 10),
-(16, 'une assoc dans le dd', '32294eeee986568719eae71d4efe74af.jpg', 'qsdqsdqs', 10),
-(17, 'deuxieme assoc', 'd692b9736f445a175f48864a4b0bf2db.jpg', 'dsqdqsdqs', 4),
-(18, 'issou', '83da4c876074b6d3945fc2d85b7d6293.png', 'dqsdqsdqs', 12),
-(19, 'testimg', '991c806a2ead8bd6895dd03e54175d02.png', 'une petite description', 4);
+INSERT INTO `associations` (`id`, `name`, `logo`, `description`, `user_id`, `numero_siret`) VALUES
+(4, 'rugby Arbois', 'ccfc95e05d44a2f446fdcae757a715e5.png', 'une petite description de l\'association ehehe', NULL, ''),
+(5, 'rugby Dijon', '633550bca9534817e84ae383fd444d77.png', 'club de rugby de dijon', NULL, ''),
+(7, 'rugby all blacks', '29bd588b51a0c9818b7ce3daefef3a32.png', 'dsfkjds  dsfkljsdkflds dskfldsjfkdlsfj sdklfjsdkflmdsf sdlkfjdskfldjs sdklfjdsklfjds lskdfj dklsfjds sdlfjksdklf lmksdjf lsdf', NULL, ''),
+(8, 'handball besancon', 'f6531770110e43a0fbd21d719aaaf2fb.jpg', 'dkljqskldqskldmq', NULL, ''),
+(9, 'test', '722098a4736d6889b622aaef2bda71a9.jpg', 'ddm;qsdùmqs', NULL, ''),
+(10, 'testlouis', '8e92f619a173aa652863e49ca14dc7fd.jpg', 'ddm;qsdùmqs', NULL, ''),
+(11, 'rugby club arbois', '24b9bc4ebb8c093c633361a5cf8c209e.jpg', 'ddm;qsdùmqs', NULL, ''),
+(12, 'une assoc', '541719e06c8f0f4ff496b913d39e8c70.png', 'qsdqsdqsdqs', 9, ''),
+(14, 'une autre assoc dans le dd', 'a93bee28c423df8190044f11b5c8a782.jpg', 'ljhkjkhjk', 10, ''),
+(15, 'une assoc dans le dd', '6c03a64a4e3b7b21b185ee3166dc45b7.jpg', 'salut ca va ?', 10, ''),
+(16, 'une assoc dans le dd', '32294eeee986568719eae71d4efe74af.jpg', 'qsdqsdqs', 10, ''),
+(17, 'deuxieme assoc', 'd692b9736f445a175f48864a4b0bf2db.jpg', 'dsqdqsdqs', 4, ''),
+(18, 'issou', '83da4c876074b6d3945fc2d85b7d6293.png', 'dqsdqsdqs', 12, ''),
+(19, 'testimg', '991c806a2ead8bd6895dd03e54175d02.png', 'une petite description', 4, ''),
+(20, 'handball club Arbois', '4736ac94bcf1ead134fe5f5af2ff2892.jpg', 'le club de handball d\'arbois', 4, ''),
+(21, 'test role admin', '82f810b8356388865ef6be55af8effd8.png', 'test de role mysql', 4, ''),
+(22, 'premiere association', '283fb071b055ad3a5d11d9e815c78f72.png', '123', 24, ''),
+(23, 'deuxieme assoc test admin', '95eca8b444f7a19d33e965fb209f25c5.png', 'sqdsqdqs', 24, ''),
+(24, 'test logout', '4bf723b1703204c5ab2706eff1ef6656.jpg', 'sdfsdfds', 24, ''),
+(25, 'test logout', '51a26bfe8d79c9a0875b4d487a6575bc.png', 'sfjskldfjsd', 4, ''),
+(26, 'wtest taff', '66620d991088bf7d3fdd0f34bf00d90f.png', 'dqsdsqdsqqs', 4, ''),
+(27, 'un numéro de siret', '8f81336355441332f05e598e19434701.png', 'blablabla', 4, '123 568 941 00056');
 
 -- --------------------------------------------------------
 
@@ -151,7 +161,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20220309141952', '2022-03-09 15:21:18', 31),
 ('DoctrineMigrations\\Version20220311124507', '2022-03-11 13:45:42', 207),
 ('DoctrineMigrations\\Version20220311132147', '2022-03-11 14:21:54', 226),
-('DoctrineMigrations\\Version20220311135344', '2022-03-11 14:53:53', 126);
+('DoctrineMigrations\\Version20220311135344', '2022-03-11 14:53:53', 126),
+('DoctrineMigrations\\Version20220419075849', '2022-04-19 09:59:51', 219);
 
 -- --------------------------------------------------------
 
@@ -220,7 +231,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `roles`, `password`, `email`, `profil_picture`) VALUES
 (1, 'lololol', '[]', '$2y$13$t0O2GbF.D7/9JbeBYXzIhu7A8fFD/hgWRnY1X9kecx2oV8WZY2XNa', NULL, NULL),
 (3, 'qsdqsdqsdqdq', '[]', '$2y$13$UDNS2LEhpahye4/X2h4Ukup0N5GO5mqNUqAO5WLoIUzTPZg4E.Wf2', 'qsddqsdqs', NULL),
-(4, 'louistest1', '[\"ROLE_ADMIN\"]', '$2y$13$kk.A2MieB0Q.eT3IdmdN0u.EzUhJ6vZ9kJMINBZNJRSlnqusQsxXK', 'pocheron.louis@gmail.com', NULL),
+(4, 'louistest1', '[\"ROLE_ADMIN17\"]', '$2y$13$kk.A2MieB0Q.eT3IdmdN0u.EzUhJ6vZ9kJMINBZNJRSlnqusQsxXK', 'pocheron.louis@gmail.com', NULL),
 (5, 'louisrecap', '[]', '$2y$13$15Qzc0VxX//hfhjsQbQ5heAnViAlOoqr5XvhDcuf7iLhHpYx/MOGm', 'test@gmail.com', NULL),
 (8, 'qsdqsdqs', '[]', '$2y$13$LqQqCipsRhLu0sj9NJi5B.cV2tA0UWBGyb/AZBbrjeY8WYlHad41S', 'dsqqsdqs', NULL),
 (9, 'louis test authentificated fullu', '[\"ROLE_ADMIN_UNE ASSOC\"]', '$2y$13$bkfLZvwJG6lOKro.WrONfei6guiEQJ1l1RNz3asCVCLsl.8P.Ntfa', 'louistestabc@gmail.com', NULL),
@@ -237,7 +248,7 @@ INSERT INTO `user` (`id`, `username`, `roles`, `password`, `email`, `profil_pict
 (21, 'louistestsq', '[]', '$2y$13$CKkM5NuRwmrnQZp81nXXQesd.tVlI.r.XKmOmUaOSSYgunaQayPUW', 'pocheron.louisassbcdef@gmail.com', '2e6aee771867e786303996c15bd88e4b.png'),
 (22, 'testadminahaha', '[]', '$2y$13$XYkt0K9Zc5jCyBd8nzm0gem84huVMH44CcmCjio769fzxgjP4cwuO', 'testadmin@gmail.com', '557fdf2c0f5e5cc04328ce48a08e7463.png'),
 (23, 'testASC', '[]', '$2y$13$O3gZvtNUS7pONQc9Jxx5teSON5WqnXT9bDm0qoQMYyY2tWm.nMy2u', 'testASC@gmail.com', 'a80ee1811bc2e542b59ef7a11c4fdba6.jpg'),
-(24, 'ayayaya', '[]', '$2y$13$AvzIbfpZTCmYyQg.vU.wE.tSKzzqkpPBgr2G1i2B8z1Aj58LGqhHi', 'yayayay@gmail.com', '3fc0bc6a0aa1af7bcd099c1fa733eba6.png'),
+(24, 'ayayaya', '[\"ROLE_ADMIN23\"]', '$2y$13$AvzIbfpZTCmYyQg.vU.wE.tSKzzqkpPBgr2G1i2B8z1Aj58LGqhHi', 'yayayay@gmail.com', '3fc0bc6a0aa1af7bcd099c1fa733eba6.png'),
 (25, 'pasadmindutout', '[]', '$2y$13$XImRCj44j5Y0aIyySQyoEuMhQJ0T0kf0HXC4LGwp126JfaAX3CaLm', 'jsuispasadmin@gmail.com', '2edbffb57d1843b727458d8a5b3b5ad1.jpg'),
 (26, 'noValue', '[]', '$2y$13$dVK9JLxJydHWdgwA9KyecuA/EtQgo85sw93kGsGFDaBSXcBaMHhrm', 'novalue@gmail.com', 'b633c0373a1f717eaeaf7ef7951babc1.png'),
 (27, 'test2022', '[]', '$2y$13$IdjOJkg3ZcEQIxYbfumoAO8sstIyF98myG1Ea1t91aRKC299Bjwi2', 'test2022@gmail.Com', '024abab89c0a171b72e0298f700ed30a.png');
@@ -258,12 +269,15 @@ CREATE TABLE `user_associations` (
 --
 
 INSERT INTO `user_associations` (`user_id`, `associations_id`) VALUES
+(4, 4),
+(4, 7),
 (4, 8),
 (4, 9),
 (4, 10),
 (4, 12),
 (4, 16),
 (4, 17),
+(4, 20),
 (10, 4),
 (10, 7),
 (10, 8),
@@ -348,13 +362,13 @@ ALTER TABLE `user_associations`
 -- AUTO_INCREMENT pour la table `action`
 --
 ALTER TABLE `action`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT pour la table `associations`
 --
 ALTER TABLE `associations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `messenger_messages`
