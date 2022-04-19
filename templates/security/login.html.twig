@@ -13,18 +13,18 @@
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
-
-
-            
-                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+            <div class="input-container">
                 <label for="inputUsername">Email</label>
                 <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control inputlogin" autocomplete="username" required autofocus>
+            </div>
+            <div class="input-container">
                 <label for="inputPassword">Mot de passe</label>
                 <input type="password" name="password" id="inputPassword" class="form-control inputlogin" autocomplete="current-password" required>
-
                 <input type="hidden" name="_csrf_token"
                     value="{{ csrf_token('authenticate') }}"
                 >
+            </div>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" name="_remember_me"> Se souvenir de moi

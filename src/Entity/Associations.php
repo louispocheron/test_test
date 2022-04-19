@@ -7,8 +7,11 @@ use App\Repository\AssociationsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: AssociationsRepository::class)]
+#[UniqueEntity(fields: ['numeroSiret'], message: 'Ce numéro SIRET est déjà utilisé par une association')]
+
 class Associations
 {
     #[ORM\Id]
@@ -19,7 +22,7 @@ class Associations
     #[ORM\Column(type: 'string', length: 1000)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 3000)]
+    #[ORM\Column(type: 'string', length: 3000, nullable: true),]
     private $logo;
 
     #[ORM\Column(type: 'string', length: 5000, nullable: true)]
@@ -34,6 +37,9 @@ class Associations
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'admin')]
     private $user;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $numeroSiret;
 
     public function __construct()
     {
@@ -148,6 +154,18 @@ class Associations
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNumeroSiret(): ?string
+    {
+        return $this->numeroSiret;
+    }
+
+    public function setNumeroSiret(string $numeroSiret): self
+    {
+        $this->numeroSiret = $numeroSiret;
 
         return $this;
     }
