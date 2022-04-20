@@ -12,9 +12,5 @@
 // start the Stimulus application$
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
-import './bootstrap';
 
-
-
-import './styles/app.scss';
 

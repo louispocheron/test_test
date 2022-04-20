@@ -27,6 +27,8 @@ class RegisterAssociationController extends AbstractController
         $form = $this->createFormBuilder($association)
                      ->add('name', TextType::class, ['label' => 'Nom de l\'association'])
                      ->add('logo', FileType::class, [
+                        //  allow the user to not upload a file
+                        'required' => false,
                         'label' => 'logo de l\'association',
                         'multiple' => false,
                         'mapped' => false,
@@ -42,8 +44,10 @@ class RegisterAssociationController extends AbstractController
                             ])
                         ]])
                      ->add('description', TextType::class, ['label' => 'Description'])
+                     ->add('numeroSiret', TextType::class, ['label' => 'Numéro de siret'])
                      ->add('enregister', SubmitType::class, ['label' => 'Enregistrer'])
                      ->getform();
+
 
                      $form->handleRequest($request);
 

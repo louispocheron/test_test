@@ -6,61 +6,74 @@
         <title>{% block title %}Saved{% endblock %}</title>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         {{ encore_entry_link_tags('app') }}
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
         {% block stylesheets %}
         {% endblock %}
+
+
     </head>
     <body>
-    <div>
-
-    <div>
-       {# <div class="header">
-            <div class="headerContent">
-                <p> mon header</p>
-            </div>
+        <div class="sidebar">
+            <img src="{{ asset('assets/logo.SVG') }}" alt="logo" class="logo">
+            <ul class="navbar-ul">
+                <li class="nav-item">
+                    <a href="{{ path('home') }}" class="nav-links">
+                        <i class="fas fa-home nav-svg"></i>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('home') }}" class="nav-links">
+                        <i class="fas fa-pencil nav-svg"></i>
+                        <span>Saisie</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('home') }}" class="nav-links">
+                        <i class="fas fa-list nav-svg"></i>
+                        <span>Recapitulatif</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('home') }}" class="nav-links">
+                        <i class="fa-solid fa-paper-plane nav-svg"></i>
+                        <span>Nous contacter</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div>
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fas fa-user nav-svg"></i>
+                            <span>Mon compte</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ path('app_logout') }}" class="nav-links">
+                            <i class="fas fa-sign-out-alt nav-svg"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </div>
+                    </li>
+                </li>
+            </ul>
         </div>
-        <div class="page">
-            <div class="sidebar">
-                <div>
-                    <i class="fa-solid fa-house-chimney"></i>
-                    <p>home</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-list"></i>
-                    <p>Récapitulatif</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-pen"></i>       
-                    <p>Saisie</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-paper-plane"></i>     
-                    <p>Contact</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-user"></i>     
-                    <p>Mon compte</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>    
-                    <p>Se déconnecter</p>
-                </div>
-            </div>
-            <div class="content">
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div> #}
-          {% block body %}
-          {% endblock %}
+        <main>
+            {% block body %}
+
+            {% endblock %}
+        </main>
+
     </body>
     {{ encore_entry_script_tags('app') }}
 
     {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
     <script src="" defer></script>
 

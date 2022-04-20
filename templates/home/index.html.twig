@@ -1,78 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %} 
 
-
-    {# {{ dump(user.id) }} #}
-
 {% if app.user == true %}
 <p> vous etes connecté avec {{ app.user.username }}</p>
-
 {% if userIsAdmin == true %}
 
 vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez <a href="{{ path('admin', {'idAssoc': associations.0.id}) }}">ici</a>
 
 {% endif %}
 
-
 {% else %}
     <p> vous n'etes pas connecté, connectez vous <a href="{{ path('app_login') }}">ici</a></p>
 {% endif %}
 
 
-    <h3>Dernière saisie :</h3>
-<div class="homeContainer"> 
-{% for recent in latest %}
-    {# {% if recent is null %}
-    <div class="homeCard">
-        <i class="fa-solid fa-hand-holding-heart"></i>
-        <h2>00€</h2>
-        <h3>Dons</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-money-check-dollar"></i>
-        <h2>00€</h2>
-        <h3>Remboursement</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-clock-eight"></i>
-        <h2>00h00</h2>
-        <h3>Bénévolat</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-hand-holding-dollar"></i>
-        <h2>00€</h2>
-        <h3>Bénévolat</h3>
-    </div>
-{% endif %} #}
-    <div class="homeCard">
-        <i class="fa-solid fa-hand-holding-heart"></i>
-        <h2>{{ recent.dons }}€</h2>
-        <h3>Dons</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-money-check-dollar"></i>
-        <h2>{{ recent.aPayer }}€</h2>
-        <h3>Remboursement</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-clock-eight"></i>
-        <h2>{{ recent.duree }}</h2>
-        <h3>Bénévolat</h3>
-    </div>
-    <div class="homeCard">
-        <i class="fa-solid fa-hand-holding-dollar"></i>
-        
-        <h2>{{ recent.heuresValorisees }}</h2>
-        <h3>Bénévolat</h3>
-    </div>
+<h3>Dernière saisie :</h3>
 
-
-
-{% endfor %}
-</div>
+    {% for recent in latest %}
+        <div class="homeCard">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h2>{{ recent.dons }}€</h2>
+            <h3>Dons</h3>
+        </div>
+        <div class="homeCard">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <h2>{{ recent.aPayer }}€</h2>
+            <h3>Remboursement</h3>
+        </div>
+        <div class="homeCard">
+            <i class="fa-solid fa-clock-eight"></i>
+            <h2>{{ recent.duree }}</h2>
+            <h3>Bénévolat</h3>
+        </div>
+        <div class="homeCard">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            
+            <h2>{{ recent.heuresValorisees }}</h2>
+            <h3>Bénévolat</h3>
+        </div>
+    {% endfor %}
 
 
 {% endblock %}
