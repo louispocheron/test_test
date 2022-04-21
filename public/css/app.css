@@ -199,7 +199,13 @@
       fill: red;
     }
     .nav-links:hover{
+      color: white;
+      background-color: green;
       filter: grayscale(0%) opacity(1);
+    }
+    .nav-links:hover span{
+      filter: grayscale(0%) opacity(1);
+      color: white;
     }
     .sidebar span{
       display: none;
