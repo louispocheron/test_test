@@ -18,32 +18,44 @@
     </head>
     <body>
         <div class="sidebar">
-            <img src="{{ asset('assets/logo.SVG') }}" alt="logo" class="logo">
+            <a href="{{ path('home') }}"><img src="{{ asset('assets/logo_blanc.SVG') }}" alt="logo" class="logo">
             <ul class="navbar-ul">
-                <li class="nav-item">
-                    <a href="{{ path('home') }}" class="nav-links">
-                        <i class="fas fa-home nav-svg"></i>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('home') }}" class="nav-links">
-                        <i class="fas fa-pencil nav-svg"></i>
-                        <span>Saisie</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('home') }}" class="nav-links">
-                        <i class="fas fa-list nav-svg"></i>
-                        <span>Recapitulatif</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('home') }}" class="nav-links">
-                        <i class="fa-solid fa-paper-plane nav-svg"></i>
-                        <span>Nous contacter</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fas fa-home nav-svg"></i>
+                            <span>Accueil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fas fa-pencil nav-svg"></i>
+                            <span>Saisie</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fas fa-list nav-svg"></i>
+                            <span>Recapitulatif</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fa-solid fa-paper-plane nav-svg"></i>
+                            <span>Nous contacter</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('association') }}" class="nav-links">
+                            <i class="fa-solid fa-book nav-svg"></i>
+                            <span>Liste des associations</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-links">
+                            <i class="fa-solid fa-circle-plus nav-svg"></i>
+                            <span>Enregistrer une association</span>
+                        </a>
+                    </li>
                 <li class="nav-item">
                     <div>
                         <a href="{{ path('home') }}" class="nav-links">
@@ -52,13 +64,12 @@
                         </a>
                     </div>
                     <div>
-                        <a href="{{ path('app_logout') }}" class="nav-links">
+                        <a href="{{ path('app_logout') }}" class="nav-links down">
                             <i class="fas fa-sign-out-alt nav-svg"></i>
                             <span>Déconnexion</span>
                         </a>
                     </div>
                     </li>
-                </li>
             </ul>
         </div>
         <main>

@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    overflow-y: hidden;
   }
   .associations {
     display: flex;
@@ -140,7 +141,7 @@
 
     body{
         display: grid;
-        grid-template-columns: 15% 85%;
+        grid-template-columns: 6rem 1fr;
         grid-template-rows: 15% 85%;;
     }
     .hamburger{
@@ -154,14 +155,15 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
-        width: 5rem;
+        width: 6rem;
         grid-row-start: 1;
         grid-row-end: 3;
         grid-column: 1;
         background-color: #152149;
         transition: width 200ms ease;
+        z-index: 1000;
     }
-    .navbar-ul{
+.navbar-ul{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -170,24 +172,31 @@
         margin: 0;
         padding: 0;
         height: 100%;
-    }
+}
+.nav-item{
+  width: 100%;
+}
     .nav-item:nth-last-child(1){
         margin-top: auto;
-    }
-    .nav-item:hover{
-        color: white;
+        margin-bottom: 1rem;
     }
     .nav-links{
       display: flex;
+      justify-content: center;
       align-items: center;
       height: 5rem;
+      width: 100%;
       text-decoration: none;
       color: white;
       filter: grayscale(100%) opacity(0.7);
-      transition: filter 200ms ease;
+      transition: 600ms;
     }
     .logo{
-      width: 10rem;
+      width: 6rem;  
+      min-width: 6rem;
+      height: auto;
+      padding: 1rem;
+      fill: red;
     }
     .nav-links:hover{
       filter: grayscale(0%) opacity(1);
@@ -195,27 +204,25 @@
     .sidebar span{
       display: none;
       margin-left: 1rem;
-    }
-    .sidebar span:hover{
-      color: white;
-    }
-    .sidebar i{
-      min-width: 2rem;
-      margin: 0 1.5rem;
-    }
+  }
+
     .sidebar:hover{
       width: 15rem;
       z-index: 20;
     }
     .sidebar:hover span{
       display: block;
+      width: 55%;
+      text-align: center;
     }
+
     .nav-svg{
-      color: white;
+      width: 1.2rem;
+      height: auto;
+      fill: white;
+      min-width: 1.2rem;
     }
-     .nav-svg:hover{
-      color: white;
-    }
+
     
     main{
         z-index: 10;
