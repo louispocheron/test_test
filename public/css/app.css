@@ -143,7 +143,7 @@
 .header{
   width: 100vw;
   height: 8vh;
-  background-color: #152149;
+  background-color: var(--main-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -301,23 +301,35 @@
   align-items: center;
   list-style-type: none;
 }
+.ham-items{
+  width: 100%;
+}
 .ham-items a{
   text-decoration: none;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 .ham-links span{
   color: white;
   font-size: 20px;
   font-weight: 400;
+  width: 45%;
+  margin-left: 1rem;
+  text-align: center;
 }
 .ham-bottom{
   margin-top: 10px;
+}
+.ham-svg{
+  width: 20px;
+  height: auto;
 }
 
 
 
   /* DESKTOP CSS MAIN */
-@media only screen and (min-width : 1024px){
+@media only screen and (min-width : 964px){
 
     body{
         display: grid;
@@ -342,7 +354,7 @@
         grid-row-start: 1;
         grid-row-end: 3;
         grid-column: 1;
-        background-color: #152149;
+        background-color: var(--main-color);
         transition: width 200ms ease;
         z-index: 1000;
     }
@@ -359,7 +371,7 @@
 .nav-item{
   width: 100%;
 }
-    .nav-item:nth-last-child(1){
+.nav-item:nth-last-child(1){
         margin-top: auto;
         margin-bottom: 1rem;
     }
@@ -383,13 +395,13 @@
       fill: red;
     }
     .nav-links:hover{
-      color: white;
-      background-color: green;
+      color: var(--main-color);
+      background-color: white;
       filter: grayscale(0%) opacity(1);
     }
     .nav-links:hover span{
       filter: grayscale(0%) opacity(1);
-      color: white;
+      color: var(--main-color);
     }
     .sidebar span{
       display: none;
@@ -404,6 +416,8 @@
       display: block;
       width: 55%;
       text-align: center;
+      font-size: 16px;
+      font-weight: 500;
     }
 
     .nav-svg{
@@ -413,7 +427,6 @@
       min-width: 1.2rem;
     }
 
-    
     main{
         z-index: 10;
         grid-column: 2;
