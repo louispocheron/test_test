@@ -17,11 +17,12 @@ class HomeController extends AbstractController
     {
 
         $securityContext = $this->container->get('security.authorization_checker');
+
+        $user = $this->getUser();
         
 
         if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             
-            $user = $this->getUser();
             $role = $user->getRoles()[0];
             $associations = $repo->findAssociation($this->getUser());
             $userIsAdmin = false;
@@ -35,12 +36,13 @@ class HomeController extends AbstractController
             $latest = $actionRepo->findLatestAction($user);
 
         }
+    
 
 
-        // check if user is connected first
-        
 
-
+        //get the all associations the user is associated to
+        $all = $repo->findAssociation($this->getUser());
+        $lastAssoc = end($all);
 
         
         return $this->render('home/index.html.twig', [
@@ -48,7 +50,7 @@ class HomeController extends AbstractController
             'associations' => $associations ?? false,
             'user' => $user ?? false,
             'latest' => $latest ?? false,
-
+            'lastAssoc' => $lastAssoc ?? false,
 
             // set variable if user is connected
             'userIsAdmin' => $userIsAdmin ?? false,

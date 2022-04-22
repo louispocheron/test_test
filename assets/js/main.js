@@ -23,8 +23,8 @@ function changeClass () {
 
 linesContainer[0].addEventListener("click", changeClass);  
 
+
 linesContainer[0].addEventListener("click", () => {
-  console.log("click");
   menu.classList.toggle("open-nav");
   ulItems.style.display = "flex";
 });

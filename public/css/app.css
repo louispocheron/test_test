@@ -326,6 +326,9 @@
   height: auto;
 }
 
+.header-desktop{
+  display: none;
+}
 
 
   /* DESKTOP CSS MAIN */
@@ -334,11 +337,21 @@
     body{
         display: grid;
         grid-template-columns: 6rem 1fr;
-        grid-template-rows: 15% 85%;;
+        grid-template-rows: 15% 85%;
     }
     .header{
       display: none;
     }
+    .header-desktop{
+      display: block;
+      grid-row: 1;
+      grid-column: 2;
+      width: 100%;
+      height: 100%;
+      background-color: red;
+    }
+
+
     .hamburger{
         display: none;
     }
