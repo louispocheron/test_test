@@ -58,9 +58,6 @@ class AssociationsRepository extends ServiceEntityRepository
         ;
     }
 
-
-
- 
     }
 
 

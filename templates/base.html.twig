@@ -75,9 +75,23 @@
         </div>
         {# HEADER POUR LE DESKTOP #}
         <div class="header-desktop">
+        {# {{dump(Assoc.lastAssoc(app.user))}} #}
             <div class="main-assoc">
-                  <h1 class="h1-assoc">{{ (Assoc.lastAssoc(app.user).name) }}</h1>
+                {% if Assoc.lastAssoc(app.user) != false %}
+                <h1 class="h1-assoc">{{ Assoc.lastAssoc(app.user).name }}</h1>
                 <img src="{{asset('/build/logo_directory/' ~ Assoc.lastAssoc(app.user).logo) }}" alt="" class="logo-main-assoc" />
+                {% else %}
+                    <h1 class="h1-assoc">Vous n'avez pas encore d'association</h1>
+                {% endif %}
+                </div>
+
+                <div class="user-info">
+                    {# <img src="{{ asset('/build/profil_picture/' ~ user.profilPicture) }}" alt="" class="user-avatar" /> #}
+                    <div class="user-name">
+                        {# <h2 class="user-username"> {{user.username}} </h2> #}
+                        {# <h3 class="user-email"> {{user.email}} </h3> #}
+                        {# <p>{{ user.roles }}</p> #}
+                </div>
             </div>
         </div>
         {# MENU BURGER POUR LE MOBILE #}
@@ -141,10 +155,10 @@
                 </ul>
             </div>
         </div>
+    
         {# MAIN CONTENT #}
         <main>
             {% block body %}
-
             {% endblock %}
         </main>
 
@@ -155,6 +169,7 @@
 
 
     {% block javascripts %}
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 

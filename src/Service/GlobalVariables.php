@@ -12,9 +12,9 @@ class GlobalVariables{
     
     public function lastAssoc($user)
     {
-        $associations = $this->repo->findAssociation($user);
+        $associations = $this->repo->findAssociationByUser($user);
         $assoc = end($associations);
-        return $assoc;
+        return $assoc; 
     }
 
 }
