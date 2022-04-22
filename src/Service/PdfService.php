@@ -1,5 +1,4 @@
 <?php
-
 // namespace for pdf.php
 namespace App\Service;
 use Dompdf\Dompdf;

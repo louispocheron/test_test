@@ -34,23 +34,15 @@ class HomeController extends AbstractController
             }
 
             $latest = $actionRepo->findLatestAction($user);
-
         }
-    
 
-
-
-        //get the all associations the user is associated to
-        $all = $repo->findAssociation($this->getUser());
-        $lastAssoc = end($all);
-
-        
+     
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'associations' => $associations ?? false,
             'user' => $user ?? false,
             'latest' => $latest ?? false,
-            'lastAssoc' => $lastAssoc ?? false,
+            // 'lastAssoc' => $lastAssoc,
 
             // set variable if user is connected
             'userIsAdmin' => $userIsAdmin ?? false,

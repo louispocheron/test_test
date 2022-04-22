@@ -17,7 +17,6 @@
 
     </head>
     <body>
-
         {# SIDE BAR POUR LE DESKTOP SEULEMENT #}
         <div class="sidebar">
             <a href="{{ path('home') }}"><img src="{{ asset('assets/logo_blanc.SVG') }}" alt="logo" class="logo">
@@ -74,8 +73,12 @@
                     </li>
             </ul>
         </div>
+        {# HEADER POUR LE DESKTOP #}
         <div class="header-desktop">
-            <p> {{lastAssoc.name}} </p>
+            <div class="main-assoc">
+                  <h1 class="h1-assoc">{{ (Assoc.lastAssoc(app.user).name) }}</h1>
+                <img src="{{asset('/build/logo_directory/' ~ Assoc.lastAssoc(app.user).logo) }}" alt="" class="logo-main-assoc" />
+            </div>
         </div>
         {# MENU BURGER POUR LE MOBILE #}
         <div class="header">

@@ -39,6 +39,7 @@ class AssociationController extends AbstractController
             $request->query->getInt('page', 1),
             10
         );
+    
         
         if( $isAjax == true){
             return $this->render('association/ajax_view.html.twig', [
@@ -82,7 +83,6 @@ class AssociationController extends AbstractController
         }
 
         $assoc->addUser($user);
-        
         $entityManager->persist($assoc);
         $entityManager->flush();
         return $this->json([

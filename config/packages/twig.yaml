@@ -1,4 +1,6 @@
 twig:
+    globals:
+        Assoc: '@App\Service\GlobalVariables'
     default_path: '%kernel.project_dir%/templates'
     
 when@test:
