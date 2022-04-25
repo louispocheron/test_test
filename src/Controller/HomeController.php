@@ -25,6 +25,9 @@ class HomeController extends AbstractController
             
             $role = $user->getRoles()[0];
             $associations = $repo->findAssociation($this->getUser());
+            // loop through the associations and get all their data
+        
+            
             $userIsAdmin = false;
 
             if(strpos($role, 'ROLE_ADMIN') !== false){

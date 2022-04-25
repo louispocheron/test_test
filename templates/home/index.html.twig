@@ -8,7 +8,7 @@
 <p> vous etes connecté avec {{ app.user.username }}</p>
 {% if userIsAdmin == true %}
 
-vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation de vos adhérants cliquez <a href="{{ path('admin', {'idAssoc': associations.0.id}) }}">ici</a>
+vous etes administrateur de {% for association in associations %} <a href="{{ path('admin', {'idAssoc': association.id}) }}">{{ association.name }}</a> {% endfor %}
 
 {% endif %}
 
@@ -18,7 +18,7 @@ vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation
 
 
 <h3>Dernière saisie :</h3>
-
+<div class="homeCard-container">
     {% for recent in latest %}
         <div class="homeCard">
             <i class="fa-solid fa-hand-holding-heart"></i>
@@ -36,12 +36,13 @@ vous etes administrateur de {{ associations.0.name }}, pour voir la valorisation
             <h3>Bénévolat</h3>
         </div>
         <div class="homeCard">
-            <i class="fa-solid fa-hand-holding-dollar"></i>
-            
+            <i class="fa-solid fa-hand-holding-dollar"></i>  
             <h2>{{ recent.heuresValorisees }}</h2>
             <h3>Bénévolat</h3>
         </div>
     {% endfor %}
+</div>
+
 
 
 {% endblock %}

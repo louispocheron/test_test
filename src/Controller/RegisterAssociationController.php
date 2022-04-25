@@ -56,6 +56,7 @@ class RegisterAssociationController extends AbstractController
                             $file = $form->get('logo')->getData();
                                 // GENERATION DU NOM DU FICHIER
                             $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
                                 // DEPLACEMENT DU FICHIER VERS LE DESTINATION
                             $file->move(
                                 $this->getParameter('logo_directory'),
@@ -65,9 +66,9 @@ class RegisterAssociationController extends AbstractController
                             $association->setLogo($fileName);
                             $association = $form->getData();
                             $association->setUser($user);
+                            // SET ROLE ADMIN
                             $entityManager->persist($association);
                             $entityManager->flush();
-
                             
                             // ERROR : QUAND JE FLUSH ET PERSIST L'ENTITE, LE USER EST DECONNECTE
                             // SET LE ROLE ADMIN A L'UTILISATEUR QUI CREER UNE ASSOCIATION
