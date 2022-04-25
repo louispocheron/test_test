@@ -29,4 +29,3 @@ linesContainer[0].addEventListener("click", () => {
   ulItems.style.display = "flex";
 });
 
-

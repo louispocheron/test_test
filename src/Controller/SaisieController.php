@@ -36,12 +36,29 @@ class SaisieController extends AbstractController
                 ->add('villeDepart', TextType::class, [
                     'label' => 'Ville de départ',
                     'attr' => [
+                        'placeholder' => 'Ex: Paris',
                         'class' => 'villeDepart',
                     ],
                     ])
-                ->add('villeArrive', TextType::class, ['label' => 'Ville d\'arrivée'])
-                ->add('km', null, ['label' => 'Kilomètres'])
-                ->add('raisons', null, ['label' => 'Raisons'])
+                ->add('villeArrive', TextType::class, [
+                    'label' => 'Ville d\'arrivée',
+                    'attr' => [
+                        'placeholder' => 'Ex: Lyon',
+                    ],
+                    ])
+                ->add('km', null, [
+                    'label' => 'Kilomètres',
+                    'attr' => [
+                        'placeholder' => 'Ex: 25',
+                        ],
+                    ])
+
+                ->add('raisons', null, [
+                    'label' => 'Raisons',
+                    'attr' => [
+                        'placeholder' => 'Ex: déplacement pour l\'association',
+                        ],
+                    ])
                 ->add('heureDepart', TimeType::class, [
                     'label' => 'Heure de départ',
                     ])

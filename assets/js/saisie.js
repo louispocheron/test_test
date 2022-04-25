@@ -1,7 +1,7 @@
-//FLATPICKR POUR LA SAISIE DATE
+// //FLATPICKR POUR LA SAISIE DATE
 import 'flatpickr';
 import 'flatpickr/dist/l10n/fr';
-require("flatpickr/dist/themes/material_green.css");
+
 
 document.querySelector('.flatpickr').flatpickr({
     locale: 'fr',
@@ -127,6 +127,15 @@ document.querySelector('.flatpickr').flatpickr({
         
     });     
         
+
+    console.log("works fine to me ");
+
+    const form_association = document.querySelector('#form_association');
+    form_association.select2({
+        placeholder: 'Association',
+        maximumSelectionLength: 1,
+        allowClear: true,   
+    });
 
         
 

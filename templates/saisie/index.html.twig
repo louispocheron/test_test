@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Saisie{% endblock %}
 
 {% block body %}
+ <link href="{{ asset('css/saisie.css') }}" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+
 
 {% if app.user == true %}
-<div class="form-saisie">
     {{form_start(form)}}
-
-        <div class="evenement">
-
+    <div class="form-saisie">
+        <div class="evenement1">
+            <div class="h1-row">Évènement</div>
             <div class='rowSaisie'>
-                <label>Date</label>
+                <legend class="label">Date</legend>
                 {{form_widget(form.date)}}
             </div>
             <div class='rowSaisie'>
@@ -20,21 +22,20 @@
             </div>
 
             <div class='rowSaisie'>
-                <label>Ville de départ</label>
+                <label class="label">Ville de départ</label>
                 {{form_widget(form.villeDepart)}}
             </div>
 
             <div class='rowSaisie'>
-                <label>Ville d'Arrivée</label>
+                <label class="label">Ville d'Arrivée</label>
                 {{form_widget(form.villeArrive)}}
             </div>
-
-            <div class='rowSaisie'>
-                <label>Raisons</label>
+            <div class='rowSaisie bottom-input'>
+                <label class="label">Raisons</label>
                 {{form_widget(form.raisons)}}
             </div>
         </div>
-        <div class="evenement1">
+        <div class="evenement2">
             <div class='rowSaisie'>
                 <label>Heure de départ</label>
                 {{form_widget(form.heureDepart , {'attr': {'class': 'heureDepart'}}) }}
@@ -57,7 +58,7 @@
                 {{form_widget(form.charges, {'attr': {'class': 'chargesInput' }}) }}
             </div>
         </div>
-    <div class="evenement1">
+    <div class="evenement3">
         <div class='rowSaisie' id="km">
             <label>Kilomètrage</label>
             {{form_widget(form.km, {'attr': {'class': 'kmInput'}}) }}
@@ -79,7 +80,7 @@
             {{form_widget(form.fraisKilometrique, {'attr': {'class': 'fraisInput'}}) }}
         </div>
 </div>
-<div class="evenement1">
+<div class="evenement4">
         <div class='rowSaisie'>
             <label>total note de frais</label>
             <input  class="totalNote" type="text" name="totalNote" value="0">
@@ -100,15 +101,16 @@
             {{form_widget(form.heuresValorisees, {'attr': {'class': 'heureValoriseesInput'}}) }}
         </div>
 
-</div>
+    </div>
         <div class='rowSaisie'>
                 {{form_widget(form.enregistrer , {'attr': {'class': 'btnSubmitSaisie'}}) }}
         </div>
+    </div>
+
+
 </div>
-
-
     {{form_end(form)}}
-</div>
+
 {% else %}
     <h1>devez etre connectez pour faire une saisie</h1>
 {% endif %}

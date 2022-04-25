@@ -36,14 +36,19 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            // ON CHOPE L'IMAGE
-            $file = $form->get('profilPicture')->getData();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('profil_picture'),
-                $fileName
-            );
-            $user->setProfilPicture($fileName);
+            // OC CHECK SI L'UTILISATEUR A UPLOAD UNE IMAGE
+            if ($form->get('profilPicture')->getData() != null) {
+                 // ON CHOPE L'IMAGE
+                $file = $form->get('profilPicture')->getData();
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('profil_picture'),
+                    $fileName
+                );
+                $user->setProfilPicture($fileName);
+            }
+           
+        
 
 
             $entityManager->persist($user);

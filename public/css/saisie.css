@@ -1,0 +1,68 @@
+
+form{
+    width: 100%;
+    height: 100%;
+}
+.form-saisie{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+
+.evenement1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 45%;
+    border: 1px solid black;
+    border-top: none;
+    margin: 1rem;
+    padding: 0;
+}
+.h1-row{
+    width: 100%;
+    height: 4rem;
+    background-color: black;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.evenement1 input{
+  display: block;
+  width: 70%;
+  height: 40px;
+  background: transparent;
+  border: solid 1px #ccc;
+  transition: all .3s ease;
+  padding: 0 15px;
+}
+.rowSaisie{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.bottom-input{
+    margin-bottom: 1rem;
+}
+
+.evenement2{
+    width: 45%;
+    border: 1px solid black;
+}
+.evenement3{
+
+    border: 1px solid black;
+}
+.evenement4{
+    border: 1px solid black;
+}

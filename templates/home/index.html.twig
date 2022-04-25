@@ -4,45 +4,40 @@
 
 {% block body %} 
 
-{% if app.user == true %}
-<p> vous etes connecté avec {{ app.user.username }}</p>
-{% if userIsAdmin == true %}
+<div class="home-container">
+    {# {% if userIsAdmin == true %}
+        vous etes administrateur de :
+        {% for association in associations %}
+            <a href="{{ path('admin', {'idAssoc': association.id}) }}">{{ association.name }},</a>
+        {% endfor %} #}
 
-vous etes administrateur de {% for association in associations %} <a href="{{ path('admin', {'idAssoc': association.id}) }}">{{ association.name }}</a> {% endfor %}
-
-{% endif %}
-
-{% else %}
-    <p> vous n'etes pas connecté, connectez vous <a href="{{ path('app_login') }}">ici</a></p>
-{% endif %}
-
+    {# {% endif %} #}
 
 <h3>Dernière saisie :</h3>
-<div class="homeCard-container">
-    {% for recent in latest %}
-        <div class="homeCard">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-            <h2>{{ recent.dons }}€</h2>
-            <h3>Dons</h3>
-        </div>
-        <div class="homeCard">
-            <i class="fa-solid fa-money-check-dollar"></i>
-            <h2>{{ recent.aPayer }}€</h2>
-            <h3>Remboursement</h3>
-        </div>
-        <div class="homeCard">
-            <i class="fa-solid fa-clock-eight"></i>
-            <h2>{{ recent.duree }}</h2>
-            <h3>Bénévolat</h3>
-        </div>
-        <div class="homeCard">
-            <i class="fa-solid fa-hand-holding-dollar"></i>  
-            <h2>{{ recent.heuresValorisees }}</h2>
-            <h3>Bénévolat</h3>
-        </div>
-    {% endfor %}
+    <div class="homeCard-container">
+        {% for recent in latest %}
+            <div class="homeCard">
+                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
+                <h2>{{ recent.dons }}€</h2>
+                <h3>Dons</h3>
+            </div>
+            <div class="homeCard">
+                <i class="fa-solid fa-money-check-dollar svg-homecard"></i>
+                <h2>{{ recent.aPayer }}€</h2>
+                <h3>Remboursement</h3>
+            </div>
+            <div class="homeCard">
+                <i class="fa-solid fa-clock svg-homecard"></i>
+                <h2>{{ recent.duree }}</h2>
+                <h3>Heure de bénévolat</h3>
+            </div>
+            <div class="homeCard">
+                <i class="fa-solid fa-hand-holding-dollar svg-homecard"></i>  
+                <h2>{{ recent.heuresValorisees }}</h2>
+                <h3>Bénévolat</h3>
+            </div>
+        {% endfor %}
+    </div>
 </div>
-
-
 
 {% endblock %}

@@ -127,12 +127,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
     height: 20rem;
     width: 15rem;
     margin: 1rem;
     border-radius: 5px;
+    color: white;
+    background-color: var(--main-color);
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+    transition: all 0.5s ease-in-out;
   }
+  .homeCard:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -1px, 0px);
+  }
+
+  .homeCard h3{
+    font-size: 20px;
+  }
+  .homeCard h2{
+    font-size: 35px;
+    height: 10px;
+  }
+  .svg-homecard{
+    font-size: 50px;
+  }
+
   .form-saisie{
     display: flex;
     flex-direction: row;
@@ -330,6 +350,23 @@
 .header-desktop{
   display: none;
 }
+.main-assoc{
+  display:none;
+}
+.homeCard-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+.home-container{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
 
 
   /* DESKTOP CSS MAIN */
@@ -352,19 +389,17 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-
-    }
-    .user-info{
-      margin-left: auto;
+      box-shadow: 0px 0px 8px rgba(0,0,0,.6);
     }
     .main-assoc{
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
     .h1-assoc{
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 600;
       margin-left: 1rem;
       color: var(--text);
@@ -372,25 +407,28 @@
     .logo-main-assoc{
       aspect-ratio: 1;
       margin-left: 1rem;
-      width: 8%;
+      width: 5%;
       height: auto;
     }
     .user-info{
-      width: 20%;
+      margin-left: auto;
       display: flex;
+      width: 1rem;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
       margin-right: 1rem;
     }
     .user-avatar{
-      width: 50%;
+      width: 3rem;
       height: auto;
       border-radius: 50%;
       margin-right: 1rem;
     }
+
     .default{
-      width: 30%
+      width: 3rem;
+      margin-top: 10px;
     }
 
     .hamburger{
@@ -425,9 +463,9 @@
 .nav-item{
   width: 100%;
 }
+
 .nav-item:nth-last-child(1){
         margin-top: auto;
-        margin-bottom: 1rem;
     }
     .nav-links{
       display: flex;
@@ -485,20 +523,21 @@
         grid-column: 2;
         grid-row: 2;
         width: 100%;
-        background-color: blue;
+        height: 100%;
+    }
+    .home-container{
+        flex-direction: column;
     }
     .homeCard-container{
-        display: flex;
         flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        width: 100%;
-        /* background-color: red; */
     }
+
     .user-username{
       height: 10px;
       color:  var(--text);
-      font-size: 20px;
+      font-size: 18px;
+      min-width: 11rem;
+      max-width: 13rem;
     }
     .user-email{
       color: #505050;
@@ -511,9 +550,13 @@
 }
 @media screen and (min-width: 1600px) {
   main{
-    background-color: green;
+    width: 100%;
   }
   .navbar-ul{
     height: 100%;
+  }
+  .homeCard-container{
+    align-items: center;
+    /* background-color: red; */
   }
 }

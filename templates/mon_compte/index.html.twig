@@ -3,9 +3,6 @@
 {% block title %}MonCompte{% endblock %}
 
 {% block body %}
-{{ dump(user) }}
-
-
 
 <div class="infoPerso">
     <div class="infoPerso-container">
@@ -22,6 +19,10 @@
     </div>
 
 
-    <img src="{{asset('/build/profil_picture/' ~ user.profilPicture)}}"></img>
+    {% if app.user.profilPicture != null %}
+        <img src="{{ asset('/build/profil_picture/' ~ app.user.profilPicture) }}" alt="" class="user-avatar" />
+    {% else %}
+        <img src="{{ asset('/build/profil_picture/default_profil.png') }}" alt="" class="user-avatar default" />
+    {% endif %}
 </div>
 {% endblock %}
