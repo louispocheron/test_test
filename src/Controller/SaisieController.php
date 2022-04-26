@@ -18,6 +18,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class SaisieController extends AbstractController
 {
@@ -25,7 +27,7 @@ class SaisieController extends AbstractController
 
 
     #[Route('/saisie', name: 'saisie')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,): Response
     {
 
         $user = $this->getUser();
@@ -61,12 +63,10 @@ class SaisieController extends AbstractController
                     ])
                 ->add('heureDepart', TimeType::class, [
                     'label' => 'Heure de départ',
+                    
                     ])
                 ->add('heureArrivee', TimeType::class, [
                     'label' => 'Heure d\'arrivée',
-                    'attr' => [
-                        'class' => 'heureArrivee'
-                    ],
                     ])
                 ->add('groupe', ChoiceType::class, [
                     'choices' => [
@@ -76,7 +76,7 @@ class SaisieController extends AbstractController
                         '4' => 11.91,
                         '5' => 13.33,
                         '6' => 16.64
-                    ]
+                    ],
                 ])
                 ->add('charges', null, [
                     'label' => 'Charge',
@@ -110,7 +110,6 @@ class SaisieController extends AbstractController
                         'readonly' => true,
                     ],
                 ])
-                // UTILISE SELECT 2 https://select2.org/
                 ->add('association', EntityType::class , [
                     'label' => 'Association',
                      "class" => Associations::class,

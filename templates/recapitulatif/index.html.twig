@@ -3,53 +3,101 @@
 {% block title %}Hello RecapitulatifController!{% endblock %}
 
 {% block body %}
+ <link href="{{ asset('css/recap.css') }}" rel="stylesheet">
 
 
 
 
 <div>
  ma dernière saisie en date : 
-        {% for recent in latest %}
-            <ul>
-                <li>{{ recent.association.name }}</li>
-                <li>{{recent.villeDepart}}</li>
-                <li>{{recent.villeArrive}}</li>
-                <li>{{recent.km}}</li>
-                <li>{{recent.raisons}}</li>
-                <li>{{recent.heureDepart|date('H:i')}}</li>
-                <li>{{recent.heureArrivee|date('H:i')}}</li>
-                {# ON CHOPE L'ASSOCIATION DE LA SAISIE AVEC LE USER #}
-                <li>{{recent.association.name}}</li>
-                <li>{{recent.duree}}</li>
-                <li>{{recent.frais}}</li>
-                <li>{{recent.date|date('d/m/Y')}}</li>
-            </ul>
-
+        {% for action in latest %}
+            <table class="table">
+                <tr>
+                    <th>Association</th>
+                    <th>Date</th>
+                    <th>Ville de départ</th>
+                    <th>Ville d'arrivée</th>
+                    <th>Km</th>
+                    <th>Raisons</th>
+                    <th>Heure de départ</th>
+                    <th>Heure d'arrivée</th>
+                    <th>Durée</th>
+                    <th>Frais</th>
+                </tr>
+                <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'">
+                    <td>{{ action.association.name }}</td>
+                    <td>{{ action.date|date('d/m/Y') }}</td>
+                    <td>{{ action.villeDepart }}</td>
+                    <td>{{ action.villeArrive }}</td>
+                    <td>{{ action.km }}</td>
+                    <td>{{ action.raisons }}</td>
+                    <td>{{ action.heureDepart|date('H:i') }}</td>
+                    <td>{{ action.heureArrivee|date('H:i') }}</td>
+                    <td>{{ action.duree }}</td>
+                    <td>{{ action.frais }}</td>
+                </tr>
+            </table>
         {% endfor %}
 </div>
 
 
 
 {% if (actions == true) and (app.user == true) %}
-    {% for action in actions %}
-    <div class="ligne">
-        <ul>
-            <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
-            <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>
-            <li>{{ action.association.name }}</li>
-            <li>{{action.villeDepart}}</li>
-            <li>{{action.villeArrive}}</li>
-            <li>{{action.km}}</li>
-            <li>{{action.raisons}}</li>
-            <li>{{action.heureDepart|date('H:i')}}</li>
-            <li>{{action.heureArrivee|date('H:i')}}</li>
-            <li>{{action.date|date('d/m/Y')}}</li>
-        </ul>
-    </div>
-    {% endfor %}
+ <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
+    <table class="table">
+        <tr>
+            <th>Association</th>
+            <th>Date</th>
+            <th>Ville de départ</th>
+            <th>Ville d'arrivée</th>
+            <th>Km</th>
+            <th>Raisons</th>
+            <th>Heure de départ</th>
+            <th>Heure d'arrivée</th>
+            <th>Durée</th>
+            <th>Frais</th>
+            <th>Don</th>
+            <th>A payer</th>
+            <th>Heures valorisées</th>
+
+        </tr>
+        
+        {% for action in actions %}
+            
+            <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'">
+            {# <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
+            <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
+            <td>{{ action.association.name }}</td> 
+            <td>{{ action.date|date('d/m/Y') }}</td>
+            <td>{{ action.villeDepart }}</td>
+            <td>{{ action.villeArrive }}</td>
+            <td>{{ action.km }}</td>
+            <td>{{ action.raisons }}</td>
+            <td>{{ action.heureDepart|date('H:i') }}</td>
+            <td>{{ action.heureArrivee|date('H:i') }}</td>
+            <td>{{ action.duree }}</td>
+            <td>{{ action.frais }}</td>
+            <td>{{ action.don ?? null}}</td>
+            <td>{{ action.Apayer }}</td>
+            <td>{{ action.heuresValorisees ?? null}}</td>
+
+
+
+
+            </a>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
 {% else %}
     <p>Aucune saisie</p>
 {% endif %}
+
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(actions) }}
+</div>
 
 
 {% endblock %}

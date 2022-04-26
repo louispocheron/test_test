@@ -34,23 +34,67 @@ height: 100%;
     justify-content: center;
     align-items: center;
 }
-.evenement1 input{
+.evenement1 input {
   display: block;
-  width: 70%;
-  height: 40px;
+  width: 90%;
+  height: 30px;
   background: transparent;
   border: solid 1px #ccc;
   transition: all .3s ease;
   padding: 0 15px;
 }
 .rowSaisie{
-    width: 100%;
+    width: 80%;
     margin-top: 1rem;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
+#form_association{
+    width: 100%;
+    height: 30px;
+    padding: 0 15px;
+}
+.heure{
+    width: 100%;
+    height: 30px;
+}
+.disabled{
+    background: transparent;
+    background-color: #152149;
+}
+.heure select{
+    width: 30%;
+    height: 40px;
+    background: transparent;
+    border: solid 1px #ccc;
+    transition: all .3s ease;
+    padding: 0 15px;
+}
+
+.second{
+    background-color: #152149;
+}
+.dropdown-toggle{
+    background-color: #152149;
+}
+
+.label{
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+.info-supp{
+    margin-right: auto;
+}
+/* .hidden-info{
+    
+    display: none;
+} */
+.info-supp:hover .hidden-info{
+    display: block;
+}
+
 .bottom-input{
     margin-bottom: 1rem;
 }

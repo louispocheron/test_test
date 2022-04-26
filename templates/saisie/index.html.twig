@@ -12,50 +12,56 @@
     <div class="form-saisie">
         <div class="evenement1">
             <div class="h1-row">Évènement</div>
-            <div class='rowSaisie'>
-                <legend class="label">Date</legend>
-                {{form_widget(form.date)}}
-            </div>
-            <div class='rowSaisie'>
-                <label>Association</label>
-                {{form_widget(form.association)}}
-            </div>
+            {# <div class="rowSaisie-container"> #}
+                <div class='rowSaisie'>
+                    <legend class="label">Date</legend>
+                    {{form_widget(form.date)}}
+                </div>
+                <div class='rowSaisie'>
+                    <div class="info-supp">
+                        <label class="label">Association</label>
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    {{form_widget(form.association)}}
+                </div>
 
-            <div class='rowSaisie'>
-                <label class="label">Ville de départ</label>
-                {{form_widget(form.villeDepart)}}
-            </div>
+                <div class='rowSaisie'>
+                    <label class="label">Ville de départ</label>
+                    {{form_widget(form.villeDepart)}}
+                </div>
 
-            <div class='rowSaisie'>
-                <label class="label">Ville d'Arrivée</label>
-                {{form_widget(form.villeArrive)}}
-            </div>
-            <div class='rowSaisie bottom-input'>
-                <label class="label">Raisons</label>
-                {{form_widget(form.raisons)}}
-            </div>
+                <div class='rowSaisie'>
+                    <label class="label">Ville d'Arrivée</label>
+                    {{form_widget(form.villeArrive)}}
+                </div>
+                <div class='rowSaisie bottom-input'>
+                    <label class="label">Raisons</label>
+                    {{form_widget(form.raisons)}}
+                </div>
+            {# </div> #}
         </div>
-        <div class="evenement2">
-            <div class='rowSaisie'>
-                <label>Heure de départ</label>
-                {{form_widget(form.heureDepart , {'attr': {'class': 'heureDepart'}}) }}
+        <div class="evenement1">
+            <div class="h1-row second">Valorisation des heures</div>
+            <div class='rowSaisie hours'>
+                <label class="label">Heure de départ</label>
+                {{form_widget(form.heureDepart , {'attr': {'class': 'heure'}}) }}
             </div>
 
             <div class='rowSaisie'>
-                <label>Heure d'arrivée</label>
-                {{form_widget(form.heureArrivee, {'attr': {'class': 'heureArrivee'}}) }}
+                <label class="label">Heure d'arrivée</label>
+                {{form_widget(form.heureArrivee, {'attr': {'class': 'heure'}}) }}
             </div>
             <div class='rowSaisie'>
-                <label>duree</label>
+                <label class="label">duree</label>
                 {{form_widget(form.duree, {'attr': {'class': 'dureeInput'}}) }}
             </div>
              <div class='rowSaisie'>
-                <label>groupe</label>
-                {{form_widget(form.groupe, {'attr': {'class': 'groupeSelect'}}) }}
+                <label class="label">groupe</label>
+                {{form_widget(form.groupe, {'attr': {'class': 'heure'}}) }}
             </div>
             <div class='rowSaisie' id="chargeInputId" data-charges='{{charges}}' >
-                <label>charges</label>
-                {{form_widget(form.charges, {'attr': {'class': 'chargesInput' }}) }}
+                <label class="label">charges</label>
+                {{form_widget(form.charges, {'attr': {'class': 'heure disabled bottom-input' }}) }}
             </div>
         </div>
     <div class="evenement3">
