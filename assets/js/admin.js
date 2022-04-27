@@ -46,12 +46,10 @@ const totalP = document.querySelector('.totalP');
 
 
 let salut = selectYear.options[selectYear.selectedIndex];
-console.log("salut");
-
 selectYear.addEventListener('change', sendYear);
 // console.log(salut.value);
 
-const tableau = document.querySelectorAll('.tableau');
+// const tableau = document.querySelectorAll('.tableau');
 const ligne = document.querySelectorAll('.ligne'); 
 
 
@@ -71,9 +69,6 @@ function sendYear(){
             let dataUser = data.data.content;
             console.log(dataUser);
             content.innerHTML = dataUser;
-
-            
-      
         })
 
         .catch(err => {

@@ -128,8 +128,6 @@ document.querySelector('.flatpickr').flatpickr({
     });     
         
 
-    console.log("works fine to me ");
-
     const form_association = document.querySelector('#form_association');
     form_association.select2({
         placeholder: 'Association',

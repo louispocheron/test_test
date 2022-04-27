@@ -40,7 +40,9 @@
         {% endfor %}
 </div>
 
-
+        <div class="totalDiv">
+            <select class="selectYear" id="selectYear"></select>
+        </div>
 
 {% if (actions == true) and (app.user == true) %}
  <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
@@ -61,34 +63,10 @@
             <th>Heures valorisées</th>
 
         </tr>
-        
-        {% for action in actions %}
-            
-            <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'">
-            {# <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
-            <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
-            <td>{{ action.association.name }}</td> 
-            <td>{{ action.date|date('d/m/Y') }}</td>
-            <td>{{ action.villeDepart }}</td>
-            <td>{{ action.villeArrive }}</td>
-            <td>{{ action.km }}</td>
-            <td>{{ action.raisons }}</td>
-            <td>{{ action.heureDepart|date('H:i') }}</td>
-            <td>{{ action.heureArrivee|date('H:i') }}</td>
-            <td>{{ action.duree }}</td>
-            <td>{{ action.frais }}</td>
-            <td>{{ action.don ?? null}}</td>
-            <td>{{ action.Apayer }}</td>
-            <td>{{ action.heuresValorisees ?? null}}</td>
-
-
-
-
-            </a>
-        </tr>
-
-        {% endfor %}
-    </table>
+        <div class="ajaxDivContent">
+            {% include "recapitulatif/action_recap.html.twig" %}
+        </div>
+</table>
 
 
 {% else %}
@@ -99,5 +77,11 @@
     {{ knp_pagination_render(actions) }}
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {{ encore_entry_script_tags('recap') }}
 
 {% endblock %}

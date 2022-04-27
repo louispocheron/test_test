@@ -64,7 +64,7 @@ class AdminController extends AbstractController
 
 
     #[Route('/admin/{idAssoc}/user/{id}', name: 'admin_user')]
-    public function userInfo(Request $request, UserRepository $userRepo, EntityManagerInterface $entityManager, AssociationsRepository $repo, ActionRepository $actionRepo): Response
+    public function userInfo(Request $request, UserRepository $userRepo, AssociationsRepository $repo, ActionRepository $actionRepo): Response
 {   
     if($this->denyeAcess($request, $repo)){
         // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER

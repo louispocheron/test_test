@@ -9,10 +9,6 @@
 
 
 
-{# CA MARCHE #}
-
-
-
 {% for user in users %}
         <ul>
             <a href=" {{path('remove_user', {'idAssoc': association.id, 'id': user.id } )}} "<i class="fa-solid fa-trash"></i></a>
