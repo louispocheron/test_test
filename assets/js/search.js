@@ -7,7 +7,6 @@ const ajaxAssocContent = document.querySelector('.ajaxAssocContent');
 searchBar.addEventListener('keyup', (e) => {
     // search bar associations
     let search = e.target.value.toLowerCase();
-    console.log(search);
     ajax(search);
 
 })
@@ -19,9 +18,15 @@ function ajax(filter){
 
     axios.get(url.pathname + "?" + queryString.toString() + "&ajax=1", null)
          .then(data => {
+             console.log(data);
             let dataUser = data.data;
-            console.log(dataUser);
+            if(dataUser == ""){
+                let p = document.createElement('p');
+                p.innerHTML = "Aucun résultat";
+                ajaxAssocContent.appendChild(p);
+            }else{
             ajaxAssocContent.innerHTML = dataUser;
+            }
         })  
         .catch(err => {
             console.log(err);

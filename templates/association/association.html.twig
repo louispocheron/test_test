@@ -3,19 +3,22 @@
 {% block title %}Hello AssociationIdController!{% endblock %}
 
 {% block body %}
-
-{{ dump(association)}}
-
-<div> 
-    {{ association.name }} 
-    <img src="{{asset('/build/logo_directory/' ~ association.logo) }}" alt="{{association.name}}" />
-    {{ association.description }}
-    <a class="btnAdherer" href="{{ path('association_adherer', {'id': association.id}) }}">
-        <button type="button" class="btn btn-primary">adherer</button>
-    </a>
-
-
+ <link href="{{ asset('css/association.css') }}" rel="stylesheet">
+<div class="flex-me">
+<div class="unique-assoc-container">
+    <div class="unique-assoc-title">
+        <h1>{{association.name}}</h1>
+        <img src="{{asset('/build/logo_directory/' ~ association.logo) }}" alt="{{association.name}}" class="assoc-img"/>
+    </div>
+    <div class="assoc-description">
+        {{ association.description }}
+        <a class="btnAdherer" href="{{ path('association_adherer', {'id': association.id}) }}">
+            <button type="button" class="btn btn-primary btn-adherer">adherer</button>
+        </a>
+    </div>
 </div>
+</div>
+
 
 {% endblock %}
 

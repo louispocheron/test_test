@@ -1,0 +1,124 @@
+main{
+}
+.association-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.search-bar-input{
+    padding-left: 25px;
+    background-image: url('/public/assets/search.svg');
+    background-repeat: no-repeat;
+    background-size: 25px;
+    width: 20%;
+    height: 40px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    border: 2px solid #ccc;
+}
+.search-bar-input:focus{
+    border: 2px solid #152149;
+}
+.associations {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .uniqueAssoc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    width: 15rem;
+    margin: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all 0.5s ease-in-out;
+    color: #2E2E2E;
+    text-decoration: none;
+  }
+  .assoc-name{
+      font-size: 1.2em;
+      flex-wrap: wrap;
+  }
+    .card-description{
+        font-size: 0.8em;
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        flex-wrap: nowrap;
+        text-align: center;
+    }
+
+  .uniqueAssoc:hover{
+    box-shadow: #152149 0px 20px 30px -10px;
+  }
+  .uniqueAssoc img{
+    width: 20%;
+    height: auto;
+  }
+  .flex-me{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    }
+  .unique-assoc-container{
+      width: 80%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 5rem;
+  }
+  .assoc-description{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .unique-assoc-title{
+      display: flex;
+      color: #2E2E2E;
+      justify-content: center;
+      align-items: center;
+    flex-direction: column;
+  }
+.assoc-img{
+    width: 50%;
+    height: auto;
+  }
+  .btn-adherer{
+    border-radius: 20px;
+	border: 2px solid #fff;
+	background-color: #152149;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;  
+    margin: 1rem;
+    width: 15rem;
+    height: 2.7rem;
+    text-decoration: none;
+  }
+  .btn-adherer:hover{
+    background-color: white;
+    color: #152149;
+    display: block;
+    border: 1px solid #152149;
+    font-weight: 600;
+    cursor: pointer;
+  }

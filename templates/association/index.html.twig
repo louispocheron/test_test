@@ -3,8 +3,11 @@
 {% block title %}Hello AssociationController!{% endblock %}
 
 {% block body %}
+ <link href="{{ asset('css/association.css') }}" rel="stylesheet">
 
-<input type="text" id="search" placeholder="Rechercher...">
+<div class="association-container">
+<input type="text" id="search" class="search-bar-input" placeholder="Rechercher...">
+
 {% if associations == null %}
 
     <h4>Aucune association</h4>
@@ -20,6 +23,7 @@
     <div class="ajaxAssocContent">
         {% include "association/ajax_view.html.twig" %}
     </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
