@@ -28,7 +28,7 @@ class RecapitulatifController extends AbstractController
         $actions = $paginator->paginate(
             $actions,
             $request->query->getInt('page', 1),
-            10
+            2
         );
 
         $userId = $user->getId();

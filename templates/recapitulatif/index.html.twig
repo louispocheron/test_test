@@ -8,7 +8,7 @@
 
 
 
-<div>
+<div class="latest-table">
  ma dernière saisie en date : 
         {% for action in latest %}
             <table class="table">
@@ -25,16 +25,16 @@
                     <th>Frais</th>
                 </tr>
                 <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'">
-                    <td>{{ action.association.name }}</td>
-                    <td>{{ action.date|date('d/m/Y') }}</td>
-                    <td>{{ action.villeDepart }}</td>
-                    <td>{{ action.villeArrive }}</td>
-                    <td>{{ action.km }}</td>
-                    <td>{{ action.raisons }}</td>
-                    <td>{{ action.heureDepart|date('H:i') }}</td>
-                    <td>{{ action.heureArrivee|date('H:i') }}</td>
-                    <td>{{ action.duree }}</td>
-                    <td>{{ action.frais }}</td>
+                    <td data-label="Association">{{ action.association.name }}</td>
+                    <td data-label="Date">{{ action.date|date('d/m/Y') }}</td>
+                    <td data-label="Ville de départ">{{ action.villeDepart }}</td>
+                    <td data-label="Ville d'arrivée">{{ action.villeArrive }}</td>
+                    <td data-label="Km">{{ action.km }}</td>
+                    <td data-label="Raison">{{ action.raisons }}</td>
+                    <td data-label="Heure de départ">{{ action.heureDepart|date('H:i') }}</td>
+                    <td data-label="Heure d'arrivée">{{ action.heureArrivee|date('H:i') }}</td>
+                    <td data-label="Durée">{{ action.duree }}</td>
+                    <td data-label="Frais">{{ action.frais }}</td>
                 </tr>
             </table>
         {% endfor %}

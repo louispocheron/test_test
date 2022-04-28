@@ -1,6 +1,16 @@
 .table{
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.latest-table{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
 }
 .table td, .table th{
     border: 1px solid #ddd;
@@ -21,4 +31,39 @@
 .table tr:hover{
     background-color: #ddd;
     cursor: pointer;
+}
+.separation-tr{
+    display: none;
+}
+
+@media only screen and (max-width: 964px){
+    th{
+        display: none;
+    }
+    table, tr, td{
+        display: block;
+        width: 100%;
+    }
+    tr{
+        margin-bottom: 1rem;
+    }
+    td{
+        text-align: left;
+        position: relative;
+        width: 100%;
+    }
+    td::before{
+        content: attr(data-label);
+        display: block;
+        width: 100%;
+        padding-left: -5px;
+        color: #152149;
+        font-weight: 600;
+        font-size: 15px;
+    }
+    .separation-tr{
+        width: 10rem;
+        height: 3rem;
+        background-color: #152149;
+    }
 }

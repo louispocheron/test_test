@@ -40,6 +40,19 @@ function Ajaxyear(){
         console.log(err);
     })
 }
+// console.log('newfun');
+
+// for(let i = 0; i < trtest.length; i++){
+//     trtest[i].addEventListener('click', pdfOpen);
+// }
+
+
+// function pdfOpen(){
+//     let newHref = trtest.dataset.href
+//     window.open(newHref, '_blank');
+// }
+
+
 
 
 

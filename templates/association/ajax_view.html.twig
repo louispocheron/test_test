@@ -3,7 +3,7 @@
             <li class="assoc-li">
                 <a class="getAssocId uniqueAssoc" href=" {{path('unique_association', {'id': association.id})}} " id="{{association.id}}">
                     <h3 class="assoc-name">{{association.name}}</h3>
-                    <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}"></img>
+                    <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}" class="assoc-img-first"></img>
                     <p class="card-description">{{association.description}}</p>
                 </a>
             </li>
