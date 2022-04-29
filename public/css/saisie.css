@@ -26,7 +26,7 @@ height: 100%;
 }
 .h1-row{
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     background-color: black;
     color: white;
     font-size: 1.5rem;
@@ -34,6 +34,7 @@ height: 100%;
     justify-content: center;
     align-items: center;
 }
+
 .evenement1 input {
   display: block;
   width: 90%;
@@ -43,6 +44,10 @@ height: 100%;
   transition: all .3s ease;
   padding: 0 15px;
 }
+.donsInput:focus{
+    border-color: #2196F3 !important;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
 .rowSaisie{
     width: 80%;
     margin-top: 1rem;
@@ -51,22 +56,28 @@ height: 100%;
     align-items: center;
     flex-direction: column;
 }
+.groupe{
+    width: 90%;
+    height: 20px;
+}
 #form_association{
     width: 100%;
     height: 30px;
     padding: 0 15px;
 }
 .heure{
-    width: 100%;
-    height: 30px;
+    height: 40px;
 }
 
 .disabled{
-    background: transparent;
-    background-color: #152149;
+    background-color: #e9ecef !important;
+    border: none !important;
+}
+.disabled:focus{
+    border: none !important;
 }
 .heure select{
-    width: 30%;
+    width: 5rem;
     height: 40px;
     background: transparent;
     border: solid 1px #ccc;
@@ -76,6 +87,12 @@ height: 100%;
 
 .second{
     background-color: #152149;
+}
+.third{
+    border: 1px solid #fef9a8;
+}
+.troisieme{
+    background-color: #fef9a8;
 }
 .dropdown-toggle{
     background-color: #152149;
@@ -99,6 +116,10 @@ height: 100%;
 .bottom-input{
     margin-bottom: 1rem;
 }
+.first{
+    display: flex;
+    justify-content: flex-start;
+}
 
 .evenement2{
     width: 45%;
@@ -110,4 +131,33 @@ height: 100%;
 }
 .evenement4{
     border: 1px solid black;
+}
+.date-assoc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 49%;
+    height: auto;
+    align-self: flex-start;
+}
+.input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 963px){
+    .input-container{
+        flex-direction: column;
+    }
+    .evenement1{
+        width: 80%;
+    }
+    .date-assoc{
+        width: 100%;
+    }
 }

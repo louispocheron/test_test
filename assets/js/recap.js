@@ -11,7 +11,6 @@ while (currentYear >= earliestYear) {
 
 
 const trtest = document.querySelectorAll('.trtest'); 
-console.log(trtest);
 
 
 let year = selectYear.options[selectYear.selectedIndex];
@@ -29,7 +28,6 @@ function Ajaxyear(){
     .then(data => {
         const content = document.querySelector('.trtest');
         let dataUser = data.data.content;
-        console.log(data);
         if (dataUser == "") {
             content.innerHTML = `aucune saisie trouvée pour l'année choisie`;
         } else {

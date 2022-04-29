@@ -17,6 +17,17 @@
         <p> mot de passe : </p>
         <p>********</p>
     </div>
+     <div class="infoPerso-container">
+        <p> vous avez realisé : </p>
+
+        {% if actions == 1 %}
+            <p> {{actions}} saisie</p>
+        {% else %}
+            <p> {{actions}} saisies </p>
+            <p> cliquez <a href="{{ path('recapitulatif') }}">ici</a> pour voir les voir </p>
+        {% endif %}
+        
+    </div>
 
 
     {% if app.user.profilPicture != null %}
