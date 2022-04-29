@@ -16,6 +16,8 @@ class HomeController extends AbstractController
     public function index(AssociationsRepository $repo, ActionRepository $actionRepo): Response
     {
 
+
+
         $user = $this->getUser();
         // redirect user to login page if not connected
         if (!$user) {
