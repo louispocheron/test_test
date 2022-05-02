@@ -156,8 +156,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.logo{
-  width: 10vw;
+.logo-main-site{
+  width: 10vw !important;
   height: auto;
   margin-left: 1rem;
   z-index: 10;
@@ -465,9 +465,9 @@
       filter: grayscale(100%) opacity(0.7);
       transition: 600ms;
     }
-    .logo{
-      width: 70%;
-      max-width: 4rem;
+    .logo-main-site{
+      width: 70% !important;
+      max-width: 4rem !important;
       height: auto;
       padding: 1rem;
       margin-left: 0;

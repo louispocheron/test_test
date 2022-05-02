@@ -12,6 +12,8 @@ use App\Repository\AssociationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class AdminController extends AbstractController
 {
@@ -28,7 +30,7 @@ class AdminController extends AbstractController
 
 
     #[Route('/admin/{idAssoc}', name: 'admin')]
-    public function index(AssociationsRepository $repo, ActionRepository $actionRepo, Request $request): Response
+    public function index(AssociationsRepository $repo, ActionRepository $actionRepo, Request $request,PaginatorInterface $paginator ): Response
     {   
         $user = $this->getUser();
         $userId = $user->getId();
@@ -43,14 +45,15 @@ class AdminController extends AbstractController
         $actions = $actionRepo->findByAssociation($association);
         $userAction = $actionRepo->findByUsers($user);
     
-      
-
         // get all users from $assocation
         foreach($association->getUsers() as $user){
             $users[] = $user;
         }
-    
-    
+        $users = $paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1),
+            8
+        );
 
         return $this->render('admin/index.html.twig', [
             'association' => $association,

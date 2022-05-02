@@ -24,6 +24,7 @@ document.querySelector('.flatpickr').flatpickr({
     const heureValoriseesInput = document.querySelector('.heureValoriseesInput');
 
 
+
     //set default value to heuredepart to 00
 
     dureeInput.value = 0;
@@ -118,22 +119,18 @@ document.querySelector('.flatpickr').flatpickr({
         if(apayerValue == ''){
             apayerValue = 0;
         }
-        if(apayerValue == '0' || apayerValue == 0){
-            //get value from localStorage and put it into donsinput.value
-            donsInput.value = localStorage.getItem('donsInput');
-        }
-        
-        donsInput.value = donsInput.value - parseInt(apayerValue);
-        
+        setTimeout(() => {
+         donsInput.value = parseFloat(apayerValue) - parseFloat(donsInput.value);
+        }, 1000);
     });     
         
 
-    const form_association = document.querySelector('#form_association');
-    form_association.select2({
-        placeholder: 'Association',
-        maximumSelectionLength: 1,
-        allowClear: true,   
-    });
+    // const form_association = document.querySelector('#form_association');
+    // form_association.select2({
+    //     placeholder: 'Association',
+    //     maximumSelectionLength: 1,
+    //     allowClear: true,   
+    // });
 
         
 

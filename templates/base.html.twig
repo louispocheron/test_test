@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Saved{% endblock %}</title>
+        <link href='{{ asset("assets/logo_blanc.SVG")}}' rel='shortcut icon' type='image/x-icon'/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         {{ encore_entry_link_tags('app') }}
@@ -18,7 +19,7 @@
     <body>
         {# SIDE BAR POUR LE DESKTOP SEULEMENT #}
         <div class="sidebar">
-            <a href="{{ path('home') }}"><img src="{{ asset('assets/logo_blanc.SVG') }}" alt="logo" class="logo">
+            <a href="{{ path('home') }}"><img src="{{ asset('assets/logo_blanc.SVG') }}" alt="logo" class="logo-main-site">
             <ul class="navbar-ul">
                     <li class="nav-item">
                         <a href="{{ path('home') }}" class="nav-links">
@@ -174,7 +175,6 @@
 
     {% block javascripts %}
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script src="" defer></script>
 
