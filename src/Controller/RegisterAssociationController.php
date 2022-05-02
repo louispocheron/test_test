@@ -21,6 +21,9 @@ class RegisterAssociationController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $association = new Associations();
         $setrole = new user();
 

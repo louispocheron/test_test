@@ -9,6 +9,8 @@ body{
     justify-content: center;
     align-items: center;
      font-family: 'Montserrat', sans-serif;
+        background-color: #f5f4f9;
+
 }
 form{
     width: 100%;
@@ -18,7 +20,6 @@ form{
     justify-content: center;
     align-items: center;
     flex-direction: row;
-
 }
 .container{
     width: 90%;
@@ -26,7 +27,9 @@ form{
     display: flex;
     padding: 5px;
     justify-content: center;
+  background-color: #fff;
     align-items: center;
+  border-radius: 5px;
     flex-direction: column;
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
 		  0 10px 10px rgba(0,0,0,0.22);

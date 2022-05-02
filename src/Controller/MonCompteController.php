@@ -15,6 +15,9 @@ class MonCompteController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $actions = $repo->findByUsers($user);
         $actions = count($actions);
         

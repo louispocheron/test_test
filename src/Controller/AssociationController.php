@@ -20,6 +20,9 @@ class AssociationController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $assoc = $repo->findAssociationByUser($user);
         $assocList = array();
 
@@ -64,10 +67,9 @@ class AssociationController extends AbstractController
     public function adhererAssociation(Associations $assoc, EntityManagerInterface $entityManager, UserRepository $repo, AssociationsRepository $assocRepo): response
     {
         $user = $this->getUser();
-        if(!$user) return $this->json([
-            'code' => 403,
-            'message' => 'Vous devez être connecté pour adhérer à une association'
-        ], 403);
+         if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
 
 
         if($assoc->getUsers()->contains($user)){

@@ -22,6 +22,9 @@ class RecapitulatifController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $actions = $actionRepo->findByUsers($user);
         $latest = $actionRepo->findLatestAction($user);	
 

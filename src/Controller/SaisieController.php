@@ -31,6 +31,9 @@ class SaisieController extends AbstractController
     {
 
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $action = new Action();
         $charge = "1.42";
 

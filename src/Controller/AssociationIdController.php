@@ -19,7 +19,10 @@ class AssociationIdController extends AbstractController
     #[Route('/associations/{id}', name: 'unique_association')]
     public function index(AssociationsRepository $repo, Request $request, EntityManagerInterface $em): Response
     {
-
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
         $association = $request->attributes->get('id');
         $association = $repo->find($association);
 

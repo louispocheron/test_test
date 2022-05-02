@@ -41,12 +41,13 @@
         {% endfor %}
 </div> #}
 
+
+{% if (actions.getTotalItemCount != 0) and (app.user == true) %}
+ <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
+ 
         <div class="totalDiv">
             <select class="selectYear" id="selectYear"></select>
         </div>
-
-{% if (actions == true) and (app.user == true) %}
- <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
     <table class="table">
         <tr>
             <th>Association</th>
