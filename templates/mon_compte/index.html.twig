@@ -3,6 +3,8 @@
 {% block title %}MonCompte{% endblock %}
 
 {% block body %}
+ <link href="{{ asset('css/moncompte.css') }}" rel="stylesheet">
+
 
 <div class="infoPerso">
     <div class="infoPerso-container">
@@ -18,14 +20,12 @@
         <p>********</p>
     </div>
      <div class="infoPerso-container">
-        <p> vous avez realisé : </p>
-
-        {% if actions == 1 %}
-            <p> {{actions}} saisie</p>
+        <p> vous avez realisé {% if actions == 1 %}
+             {{actions}} saisie</p>
         {% else %}
-            <p> {{actions}} saisies </p>
-            <p> cliquez <a href="{{ path('recapitulatif') }}">ici</a> pour voir les voir </p>
+             {{actions}} saisies</p>
         {% endif %}
+             <a href="{{ path('recapitulatif') }}"><button class="btn-saisie">Mes saisies</button></a>
         
     </div>
 

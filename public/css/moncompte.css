@@ -1,0 +1,41 @@
+main{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.infoPerso{
+    display: flex;
+    width: 80%;
+    height:auto;
+    background-color: white;
+    border-style: outset;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .infoPerso-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 1rem;
+  }
+  .btn-saisie{
+    border-radius: 20px;
+	border: 2px solid #fff;
+	background-color: #152149;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;  
+    width: auto;
+    height: 2rem;
+    text-decoration: none;
+  }

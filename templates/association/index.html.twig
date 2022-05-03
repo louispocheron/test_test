@@ -25,7 +25,9 @@
             {% include "association/ajax_view.html.twig" %}
         </div>
     </div>
-
+    <div class="pagination-container mobile-pagination">
+        {{ knp_pagination_render(associations) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}

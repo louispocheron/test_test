@@ -18,7 +18,6 @@ function ajax(filter){
 
     axios.get(url.pathname + "?" + queryString.toString() + "&ajax=1", null)
          .then(data => {
-             console.log(data);
             let dataUser = data.data;
             if(dataUser == ""){
                 let p = document.createElement('p');

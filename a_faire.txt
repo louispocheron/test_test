@@ -1,6 +1,4 @@
 AVANT DE PASSER A UI UX : 
     mailer pour changer mot de passe marche pas mailHOG
-    regarder relations SQL car pas sur de tout ca -> deux relations sur une meme entité.
-    security bundle :
-        page admin tout le monde peut y aller, marche pas en donnant un role lors de la creation assoc car user est deconnecté
-        
+
+-revoir taille height association/id

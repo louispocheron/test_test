@@ -10,7 +10,6 @@ main{
 }
 .search-bar-input{
     padding-left: 25px;
-    background-image: url('/public/assets/search.svg');
     background-repeat: no-repeat;
     background-size: 25px;
     width: 20%;
@@ -18,8 +17,8 @@ main{
     font-size: 16px;
     outline: none;
     border-radius: 5px;
-    margin-top: 1rem;
     border: 2px solid #ccc;
+    margin-right: 1rem;
 }
 .search-bar-input:focus{
     border: 2px solid #152149;
@@ -108,7 +107,7 @@ main{
     height: auto;
   }
   .btn-adherer{
-    border-radius: 20px;
+  border-radius: 20px;
 	border: 2px solid #fff;
 	background-color: #152149;
 	color: #FFFFFF;
@@ -150,6 +149,8 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    margin: 1rem;
   }
   .pagination{
     display: flex;
@@ -158,6 +159,9 @@ main{
     margin: 0;
     
   }
+  .mobile-pagination{
+    display: none;
+  }
 
   @media only screen and (max-width: 963px){
     .unique-assoc-container{
@@ -165,6 +169,20 @@ main{
       padding: 1rem;
       height: auto;
       margin-top: 2rem;
+    }
+    .mobile-pagination{
+      display: block;
+    }
+
+    .input-pagination{
+      flex-direction: column;
+    }
+    .search-bar-input{
+      margin-right: 0;
+      width: 60%;
+    }
+    .pagination{
+      margin-top: 1rem;
     }
     .arrow-left{
       height: 10%;
