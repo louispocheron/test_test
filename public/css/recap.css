@@ -1,6 +1,10 @@
 main{
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 .table{
     width: 100%;
@@ -45,6 +49,13 @@ main{
     align-items: center;
     flex-direction: row;
 }
+.content-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+}
 
 @media only screen and (max-width: 964px){
     th{
@@ -71,7 +82,7 @@ main{
         font-weight: 600;
         font-size: 15px;
     }
-    
+
     .lastchild::after{
         content: "";
         display: block;

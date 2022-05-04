@@ -43,10 +43,10 @@
 
 {% if (actions.getTotalItemCount != 0) and (app.user == true) %}
  <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
- 
-        <div class="totalDiv">
-            <select class="selectYear" id="selectYear"></select>
-        </div>
+<div class="content-container">
+    <div class="totalDiv">
+        <select class="selectYear" id="selectYear"></select>
+    </div>
     <table class="table">
         <tr>
             <th>Association</th>
@@ -62,12 +62,12 @@
             <th>Don</th>
             <th>A payer</th>
             <th>Heures valorisées</th>
-
         </tr>
         <div class="ajaxDivContent">
             {% include "recapitulatif/action_recap.html.twig" %}
         </div>
-</table>
+    </table>
+</div>
 
 
 {% else %}

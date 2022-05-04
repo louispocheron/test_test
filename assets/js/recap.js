@@ -4,7 +4,8 @@ let earliestYear = 1965;
 while (currentYear >= earliestYear) {      
     let dateOption = document.createElement('option');          
     dateOption.text = currentYear;      
-    dateOption.value = currentYear;        
+    dateOption.value = currentYear;
+    dateOption.className = 'select-dd';
     selectYear.add(dateOption);      
     currentYear -= 1;    
 }
