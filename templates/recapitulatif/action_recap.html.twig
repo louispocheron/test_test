@@ -16,7 +16,7 @@
         <td data-label="Frais">{{ action.frais }}€</td>
         <td data-label="Don">{{ action.dons|number_format(2) }}€</td>
         <td data-label="A payer">{{ action.Apayer|number_format(2) }}€</td>
-        <td data-label="Heures valorisées">{{ action.heuresValorisees|number_format(2)}}</td>
+        <td data-label="Heures valorisées" class="lastchild">{{ action.heuresValorisees|number_format(2)}}</td>
     </tr>
-    <span class="separation-tr"></span>
+
 {% endfor %}

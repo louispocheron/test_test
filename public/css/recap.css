@@ -71,9 +71,14 @@ main{
         font-weight: 600;
         font-size: 15px;
     }
-    .separation-tr{
-        width: 10rem;
-        height: 3rem;
+    
+    .lastchild::after{
+        content: "";
+        display: block;
+        width: 90%;
+        height: 2px;
         background-color: #152149;
+        position: absolute;
+        top: 4rem;
     }
 }

@@ -2,3 +2,4 @@ AVANT DE PASSER A UI UX :
     mailer pour changer mot de passe marche pas mailHOG
 
 -revoir taille height association/id
+-/recap mobile : a ameliorer : 1/2 gris bg color 

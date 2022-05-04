@@ -28,13 +28,19 @@ class RegisterAssociationController extends AbstractController
         $setrole = new user();
 
         $form = $this->createFormBuilder($association)
-                     ->add('name', TextType::class, ['label' => 'Nom de l\'association'])
+                     ->add('name', TextType::class, [
+                        'label' => 'Nom de l\'association',
+                        'attr' => [
+                            'placeholder' => 'Nom de l\'association',
+                            ],
+                        ])
                      ->add('logo', FileType::class, [
                         //  allow the user to not upload a file
                         'required' => false,
                         'label' => 'logo de l\'association',
                         'multiple' => false,
                         'mapped' => false,
+
                         'constraints' => [   
                             new Assert\File([
                                 'maxSize' => '1024k',
@@ -46,8 +52,19 @@ class RegisterAssociationController extends AbstractController
                                 'mimeTypesMessage' => 'Uploadez une image valide',
                             ])
                         ]])
-                     ->add('description', TextType::class, ['label' => 'Description'])
-                     ->add('numeroSiret', TextType::class, ['label' => 'Numéro de siret'])
+                     ->add('description', TextType::class, [
+                         'label' => 'Description',
+                         'attr' => [
+                            'placeholder' => 'Description de l\'association',
+                            ],
+                            ],
+                         )
+                     ->add('numeroSiret', TextType::class, [
+                         'label' => 'Numéro de siret',
+                         'attr' => [
+                            'placeholder' => 'Numéro de siret',
+                            ],
+                         ])
                      ->add('enregister', SubmitType::class, ['label' => 'Enregistrer'])
                      ->getform();
 

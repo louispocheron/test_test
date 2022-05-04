@@ -9,14 +9,19 @@ main{
 .infoPerso{
     display: flex;
     width: 80%;
-    height:auto;
-    background-color: white;
-    border-style: outset;
-    justify-content: center;
+    height: 50%;
     flex-direction: column;
-    margin-top: 2rem;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all 0.5s ease-in-out;
+    color: #2E2E2E;
+    text-decoration: none;
+    background-color: #fff;
+  }
+  .infoPerso h1{
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2E2E2E;
   }
   .infoPerso-container{
     display: flex;
@@ -25,17 +30,41 @@ main{
     width: 100%;
     margin-left: 1rem;
   }
+  .infoPerso-container p{
+    margin: 5px;
+  }
   .btn-saisie{
     border-radius: 20px;
 	border: 2px solid #fff;
 	background-color: #152149;
 	color: #FFFFFF;
 	font-size: 12px;
-	font-weight: bold;
+	font-weight: 700;
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;  
     width: auto;
-    height: 2rem;
+    height: 2.5rem;
     text-decoration: none;
+  }
+  .btn-saisie:hover{
+    background-color: white;
+    color: #152149;
+    border: 1px solid #152149;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  @media only screen and (min-width: 964px){
+    main{
+      align-items: center;
+    }
+    .infoPerso{
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+    }
+    .infoPerso-container{
+      flex-direction: row;
+      margin: 0;
+    }
   }

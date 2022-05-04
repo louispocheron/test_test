@@ -4,9 +4,32 @@
 
 {% block body %}
 
-{{ form_start(form) }}
-{{ form_row(form) }}
-{{ form_end(form) }}
+ <link href="{{ asset('css/assocRegister.css') }}" rel="stylesheet">
+    <div class="form-register-container">
+        <h1>Enregistrer une association</h1>
+        {{ form_start(form) }}
+            <div class="form-register-row">
+                <label>Nom de l'association</label>
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-register-row upload">
+                <label>Logo de l'association</label>
+                {{ form_widget(form.logo) }}
+            </div>
+            <div class="form-register-row">
+                <label>description de l'association</label>
+                {{ form_widget(form.description) }}
+            </div>
+            <div class="form-register-row">
+                <label>Numéro de siret</label>
+                {{ form_widget(form.numeroSiret) }}
+            </div>
+            <div class="form-register-row">
+                {{ form_widget(form.enregister) }}
+            </div>
+        {{ form_end(form) }}
+    </div>
+
 
 {% endblock %}
 

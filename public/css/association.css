@@ -51,9 +51,11 @@ main{
     text-decoration: none;
     background-color: #fff;
   }
+  
   .assoc-name{
       font-size: 1.2em;
       flex-wrap: wrap;
+      width: 13rem;
   }
     .card-description{
         font-size: 0.8em;
