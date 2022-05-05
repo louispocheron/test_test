@@ -1,3 +1,5 @@
+// const { sort } = require("core-js/core/array");
+
 const selectYear = document.getElementById('selectYear');
 let currentYear = new Date().getFullYear();    
 let earliestYear = 1965;     
@@ -49,7 +51,7 @@ function Ajaxyear(){
 // function pdfOpen(){
 //     let newHref = trtest.dataset.href
 //     window.open(newHref, '_blank');
-// }
+// }    
 
 
 
