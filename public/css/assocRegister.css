@@ -3,11 +3,12 @@ main{
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .form-register-container{
-    width: 50%;
+    width: 90%;
     height: 60%;
+    min-height: 35rem;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     color: #2E2E2E;
@@ -17,10 +18,16 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 2rem;
 }
+.form-register-container h1{
+    text-align: center;
+}
+
 .form-register-row{
     margin-top: 1rem;
 }
+
 .form-register-row input{
     display: block;
     width: 90%;
@@ -58,4 +65,14 @@ main{
     border: 1px solid #152149;
     font-weight: 700;
     cursor: pointer;
+}
+
+@media only screen and (min-width : 964px){
+    main{
+        align-items: center;
+    }
+    .form-register-container{
+        margin: 0;
+        width: 50%;
+    }
 }

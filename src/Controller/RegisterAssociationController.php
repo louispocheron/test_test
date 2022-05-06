@@ -74,6 +74,7 @@ class RegisterAssociationController extends AbstractController
                         if($form->isSubmitted() && $form->isValid()){
                                 // RECUPERATION DE L'IMAGE
                             $file = $form->get('logo')->getData();
+                            if($file){
                                 // GENERATION DU NOM DU FICHIER
                             $fileName = md5(uniqid()).'.'.$file->guessExtension();
 
@@ -84,6 +85,8 @@ class RegisterAssociationController extends AbstractController
                                 );
                                 // ENREGISTREMENT DU NOM DU FICHIER DANS L'ENTITE
                             $association->setLogo($fileName);
+                            }
+                            
                             $association = $form->getData();
                             $association->setUser($user);
                             // SET ROLE ADMIN

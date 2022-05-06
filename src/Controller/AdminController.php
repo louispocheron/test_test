@@ -13,6 +13,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use App\Service\PdfService;
+
 
 
 class AdminController extends AbstractController
@@ -169,6 +171,25 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_user', ['idAssoc' => $association, 'id' => $userId]);
     }
+    
+    #[Route('/admin/{idAssoc}/user/{id}/pdf/{actionId}', name: 'pdf_action')]
+    public function pdfAction(ActionRepository $actionRepo, $id, PdfService $pdfService, $actionId, Request $request, AssociationsRepository $repo)
+    {
 
+        $user = $this->getUser();
+
+        if($this->denyeAcess($request, $repo)){
+            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+            return $this->redirectToRoute('home');
+        }
+
+        $action = $actionRepo->find($actionId);
+        $html = $this->renderView('admin/pdf.html.twig', [
+            'action' => $action,
+            'user' => $user,
+        ]);
+        $pdfService->generatePdf($html);
+
+    }
 }
 

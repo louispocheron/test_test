@@ -3,3 +3,4 @@ AVANT DE PASSER A UI UX :
 
 -revoir taille height association/id
 -/recap mobile : a ameliorer : 1/2 gris bg color 
+-mettre logo par default assoc si pas de logo

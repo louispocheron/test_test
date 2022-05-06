@@ -3,6 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
 
 
  <div class="totalDiv">
@@ -23,6 +25,23 @@
     <h3 class="totalP"></h3>
         <div class="allDataUser">
             <div class="tableau">
+             <table class="table">
+                    <tr>
+                        <th data-column="association" data-order="desc" class="column" >Association</th>
+                        <th data-column="date" data-order="desc" class="column">Date</th>
+                        <th>Ville de départ</th>
+                        <th>Ville d'arrivée</th>    
+                        <th>Km</th>
+                        <th>Raisons</th>
+                        <th>Heure de départ</th>
+                        <th>Heure d'arrivée</th>
+                        <th>Durée</th>
+                        <th>Frais</th>
+                        <th>Don</th>
+                        <th>A payer</th>
+                        <th>Heures valorisées</th>
+                        <th>suprimer</th>
+                    </tr>
                 <div class="ajaxDivContent">
                     {% include "admin/action_user.html.twig" %} 
                 </div>

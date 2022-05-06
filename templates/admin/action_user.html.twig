@@ -1,18 +1,24 @@
 {% for action in userAction %}
-    <div class="ligne">
-        <a href=" {{path("remove_action", { 'id': user.id, 'idAssoc': association.id,'action' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
-
-                            <p>{{ action.association.name }}</p>
-                            <p>{{ action.user.username }}</p>
-                            <p>{{ action.villeDepart }}</p>
-                            <p>{{ action.villeArrive }}</p>
-                            <p>{{ action.km }}</p>
-                            <p>{{ action.raisons }}</p>
-                            <p>{{ action.heureDepart|date('H:i') }}</p>
-                            <p>{{ action.heureArrivee|date('H:i') }}</p>
-                            <p class="duree" data-duree="{{ action.duree }}">durée : {{ action.duree }}</p>
-                            <p>{{ action.frais }}</p>
-                            <p class="dateAdmin" data-date="{{action.date|date('d/m/Y')}}">{{ action.date|date('d/m/Y') }}</p>
-            </div>
-
+            {# <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
+            <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
+    <tr>
+        <td data-label="Association" class="td">{{ action.association.name }}</td> 
+        <td data-label="Date">{{ action.date|date('d/m/Y') }}</td>
+        <td data-label="Ville de départ">{{ action.villeDepart }}</td>
+        <td data-label="Ville d'arrivée">{{ action.villeArrive }}</td>
+        <td data-label="Km">{{ action.km }} km</td>
+        <td data-label="Raison">{{ action.raisons }}</td>
+        <td data-label="Heure de départ">{{ action.heureDepart|date('H:i') }}</td>
+        <td data-label="Heure d'arrivée">{{ action.heureArrivee|date('H:i') }}</td>
+        <td data-label="Durée">{{ action.duree }}</td>
+        <td data-label="Frais">{{ action.frais }}€</td>
+        <td data-label="Don">{{ action.dons|number_format(2) }}€</td>
+        <td data-label="A payer">{{ action.Apayer|number_format(2) }}€</td>
+        <td data-label="Heures valorisées" class="lastchild">{{ action.heuresValorisees|number_format(2)}}</td>
+        <td>
+            <a href="{{ path('pdf_action', { 'id' : user.id, 'actionId' : action.id, 'idAssoc' : association.id } )}}"><i class="fa-solid fa-file-pdf"></i></a>
+            <a href="{{ path('remove_action', { 'id' : user.id, 'idAssoc' : association.id, 'action': action.id } )}}"><i class="fa-solid fa-trash"></i></a>
+        </td>
+    </tr>
+    
 {% endfor %}
