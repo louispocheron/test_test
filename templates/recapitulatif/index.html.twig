@@ -67,8 +67,7 @@
             {% include "recapitulatif/action_recap.html.twig" %}
         </div>
     </table>
-</div>
-
+</div>  
 
 {% else %}
     <p>Aucune saisie</p>
@@ -81,7 +80,6 @@
 {% endblock %}
 
 {% block javascripts %}
-{# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     {{ encore_entry_script_tags('recap') }}
 

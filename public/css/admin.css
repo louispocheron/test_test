@@ -2,6 +2,12 @@ main{
     width: 100%;
     height: 100%;
 }
+.assoc-pres{
+    margin-top: 1rem;
+}
+.assoc-name{
+    font-size: 1.5rem;
+}
 .table{
     width: 100%;
     border-collapse: collapse;

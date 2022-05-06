@@ -48,7 +48,7 @@
             <div class="evenement1">
                 <div class="h1-row second">Valorisation des heures</div>
                 <div class="input-container">
-                    <div class="date-assoc">
+                    <div class="date-assoc first">
                         <div class='rowSaisie hours'>
                             <label class="label">Heure de départ</label>
                             {{form_widget(form.heureDepart , {'attr': {'class': 'heure'}}) }}
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-        <div class="evenement1 third">
+        <div class="evenement1 bottom-container">
             <div class="h1-row troisieme">Frais de déplacement</div>
             <div class="input-container">
                 <div class="date-assoc">
@@ -103,8 +103,8 @@
                 </div>
             </div>
         </div>
-        <div class="evenement1">
-            <div class="h1-row">Évènement</div>
+        <div class="evenement1 bottom-container">
+            <div class="h1-row">Totaux</div>
             <div class="input-container">
                 <div class="date-assoc">
                     <div class='rowSaisie'>
@@ -130,8 +130,8 @@
                 </div>
             </div> 
         </div>
-                <div class='rowSaisie'>
-                        {{form_widget(form.enregistrer , {'attr': {'class': 'btnSubmitSaisie'}}) }}
+                <div class='rowSaisie btn-container'>
+                        {{form_widget(form.enregistrer , {'attr': {'class': 'btn-basic'}}) }}
                 </div>
             </div>
         </div>
