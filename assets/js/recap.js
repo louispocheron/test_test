@@ -1,6 +1,3 @@
-// const { sort } = require("core-js/core/array");import 'flatpickr';
-// flatpickr for input with calss flatpickr
-
 
 
 // CREATION SELECT YEAR
@@ -44,11 +41,11 @@ for(let i=0; i<months.length; i++){
     selectMonth.add(monthOption);
 }
 
-
-
 let year = selectYear.options[selectYear.selectedIndex];
 btnSubmit.addEventListener('click', Ajaxyear);
 
+
+// APPEL AJAX POUR AFFICHER LES DONNEES
 function Ajaxyear(){
     let data = selectYear.options[selectYear.selectedIndex];
     let month = selectMonth.options[selectMonth.selectedIndex].value;
@@ -63,11 +60,26 @@ function Ajaxyear(){
     })
     .then(data => {
         console.log(data);
+
+        // ON APPEND LES DONNEES SI ON LES RECOIS
+        // SI ON LES RECOIS PAS ON APPEND UN MSG EN ROUGE A UNE DIV
         const content = document.querySelector('.trtest');
-        const content2 = document.querySelector('.ajaxDivContent');
+        const content2 = document.querySelector('.totalDiv');
         let dataUser = data.data.content;
+
+        // CAS OU ON RECOIS RIEN DU SERV
         if (dataUser == "\n") {
-            content2.innerHTML = "<h3 style='color: red'>aucune saisie trouvée pour l'année choisie</h3>";
+            let h3 = document.createElement('h3');
+            h3.innerHTML = "<h5 style='color: red; font-size: 13px;'> Aucun résultat trouvé pour cette recherche </h5>";
+            content2.appendChild(h3);
+
+            // TIMEOUT POUR SUPPR LE MESSAGE D ERREUR
+            setTimeout(()=>{
+                h3.remove();
+            }, 3000);
+
+
+        // CAS OU ON RECOIS DES DONNEES
         } else {
         content.innerHTML = dataUser;
         }
