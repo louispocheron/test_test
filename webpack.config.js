@@ -25,6 +25,7 @@ Encore
     .addEntry('saisie', './assets/js/saisie.js')
     .addEntry('search', './assets/js/search.js')
     .addEntry('admin', './assets/js/admin.js')
+    .addEntry('sort', './assets/js/sort.js')
     .addEntry('recap', './assets/js/recap.js')
 
     

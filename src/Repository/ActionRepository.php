@@ -132,7 +132,17 @@ class ActionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
+public function findByUserAndYearAndMonth($user, $year, $month){
+    return $this->createQueryBuilder('action')
+        ->andWhere('action.user = :user')
+        ->andWhere('action.date BETWEEN :date1 AND :date2')
+        ->setParameter('user', $user->getId())
+        ->setParameter('date1', $year.'-'.$month.'-01')
+        ->setParameter('date2', $year.'-'.$month.'-31')
+        ->getQuery()
+        ->getResult()
+    ;
+}
 
 
 

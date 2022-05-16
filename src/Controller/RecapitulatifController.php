@@ -31,23 +31,27 @@ class RecapitulatifController extends AbstractController
         $actions = $paginator->paginate(
             $actions,
             $request->query->getInt('page', 1),
-            5
+            100000000
         );
 
         $userId = $user->getId();
         $uniqueUser = $userRepo->find($userId);
 
         $year = $request->get("year");
-        $actionYear = $actionRepo->findByUserAndYear($uniqueUser, $year);
+        $month = $request->get("month");
+        $actionYearAndMonth = $actionRepo->findByUserAndYearAndMonth($uniqueUser, $year, $month);
 
+
+        // dd($actionMonth);
         
         if($request->get("ajax")){
             return new JsonResponse([
                 'content' => $this->renderView(
                    'recapitulatif/action_recap.html.twig', [
-                        'actions' => $actionYear,
+                        'actions' => $actionYearAndMonth,
                         'user' => $uniqueUser,
                         'year' => $year,
+                        'month' => $month,
                    ]
                )
            ]);

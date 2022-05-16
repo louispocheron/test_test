@@ -122,8 +122,9 @@ document.querySelector('.flatpickr').flatpickr({
         setTimeout(() => {
          donsInput.value = parseFloat(apayerValue) - parseFloat(donsInput.value);
         }, 1000);
-    });     
-        
+    });    
+
+
 
     // const form_association = document.querySelector('#form_association');
     // form_association.select2({
@@ -133,7 +134,6 @@ document.querySelector('.flatpickr').flatpickr({
     // });
 
         
-
 
 
 

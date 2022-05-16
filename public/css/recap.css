@@ -5,6 +5,7 @@ main{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    overflow-y: scroll;
 }
 .table{
     width: 100%;
@@ -28,8 +29,6 @@ main{
     background-color: #f2f2f2;
 }
 .table th{
-    padding-top: 12px;
-    padding-bottom: 12px;
     text-align: left;
     background-color: #152149;
     color: white;
