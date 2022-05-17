@@ -8,12 +8,12 @@
 
 
  <div class="totalDiv">
-
         <select class="selectYear" id="selectYear"> 
         </select>
-
 </div>
     
+    <h3 class="jsInject"></h3>
+
 
     {% if userAction == null %}
         <p>Aucune action n'a été effectuée par cet utilisateur</p>
@@ -22,7 +22,6 @@
         {# {{dump(userAction)}} #}
 
     <h4 class="upperTableau">détails des saisie de l'utilisateur {{ user.username }}</h4>
-    <h3> {{user.username}} a saisie<h3 class="totalP"></h3>au total</h3>
         <div class="allDataUser">
             <div class="tableau">
              <table class="table">

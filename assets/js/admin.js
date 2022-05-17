@@ -3,15 +3,21 @@ import { sumHours } from "./sumHours";
 
 //NOMBRE D'HEURE ET MINUTES PAR ADHERENT
 const duree = document.getElementsByClassName('duree');
-const totalDiv = document.getElementsByClassName('total');
-const totalP = document.querySelector('.totalP');
+const jsInject = document.querySelector('.jsInject')
+const totalDiv = document.querySelector('.totalDiv');
+
 
     // CALCUL DU TOTAL D'HEURES
-    // get data attributes 'data-hihi' from test
+
 
     const data = Array.from(duree).map(el => el.dataset.duree);
+    if(!data.length){
+        totalDiv.innerHTML = "n'a pas fait de saisie";
+    }else{
+        let htmlSum = sumHours(data);
+        jsInject.innerHTML = `${htmlSum} au total`;
+    }
     
-    sumHours(data, totalP);
 
 
 
