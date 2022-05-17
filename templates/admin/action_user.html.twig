@@ -10,7 +10,7 @@
         <td data-label="Raison">{{ action.raisons }}</td>
         <td data-label="Heure de départ">{{ action.heureDepart|date('H:i') }}</td>
         <td data-label="Heure d'arrivée">{{ action.heureArrivee|date('H:i') }}</td>
-        <td data-label="duree-admin" data-duree="{{ action.duree }}">{{ action.duree }}</td>
+        <td data-label="Durée" class="duree" data-duree="{{ action.duree }}">{{ action.duree }}</td>
         <td data-label="Frais">{{ action.frais }}€</td>
         <td data-label="Don">{{ action.dons|number_format(2) }}€</td>
         <td data-label="A payer">{{ action.Apayer|number_format(2) }}€</td>

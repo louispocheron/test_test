@@ -1,4 +1,4 @@
-export function sumHours(data, htmlElement){
+export function sumHours(data){
     
     // ON CHOPE LA PREMIERE PARTIE DE LA DUREE
     let hours = data.map(el => el.split('h')[0]);
@@ -23,8 +23,9 @@ export function sumHours(data, htmlElement){
         totalMinutes = `0${totalMinutes}`
     }
 
+    let total = `${totalHours}h${totalMinutes}`;
     // ON AFFICHE LE TOTAL
-    htmlElement.innerHTML = `vous avez saisie ${totalHours}h${totalMinutes} au total`;
-    console.log('all donex');
+    return total
+
     
 }

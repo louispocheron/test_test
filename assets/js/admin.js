@@ -2,7 +2,7 @@ import { sumHours } from "./sumHours";
 
 
 //NOMBRE D'HEURE ET MINUTES PAR ADHERENT
-const duree = document.getElementsByClassName('.duree-admin');
+const duree = document.getElementsByClassName('duree');
 const totalDiv = document.getElementsByClassName('total');
 const totalP = document.querySelector('.totalP');
 
@@ -10,7 +10,8 @@ const totalP = document.querySelector('.totalP');
     // get data attributes 'data-hihi' from test
 
     const data = Array.from(duree).map(el => el.dataset.duree);
-    console.log(data);
+    
+    sumHours(data, totalP);
 
 
 

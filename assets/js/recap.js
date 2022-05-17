@@ -92,13 +92,16 @@ function Ajaxyear(){
 
 let duree = document.querySelectorAll('.duree');
 const totalH1 = document.querySelector(".totalH1");
+console.log(totalH1);
 
 
 // ON CHOPE LE DATASET ET ON LOOP DEDANS AVEC map()
  const data = Array.from(duree).map(el => el.dataset.duree);
 
+// console.log(typeof sumHours(data));
+let htmlSum = sumHours(data);
+totalH1.innerHTML = `vous avez saisie ${htmlSum} au total`;
 
-window.onload = sumHours(data, totalH1);
 
 
 
