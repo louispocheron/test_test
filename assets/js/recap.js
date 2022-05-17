@@ -1,4 +1,4 @@
-
+import { sumHours } from "./sumHours";
 
 // CREATION SELECT YEAR
 const selectYear = document.getElementById('selectYear');
@@ -19,6 +19,7 @@ const trtest = document.querySelectorAll('.trtest');
 const btnSubmit = document.querySelector(".btn-submit")
 
 const months = [
+    {value: '', text: 'Tous'},
     {value: '01', text: 'Janvier'},
     {value: '02', text: 'Février'},
     {value: '03', text: 'Mars'},
@@ -78,7 +79,6 @@ function Ajaxyear(){
                 h3.remove();
             }, 3000);
 
-
         // CAS OU ON RECOIS DES DONNEES
         } else {
         content.innerHTML = dataUser;
@@ -88,6 +88,49 @@ function Ajaxyear(){
         console.log(err);
     })
 }
+
+
+let duree = document.querySelectorAll('.duree');
+const totalH1 = document.querySelector(".totalH1");
+
+
+// ON CHOPE LE DATASET ET ON LOOP DEDANS AVEC map()
+ const data = Array.from(duree).map(el => el.dataset.duree);
+
+
+window.onload = sumHours(data, totalH1);
+
+
+
+    
+
+    // // ON SPLIT LES HEURES ET LES MINUTES ET ON LES CHANGE EN NUMBER AVEC PARSEINT POUR LES ADDITIONNER
+    // let dureeHours = parseInt(duree.split('h')[0]);
+    // // ALL RESULTS OF DUREEHOURS IN A ARRAY
+    // let dureeHoursArray = dureeHours.toString().split('');
+
+    // let totalHours = dureeHours.reduce(function(val1, val2){
+    //     return val1 + val2;
+    // }, 0);
+
+    // console.log(totalHours);
+
+    // let dureeMinutes = parseInt(duree.split('h')[1]);
+
+    // SUM TOGETHER THE NUMBERS OF dureeHours AND dureeMinutes
+    
+    
+    
+
+    // newD = 
+    // console.log(duree);
+
+    // let dureeInt = parseInt(single.dataset.duree);
+    // console.log(dureeInt);
+    // add the hours and minutes together
+    // dureeInt.forEach(singleInt => {
+    //     singleInt 
+    // })
 
 // console.log('newfun');
 

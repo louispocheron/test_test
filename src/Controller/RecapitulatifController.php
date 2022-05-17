@@ -39,7 +39,13 @@ class RecapitulatifController extends AbstractController
 
         $year = $request->get("year");
         $month = $request->get("month");
-        $actionYearAndMonth = $actionRepo->findByUserAndYearAndMonth($uniqueUser, $year, $month);
+
+        if($month == ''){
+            $actionYearAndMonth = $actionRepo->findByUserAndYear($uniqueUser, $year);
+        }
+        else{
+            $actionYearAndMonth = $actionRepo->findByUserAndYearAndMonth($uniqueUser, $year, $month);
+        }
 
 
         // dd($actionMonth);
