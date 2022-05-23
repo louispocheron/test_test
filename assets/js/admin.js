@@ -18,10 +18,6 @@ const totalDiv = document.querySelector('.totalDiv');
         jsInject.innerHTML = `${htmlSum} au total`;
     }
     
-
-
-
-
     const selectYear = document.getElementById('selectYear');
     let currentYear = new Date().getFullYear();    
     let earliestYear = 1965;     

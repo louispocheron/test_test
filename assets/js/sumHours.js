@@ -23,7 +23,7 @@ export function sumHours(data){
         totalMinutes = `0${totalMinutes}`
     }
 
-    let total = `${totalHours}h${totalMinutes}`;
+    let total = `${totalHours}h${totalMinutes}`
     // ON AFFICHE LE TOTAL
     return total
 

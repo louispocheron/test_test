@@ -1,4 +1,3 @@
-
 {% for action in actions %}
 
     <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'" class="trtest">

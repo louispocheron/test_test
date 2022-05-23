@@ -1,5 +1,4 @@
 import { sumHours } from "./sumHours";
-
 // CREATION SELECT YEAR
 const selectYear = document.getElementById('selectYear');
 let currentYear = new Date().getFullYear();    
@@ -42,7 +41,6 @@ for(let i=0; i<months.length; i++){
     selectMonth.add(monthOption);
 }
 
-let year = selectYear.options[selectYear.selectedIndex];
 btnSubmit.addEventListener('click', Ajaxyear);
 
 
@@ -60,13 +58,12 @@ function Ajaxyear(){
         'month': month
     })
     .then(data => {
-        console.log(data);
-
         // ON APPEND LES DONNEES SI ON LES RECOIS
         // SI ON LES RECOIS PAS ON APPEND UN MSG EN ROUGE A UNE DIV
-        const content = document.querySelector('.trtest');
+        const content = document.querySelectorAll('.trtest');
         const content2 = document.querySelector('.totalDiv');
         let dataUser = data.data.content;
+        console.log(dataUser);
 
         // CAS OU ON RECOIS RIEN DU SERV
         if (dataUser == "\n") {
@@ -81,7 +78,11 @@ function Ajaxyear(){
 
         // CAS OU ON RECOIS DES DONNEES
         } else {
-        content.innerHTML = dataUser;
+        // content.forEach(el => {
+        //     el.remove();
+        // });
+        const ajaxDivContent = document.querySelector('.ajaxDivContent');
+        ajaxDivContent.innerHTML = dataUser;
         }
     })
     .catch(err => {
@@ -92,7 +93,7 @@ function Ajaxyear(){
 
 let duree = document.querySelectorAll('.duree');
 const totalH1 = document.querySelector(".totalH1");
-console.log(totalH1);
+
 
 
 // ON CHOPE LE DATASET ET ON LOOP DEDANS AVEC map()
