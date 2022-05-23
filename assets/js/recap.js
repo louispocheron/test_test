@@ -14,7 +14,8 @@ while (currentYear >= earliestYear) {
 
 // CREATION SELECT MONTH
 const selectMonth = document.getElementById('selectMonth');
-const trtest = document.querySelectorAll('.trtest');
+const table = document.querySelector('.table');
+console.log(table);
 const btnSubmit = document.querySelector(".btn-submit")
 
 const months = [
@@ -60,14 +61,14 @@ function Ajaxyear(){
     .then(data => {
         // ON APPEND LES DONNEES SI ON LES RECOIS
         // SI ON LES RECOIS PAS ON APPEND UN MSG EN ROUGE A UNE DIV
+        const trContainer = document.querySelector('.ajaxDivContent');
         const content = document.querySelectorAll('.trtest');
         const content2 = document.querySelector('.totalDiv');
         let dataUser = data.data.content;
-        console.log(dataUser);
 
         // CAS OU ON RECOIS RIEN DU SERV
-        if (dataUser == "\n") {
-            let h3 = document.createElement('h3');
+        if (dataUser == "") {
+            const h3 = document.createElement('h3');
             h3.innerHTML = "<h5 style='color: red; font-size: 13px;'> Aucun résultat trouvé pour cette recherche </h5>";
             content2.appendChild(h3);
 
@@ -78,12 +79,15 @@ function Ajaxyear(){
 
         // CAS OU ON RECOIS DES DONNEES
         } else {
-        // content.forEach(el => {
-        //     el.remove();
-        // });
-        const ajaxDivContent = document.querySelector('.ajaxDivContent');
-        ajaxDivContent.innerHTML = dataUser;
-        }
+            trContainer.innerHTML = dataUser;
+            const tr = document.querySelectorAll('.duree');
+            console.log(tr);
+            const trData = Array.from(tr).map(el => el.dataset.duree)
+            let htmlAjaxSum = sumHours(trData);
+            totalH1.innerHTML = `vous avez saisie ${htmlAjaxSum
+            } au total`;
+
+    }
     })
     .catch(err => {
         console.log(err);

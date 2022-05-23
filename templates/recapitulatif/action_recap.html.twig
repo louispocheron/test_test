@@ -1,5 +1,4 @@
 {% for action in actions %}
-
     <tr onclick="window.location='{{ path("recapitulatif_pdf", {"id": action.id, "userId": user.id } ) }}'" class="trtest">
             {# <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
             <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
@@ -17,5 +16,4 @@
         <td data-label="A payer">{{ action.Apayer|number_format(2) }}€</td>
         <td data-label="Heures valorisées" class="lastchild">{{ action.heuresValorisees|number_format(2)}}</td>
     </tr>
-
 {% endfor %}

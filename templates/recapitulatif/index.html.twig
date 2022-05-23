@@ -4,6 +4,7 @@
 
 {% block body %}
  <link href="{{ asset('css/recap.css') }}" rel="stylesheet">
+
  
 
 
@@ -52,7 +53,8 @@
         <input type="submit" class="btn-submit" value="rechercher">
     </div>
     <table class="sortable table">
-        <tr>
+        <thead>
+
             <th data-column="association" data-order="desc" class="no-sort column" >Association</th>
             <th data-column="date" data-order="desc" class="column">Date</th>
             <th>Ville de départ</th>
@@ -66,10 +68,10 @@
             <th>Don</th>
             <th>A payer</th>
             <th>Heures valorisées</th>
-        </tr>
-            <div class="ajaxDivContent">
+        </thead>
+            <tbody class="ajaxDivContent">
                 {% include "recapitulatif/action_recap.html.twig" %}
-            </div>
+            </tbody>
     </table>
 </div>  
 
