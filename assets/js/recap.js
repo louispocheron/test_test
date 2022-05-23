@@ -72,6 +72,8 @@ function Ajaxyear(){
             h3.innerHTML = "<h5 style='color: red; font-size: 13px;'> Aucun résultat trouvé pour cette recherche </h5>";
             content2.appendChild(h3);
 
+
+
             // TIMEOUT POUR SUPPR LE MESSAGE D ERREUR
             setTimeout(()=>{
                 h3.remove();
@@ -79,19 +81,30 @@ function Ajaxyear(){
 
         // CAS OU ON RECOIS DES DONNEES
         } else {
+            let year = selectYear.options[selectYear.selectedIndex].value;
             trContainer.innerHTML = dataUser;
             const tr = document.querySelectorAll('.duree');
             console.log(tr);
             const trData = Array.from(tr).map(el => el.dataset.duree)
             let htmlAjaxSum = sumHours(trData);
-            totalH1.innerHTML = `vous avez saisie ${htmlAjaxSum
-            } au total`;
+           
+            if(month == ''){
+                const h4 = document.createElement('h4');
+                h4.innerHTML = `<h5 style='color: green; font-size: 13px;'> Total des heures pour l'année ${year}: ${htmlAjaxSum} </h5>`;
+                content2.appendChild(h4);
+            }
+            else{
+                console.log(month);
+                const h4 = document.createElement('h4');
+                h4.innerHTML = `<h5 style='color: green; font-size: 13px;'> Total des heures pour le ${month}/${year}: ${htmlAjaxSum} </h5>`;
+                content2.appendChild(h4);
+            }
 
-    }
+        }
     })
     .catch(err => {
         console.log(err);
-    })
+    })  
 }
 
 

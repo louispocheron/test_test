@@ -5,6 +5,7 @@
 {% block body %}
  <link href="{{ asset('css/recap.css') }}" rel="stylesheet">
 
+
  
 
 
@@ -54,20 +55,22 @@
     </div>
     <table class="sortable table">
         <thead>
-
-            <th data-column="association" data-order="desc" class="no-sort column" >Association</th>
-            <th data-column="date" data-order="desc" class="column">Date</th>
-            <th>Ville de départ</th>
-            <th>Ville d'arrivée</th>    
-            <th>Km</th>
-            <th>Raisons</th>
-            <th>Heure de départ</th>
-            <th>Heure d'arrivée</th>
-            <th>Durée</th>
-            <th>Frais</th>
-            <th>Don</th>
-            <th>A payer</th>
-            <th>Heures valorisées</th>
+            <tr>
+                <th data-column="association" data-order="desc" class="no-sort column" >Association</th>
+                <th data-column="date" data-order="desc" class="column">Date</th>
+                <th>Ville de départ</th>
+                <th>Ville d'arrivée</th>    
+                <th>Km</th>
+                <th>Raisons</th>
+                <th>Heure de départ</th>
+                <th>Heure d'arrivée</th>
+                <th>Durée</th>
+                <th>Frais</th>
+                <th>Don</th>
+                <th>A payer</th>
+                <th>Heures valorisées</th>
+                <th>Supprimer</th>
+            </tr>
         </thead>
             <tbody class="ajaxDivContent">
                 {% include "recapitulatif/action_recap.html.twig" %}
@@ -86,7 +89,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://tofsjonas.github.io/sortable/sortable.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     {{ encore_entry_script_tags('recap') }}
     {{ encore_entry_script_tags('sort') }}

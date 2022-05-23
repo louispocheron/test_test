@@ -7,7 +7,7 @@ main{
     flex-direction: column;
     overflow-y: scroll;
 }
-.table{
+/* .table{
     width: 100%;
     border-collapse: collapse;
     display: flex;
@@ -35,13 +35,15 @@ main{
     font-size: 15px;
     font-weight: 400;
 }
-.table tr:hover{
-    background-color: #ddd;
+*/
+.table th:hover{
+    background-color: #152149;
     cursor: pointer;
 }
+/* 
 .separation-tr{
     display: none;
-}
+} */
 .test-salut{
     display: flex;
     justify-content: center;
@@ -53,7 +55,7 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
 }
 .pagination{
     display: flex;
