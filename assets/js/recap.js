@@ -116,7 +116,7 @@ const totalH1 = document.querySelector(".totalH1");
 // ON CHOPE LE DATASET ET ON LOOP DEDANS AVEC map()
  const data = Array.from(duree).map(el => el.dataset.duree);
 
-// console.log(typeof sumHours(data));
+
 let htmlSum = sumHours(data);
 totalH1.innerHTML = `vous avez saisie ${htmlSum} au total`;
 
