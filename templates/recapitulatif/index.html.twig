@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RecapitulatifController!{% endblock %}
+{% block title %}recapitulatif{% endblock %}
 
 {% block body %}
  <link href="{{ asset('css/recap.css') }}" rel="stylesheet">
@@ -44,15 +44,20 @@
         {% endfor %}
 </div> #}
 
-
+<h2>Récapitulatif de vos saisie</h2>
 {% if (actions.getTotalItemCount != 0) and (app.user == true) %}
- <h2> Vous avez fait {{ actions.getTotalItemCount }} saisies </h2>
- <h1 class="totalH1"></h1>
+
+
+
 <div class="content-container">
-    <div class="totalDiv">
-        <select class="selectYear" id="selectYear"></select>
-        <select class="selectMonth" id="selectMonth"></select>
-        <input type="submit" class="btn-submit" value="rechercher">
+    <div class="content-info">
+        <p> Vous avez fait {{ actions.getTotalItemCount }} saisies </p>
+        <p class="totalH1"></p>
+        <div class="totalDiv">
+            <select class="selectYear" id="selectYear"></select>
+            <select class="selectMonth" id="selectMonth"></select>
+            <input type="submit" class="btn-submit" value="rechercher">
+        </div>
     </div>
     <table class="sortable table">
         <thead>
@@ -80,7 +85,7 @@
 </div>  
 
 {% else %}
-    <p>Aucune saisie</p>
+    <p>Vous n'avez pas encore réalisé de saisie pour une association</p>
 {% endif %}
 
 <div class="">

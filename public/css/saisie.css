@@ -180,4 +180,7 @@ height: 100%;
     .date-assoc{
         width: 100%;
     }
+    .h1-row{
+        height: 4rem;
+    }
 }

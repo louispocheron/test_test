@@ -50,6 +50,64 @@ main{
     align-items: center;
     flex-direction: row;
 }
+.content-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all 0.5s ease-in-out;
+    color: #2E2E2E;
+    text-decoration: none;
+    background-color: #fff;
+}
+.totalDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.selectMonth{
+  margin: 1rem;
+}
+.btn-submit{
+  text-align: center;
+  border-radius: 20px;
+	border: 2px solid #fff;
+	background-color: #152149;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;  
+    margin: 1rem;
+    width: 30%;
+    height: 2.7rem;
+    text-decoration: none;
+}
+.btn-submit:hover{
+  background-color: white;
+    color: #152149;
+    border: 1px solid #152149;
+    font-weight: 600;
+    cursor: pointer;
+}
+select{
+  width: 100%;
+  height: 2.7rem;
+  border-radius: 5px;
+  border: 1px solid #2E2E2E;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2E2E2E;
+}
 .content-container{
     display: flex;
     justify-content: center;
@@ -109,22 +167,21 @@ main{
   font-weight: normal;
   text-align: center;
 }
-/*  
-.sortable th:hover {
-  color: #000;
-}
 
-.sortable th:hover::after {
+
+/* .sortable th:hover::after {
   color: inherit;
   font-size: 1.2em;
   content: ' \025B8';
-}
+} */
 
-.sortable th::after {
+/* .sortable th::after {
   font-size: 1.2em;
   color: transparent;
   content: ' \025B8';
-}
+} */
+
+
 
 .sortable th.dir-d {
   color: #000;
@@ -142,7 +199,18 @@ main{
 .sortable th.dir-u::after {
   color: inherit;
   content: ' \025B4';
-} */
+}
+.last-td-poubelle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.poubelle{
+    color: red;
+}
+.poubelle:hover{
+    color: #152149
+}
 
 
 @media only screen and (max-width: 964px){
@@ -180,4 +248,12 @@ main{
         position: absolute;
         top: 4rem;
     }
+    .totalDiv{
+      flex-direction: column;
+      padding: 0;
+    }
+    .btn-submit{
+      width: 100%;
+    }
+
 }
