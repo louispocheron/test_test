@@ -1,4 +1,6 @@
 import { sumHours } from "./sumHours";
+import { sumEuros } from "./sumEuros";
+
 // CREATION SELECT YEAR
 const selectYear = document.getElementById('selectYear');
 let currentYear = new Date().getFullYear();    
@@ -81,6 +83,7 @@ function Ajaxyear(){
 
         // CAS OU ON RECOIS DES DONNEES
         } else {
+            const contentInfo = document.querySelector('.content-info');
             let year = selectYear.options[selectYear.selectedIndex].value;
             trContainer.innerHTML = dataUser;
             const tr = document.querySelectorAll('.duree');
@@ -91,13 +94,19 @@ function Ajaxyear(){
             if(month == ''){
                 const h4 = document.createElement('h4');
                 h4.innerHTML = `<h5 style='color: green; font-size: 13px;'> Total des heures pour l'année ${year}: ${htmlAjaxSum} </h5>`;
-                content2.appendChild(h4);
+                contentInfo.appendChild(h4);
+                // setTimeout(()=>{
+                //     h4.remove();
+                // }, 3000);
             }
             else{
                 console.log(month);
                 const h4 = document.createElement('h4');
-                h4.innerHTML = `<h5 style='color: green; font-size: 13px;'> Total des heures pour le ${month}/${year}: ${htmlAjaxSum} </h5>`;
-                content2.appendChild(h4);
+                h4.innerHTML = `<h5 style='color: green; font-size: 17px; margin: 0;'> Total des heures pour le ${month}/${year}: ${htmlAjaxSum} </h5>`;
+                contentInfo.appendChild(h4);
+                // setTimeout(()=>{
+                //     h4.remove();
+                // }, 3000);
             }
 
         }
@@ -118,9 +127,18 @@ const totalH1 = document.querySelector(".totalH1");
 
 
 let htmlSum = sumHours(data);
-totalH1.innerHTML = `vous avez saisie ${htmlSum} au total`;
+totalH1.innerHTML = `total : ${htmlSum} `;
 
 
+
+
+const payerTd = document.querySelectorAll('.payerTd');
+const dataPayer = Array.from(payerTd).map(el => el.dataset.payer);
+
+let aPayerSum = sumEuros(dataPayer);
+totalH1.innerHTML = `a payer : ${aPayerSum} €`;
+
+// console.log(dataPayer);
 
 
     

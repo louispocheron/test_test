@@ -1,6 +1,21 @@
 AVANT DE PASSER A UI UX : 
     mailer pour changer mot de passe marche pas mailHOG
 
--revoir taille height association/id
--/recap mobile : a ameliorer : 1/2 gris bg color 
--mettre logo par default assoc si pas de logo
+total : 
+heure : fait / heure :: FAIT
+dons / e 
+a payer / e 
+heures valorisées/ e 
+
+
+pdf : tableau pareil que recap avec totaux 
+
+saisie : encadré gris avec pourcentage du groupe choisi
+
+enlever contour saisie et mettre border radius 5px 
+don : beug négatif a faire !! nb apres virgule important
+
+
+enregister une assoc : 
+    -input discipline puis rechercher dans la page toute les assoc 
+    -input region et departement

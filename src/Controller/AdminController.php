@@ -52,7 +52,7 @@ class AdminController extends AbstractController
             $users[] = $user;
         }
         $users = $paginator->paginate(
-            $users,
+            $users ?? [],
             $request->query->getInt('page', 1),
             8
         );

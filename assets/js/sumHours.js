@@ -14,6 +14,7 @@ export function sumHours(data){
     minutes = minutes.map(el => parseInt(el));
     let totalMinutes = minutes.reduce((a, b) => a + b);
 
+
     // SI TOTAL MIN > 60 ON FAIT LE CALCUL
     if(totalMinutes > 59){
         totalHours ++;

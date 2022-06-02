@@ -16,6 +16,15 @@ main{
     justify-content: center;
     padding: 1rem;
 }
+.assoc-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.assoc-logo{
+    width: 5rem;
+}
 .table td, .table th{
     border: 1px solid #ddd;
     padding: 8px;

@@ -7,21 +7,33 @@
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
 
-<h3 class="assoc-pres"> Liste des adhérents de l'association : </h3>
-<h3 class="assoc-name"> {{association.name}} </h3>
+<h3 class="assoc-pres">administration de l'association :</h3>
+<div class="assoc-container">
+    <h3 class="assoc-name">{{association.name}}</h3>
+    <img class="assoc-logo" src="{{ asset('/build/logo_directory/' ~ association.logo) }}" alt="logo de l'association">
+</div>
+
 <table class="table">
         <tr>
             <th>Utilisateur</th>
             <th>Email</th>
             <th>Supprimer</th>
         </tr>
-{% for user in users %}
-        <tr onclick="window.location='{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}'">
-            <td>{{ user.username }}</td>
-            <td>{{ user.email }}</td>
-            <td><a href="{{ path('remove_user', {'idAssoc': association.id, 'id': user.id, } )}}"><i class="fa-solid fa-trash"></i></a></td>
-        </tr>
-{% endfor %} 
+{% if users is empty %}
+    <tr>
+        <td>Aucun utilisateur</td>
+        <td></td>
+        <td></td>
+    </tr>
+{% else %}
+    {% for user in users %}
+            <tr onclick="window.location='{{path('admin_user', {'idAssoc': association.id, 'id': user.id, } )}}'">
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td><a href="{{ path('remove_user', {'idAssoc': association.id, 'id': user.id, } )}}"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+    {% endfor %} 
+{% endif %}
 
 </table>
 {{ knp_pagination_render(users) }}

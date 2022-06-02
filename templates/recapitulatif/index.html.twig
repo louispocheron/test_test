@@ -51,15 +51,18 @@
 
 <div class="content-container">
     <div class="content-info">
-        <p> Vous avez fait {{ actions.getTotalItemCount }} saisies </p>
-        <p class="totalH1"></p>
+        <h3> Rechercher dans mes saisies </h3>
+       
         <div class="totalDiv">
             <select class="selectYear" id="selectYear"></select>
             <select class="selectMonth" id="selectMonth"></select>
             <input type="submit" class="btn-submit" value="rechercher">
         </div>
+        {# <p class="flex-start"> Vous avez fait {{ actions.getTotalItemCount }} saisies </p> #}
+         <p class="totalH1 flex-start"></p>
     </div>
     <table class="sortable table">
+        
         <thead>
             <tr class="tr-first">
                 <th data-column="association" data-order="desc" class="no-sort column" >Association</th>
