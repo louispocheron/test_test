@@ -160,6 +160,14 @@ public function findByUserAndYearAndMonth($user, $year, $month){
         ;
     }
 
+    public function findAllActionByUser($user){
+        return $this->createQueryBuilder('action')
+            ->andWhere('action.user = :user')
+            ->setParameter('user', $user->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
     /*
     public function findOneBySomeField($value): ?Action

@@ -1,4 +1,4 @@
-export function sumEuros(data){
+export function sumPay(data){
 
     // on calcul le total des euros
     let euros = data.map(el => el.split('.')[0]);
@@ -18,15 +18,16 @@ export function sumEuros(data){
     // console.log(totalCents);
 
     // on ajoute les centimes au total des euros
-   while(totalCents > 99){
+   while(totalCents > 9){
         totalEuros ++;
-        totalCents = totalCents - 100;
+        totalCents = totalCents - 10;
     }
 
     let totalSum = `${totalEuros}.${totalCents}`
     if(totalCents == 0){
         totalSum = `${totalEuros}`
     }
+    
 
     return totalSum;
     

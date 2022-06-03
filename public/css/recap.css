@@ -82,9 +82,7 @@ main{
   flex-direction: row;
   width: 100%;
 }
-.selectMonth{
-  margin: 1rem;
-}
+
 .btn-submit{
   text-align: center;
   border-radius: 20px;
@@ -96,10 +94,16 @@ main{
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;  
-    margin: 1rem;
+    /* margin: 1rem; */
     width: 30%;
     height: 2.7rem;
     text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    align-self: center;
+    margin-top: 1rem;
+}
+.select-container{
+  margin: 1rem;
 }
 .btn-submit:hover{
   background-color: white;

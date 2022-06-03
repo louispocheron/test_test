@@ -3,9 +3,11 @@ AVANT DE PASSER A UI UX :
 
 total : 
 heure : fait / heure :: FAIT
-dons / e 
-a payer / e 
-heures valorisées/ e 
+dons / e  :: FAIT 
+a payer / e :: FAIT
+heures valorisées/ e  :: FAIT 
+
+MANQUE A APPEND LE TOUT EN HTML !! 
 
 
 pdf : tableau pareil que recap avec totaux 

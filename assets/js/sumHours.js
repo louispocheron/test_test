@@ -16,7 +16,7 @@ export function sumHours(data){
 
 
     // SI TOTAL MIN > 60 ON FAIT LE CALCUL
-    if(totalMinutes > 59){
+    while(totalMinutes > 59){
         totalHours ++;
         totalMinutes = totalMinutes - 60;
     }
