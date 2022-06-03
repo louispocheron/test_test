@@ -82,7 +82,39 @@ main{
   flex-direction: row;
   width: 100%;
 }
-
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.sum-js{
+  width: 100%;
+}
+.totalDiv{
+  padding: 0;
+}
+.total-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 30%;
+}
+.total-paragraphe{
+  text-align: center;
+  font-size: 1.1em;
+  margin: 5px;
+  justify-self: flex-start;
+}
+.total-container p{
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
 .btn-submit{
   text-align: center;
   border-radius: 20px;
@@ -269,5 +301,16 @@ select{
     .btn-submit{
       width: 100%;
     }
-
+    .main-container{
+      flex-direction: column;
+    }
+    .total-container{
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    .total-container p{
+      margin-top: 1.2rem;
+      width: 100%;
+    }
 }

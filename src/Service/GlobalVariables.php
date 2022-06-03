@@ -12,7 +12,8 @@ class GlobalVariables{
     
     public function lastAssoc($user)
     {
-        $associations = $this->repo->findAssociation($user);
+        $associations = $this->repo->findLatestAssociationByUser($user);
+        // dd($associations);
         $assoc = array_pop($associations);
         return $assoc; 
     }

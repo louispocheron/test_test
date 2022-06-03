@@ -1,34 +1,37 @@
 export function sumPay(data){
 
-    // on calcul le total des euros
-    let euros = data.map(el => el.split('.')[0]);
-    euros = euros.map(el => parseInt(el));
-    let totalEuros = euros.reduce((a, b) => a + b);
- 
-    // puis le total des centimes
-
-    // check if there is a cent
-    let cents = data.map(el => el.split('.')[1]);
+    if(data.length > 1){
+        // on calcul le total des euros
+        let euros = data.map(el => el.split('.')[0]);
+        euros = euros.map(el => parseInt(el));
+        let totalEuros = euros.reduce((a, b) => a + b);
     
-    // On enleve les valeurs NaN
-    cents = cents.filter(el => !isNaN(el));
+        // puis le total des centimes
 
-    cents = cents.map(el => parseInt(el));
-    let totalCents = cents.reduce((a, b) => a + b);
-    // console.log(totalCents);
+        // check if there is a cent
+        let cents = data.map(el => el.split('.')[1]);
+        
+        // On enleve les valeurs NaN
+        cents = cents.filter(el => !isNaN(el));
 
-    // on ajoute les centimes au total des euros
-   while(totalCents > 9){
-        totalEuros ++;
-        totalCents = totalCents - 10;
+        cents = cents.map(el => parseInt(el));
+        let totalCents = cents.reduce((a, b) => a + b);
+        // console.log(totalCents);
+
+        // on ajoute les centimes au total des euros
+    while(totalCents > 9){
+            totalEuros ++;
+            totalCents = totalCents - 10;
+        }
+
+        let totalSum = `${totalEuros}.${totalCents}`
+        if(totalCents == 0){
+            totalSum = `${totalEuros}`
+        }
+
+        return totalSum;
     }
-
-    let totalSum = `${totalEuros}.${totalCents}`
-    if(totalCents == 0){
-        totalSum = `${totalEuros}`
+    else{
+        return data[0];
     }
-    
-
-    return totalSum;
-    
 }

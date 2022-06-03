@@ -17,6 +17,7 @@ const duree = document.querySelectorAll('.duree');
 const payerTd = document.querySelectorAll('.payerTd');
 const donTd = document.querySelectorAll('.donTd');
 const valoriseesTd = document.querySelectorAll('.valoriseesTd');
+const alertMessage = document.querySelector('.alert-message');
 
 
 
@@ -44,7 +45,6 @@ while (currentYear >= earliestYear) {
 // CREATION SELECT MONTH
 const selectMonth = document.getElementById('selectMonth');
 const table = document.querySelector('.table');
-console.log(table);
 const btnSubmit = document.querySelector(".btn-submit")
 
 const months = [
@@ -77,7 +77,6 @@ btnSubmit.addEventListener('click', Ajaxyear);
 // APPEL AJAX POUR AFFICHER LES DONNEES
 function Ajaxyear(){
     let data = selectYear.options[selectYear.selectedIndex];
-    console.log(data.value);
     let month = selectMonth.options[selectMonth.selectedIndex].value;
     let queryString = new URLSearchParams();
     queryString.append('year', data.value);
@@ -98,13 +97,16 @@ function Ajaxyear(){
 
         // CAS OU ON RECOIS RIEN DU SERV
         if (dataUser == "") {
-            const h3 = document.createElement('h3');
-            totalH1.innerHTML = "<h5 style='color: red; font-size: 13px;'> Aucun résultat trouvé pour cette recherche </h5>";
-            content2.appendChild(h3);
+            
+            // ON RETIRE LE CONTENU DE LA DIV SI ON L'A DEJA AJOUTEE
+            [totalParagraph, dureeP, payerP, donP, valoriseeP].forEach(el => {
+                el.textContent = "";
+            });
 
+            alertMessage.innerHTML = '<p style="color:red; text-align: center;">aucune donnée trouvée pour cette recherche</p>';
             // TIMEOUT POUR SUPPR LE MESSAGE D ERREUR
             setTimeout(()=>{
-                h3.remove();
+                alertMessage.remove();
             }, 3000);
 
         // CAS OU ON RECOIS DES DONNEES
@@ -112,40 +114,60 @@ function Ajaxyear(){
             const contentInfo = document.querySelector('.content-info');
             let year = selectYear.options[selectYear.selectedIndex].value;
             trContainer.innerHTML = dataUser;
+
             const tr = document.querySelectorAll('.duree');
             const trData = Array.from(tr).map(el => el.dataset.duree)
+            let totalDuree = sumHours(trData);
+            dureeP.innerHTML = `Durée :<span style="
+            color:#097969;
+            font-weight: bold;
+            "> ${totalDuree}</span>`;
 
             // APPEL DES FONCTIONS POUR CALCULER LES DONNEES
             const payerTdAjax = document.querySelectorAll('.payerTd');
             const trpayer = Array.from(payerTdAjax).map(el => el.dataset.payer)
             let aPayerSumAjax = sumPay(trpayer);
-            payerP.innerHTML = `A payer :<span>${aPayerSumAjax}</span> €`;
+            payerP.innerHTML = `A payer :<span style="
+            color:#097969;
+            font-weight: bold;
+            "> ${aPayerSumAjax}€</span>`;
 
 
             const donTdAjax = document.querySelectorAll('.donTd');
             const trdon = Array.from(donTdAjax).map(el => el.dataset.don)
             let donSumAjax = sumEuros(trdon);
-            donP.innerHTML = `Don :<span>${donSumAjax}</span> €`;
+            donP.innerHTML = `Don :<span style="
+            color:#097969;
+            font-weight: bold;
+            "> ${donSumAjax}€</span>`;
 
 
             const valoriseesTdAjax = document.querySelectorAll('.valoriseesTd');
             const trvalorisees = Array.from(valoriseesTdAjax).map(el => el.dataset.valorisees)
             let valoriseesSumAjax = sumEuros(trvalorisees);
-            valoriseeP.innerHTML = `Valorisees :<span>${valoriseesSumAjax}</span> €`;
-
-      
-            let htmlAjaxSum = sumHours(trData);
+            valoriseeP.innerHTML = `Valorisees :<span style="
+            color:#097969;
+            font-weight: bold;
+            ">${valoriseesSumAjax}€</span> `;
            
             if(month == ''){
-                totalParagraph.innerHTML = `Total pour l'année ${year}:`
+                
+                totalParagraph.innerHTML = `Total pour l'année <span style="
+            color:#152149;
+            font-weight: bold;
+            ">${year}</span>:`
             }
             if(data.value == 'rien' && month == ''){
+
                 totalParagraph.innerHTML = "Total de toutes vos saisies :";
+
             }
             if(data.value != 'rien' && month != ''){
 
-                totalParagraph.innerHTML = `Total pour le ${month}/${year}:`;
-
+                totalParagraph.innerHTML = `Total pour le <span style="
+            color:#152149;
+            font-weight: bold;
+            ">${month}/${year}</span>:`;
             }
 
         }
@@ -162,23 +184,34 @@ function Ajaxyear(){
 // CALCUL AVEC LA FONCTION QU'ON IMPORTE LIGNE 1 ET APPEND POUR LA DUREE 
 const data = Array.from(duree).map(el => el.dataset.duree);
 let dureeAjax = sumHours(data);
-dureeP.innerHTML = `Durée : ${dureeAjax}`;
-
+dureeP.innerHTML = `Durée : <span style="
+            color:#097969;
+            font-weight: bold;
+            ">${dureeAjax}</span>`;
 
 // CALCUL AVEC LA FONCTION QU'ON IMPORTE LIGNE 3 ET APPEND POUR LE REMBOURSEMENT
 const dataPayer = Array.from(payerTd).map(el => el.dataset.payer);
 let aPayerSum = sumPay(dataPayer);
-payerP.innerHTML = `A payer : ${aPayerSum} €`;
+payerP.innerHTML = `A payer :<span style="
+            color:#097969;
+            font-weight: bold;
+            ">${aPayerSum}€</span>`;
 
 // CALCUL AVEC LA FONCTION QU'ON IMPORTE LIGNE 2 ET APPEND POUR LE DON
 const dataDon = Array.from(donTd).map(el => el.dataset.don);
 let donSum = sumEuros(dataDon);
-donP.innerHTML = `Don : ${donSum} €`;
+donP.innerHTML = `Don :<span style="
+            color:#097969;
+            font-weight: bold;
+            "> ${donSum}€</span>`;
 
 // CALCUL AVEC LA FONCTION QU'ON IMPORTE LIGNE 2 ET APPEND POUR LA VALORISATION
 const dataValorisees = Array.from(valoriseesTd).map(el => el.dataset.valorisees);
 let valoriseesSum = sumEuros(dataValorisees);
-valoriseeP.innerHTML = `Valorisation : ${valoriseesSum} €`;
+valoriseeP.innerHTML = `Valorisation : <span style="
+            color:#097969;
+            font-weight: bold;
+            ">${valoriseesSum}€</span>`;
 
     // // ON SPLIT LES HEURES ET LES MINUTES ET ON LES CHANGE EN NUMBER AVEC PARSEINT POUR LES ADDITIONNER
     // let dureeHours = parseInt(duree.split('h')[0]);

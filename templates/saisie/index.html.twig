@@ -10,7 +10,7 @@
 {% if app.user == true %}
     {{form_start(form)}}
         <div class="form-saisie">
-            <div class="evenement1">
+            <div class="evenement1 firstable">
                 <div class="h1-row">Évènement</div>
                 {# <div class="rowSaisie-container"> #}
                 <div class="input-container">
@@ -45,7 +45,7 @@
                 </div>
                 {# </div> #}
             </div>
-            <div class="evenement1">
+            <div class="evenement1 first">
                 <div class="h1-row second">Valorisation des heures</div>
                 <div class="input-container">
                     <div class="date-assoc first">
@@ -54,7 +54,7 @@
                             {{form_widget(form.heureDepart , {'attr': {'class': 'heure'}}) }}
                         </div>
 
-                        <div class='rowSaisie hours'>
+                        <div class='rowSaisie hours secondary'>
                             <label class="label">Heure d'arrivée</label>
                             {{form_widget(form.heureArrivee, {'attr': {'class': 'heure'}}) }}
                         </div>
@@ -62,11 +62,17 @@
                     <div class="date-assoc">
                         <div class='rowSaisie'>
                             <label class="label">duree</label>
-                            {{form_widget(form.duree, {'attr': {'class': 'dureeInput'}}) }}
+                            {{form_widget(form.duree, {'attr': {'class': 'dureeInput disabled'}}) }}
                         </div>
-                        <div class='rowSaisie'>
-                            <label class="label">groupe</label>
-                            {{form_widget(form.groupe, {'attr': {'class': 'heure groupe groupeSelect'}}) }}
+                        <div class='rowSaisie row'>
+                            <div class="groupe-container">
+                                <label class="label">groupe</label>
+                                {{form_widget(form.groupe, {'attr': {'class': 'heure groupe groupeSelect'}}) }}
+                            </div>
+                            <div class="groupe-container">
+                                <label class="label">pourcentage</label>
+                                <input type="text" class="pourcentage-input disabled" disabled />
+                            </div>
                         </div>
                         <div class='rowSaisie' id="chargeInputId" data-charges='{{charges}}' >
                             <label class="label">charges</label>

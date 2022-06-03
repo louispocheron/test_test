@@ -58,7 +58,18 @@ class AssociationsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findLatestAssociationByUser($user){
+        return $this->createQueryBuilder('association')
+            ->andWhere(':user MEMBER OF association.users')
+            ->setParameter('user', $user->getId())
+            ->orderBy('association.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+
     }
+}
 
 
     // public function findAllAssoc($user){

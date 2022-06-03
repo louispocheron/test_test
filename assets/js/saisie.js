@@ -10,6 +10,7 @@ document.querySelector('.flatpickr').flatpickr({
 
 
 
+    const pourcentage = document.querySelector('.pourcentage-input');
     const heuredepart = document.querySelector('#form_heureDepart_hour');
     const minutesdepart = document.querySelector('#form_heureDepart_minute');
     const heurearrivee = document.querySelector('#form_heureArrivee_hour');
@@ -54,6 +55,7 @@ document.querySelector('.flatpickr').flatpickr({
             }
 
 
+            
             dureeInput.value = dureeHeure + 'h' + dureeMinute;
 
             let dureeHeureValorisee = dureeHeure + '.' + dureeMinute;
@@ -61,12 +63,37 @@ document.querySelector('.flatpickr').flatpickr({
 
 
             heureValoriseesInput.value = (groupeSelect.value * chargeData * dureeHeureValorisee).toFixed(2);
-            console.log(chargeData * dureeHeureValorisee);
-
-
     });
 });
 
+pourcentage.value = '10.04 €/h';
+
+groupeSelect.addEventListener("change", () => {
+
+    let selectData = groupeSelect.value;
+
+    switch(selectData){
+        case '10.04':
+            pourcentage.value = '10.04 €/h';
+            break;
+        case '10.33':
+            pourcentage.value = '10.33 €/h';
+            break;
+        case '11.22':
+            pourcentage.value = '11.22 €/h';
+            break;
+        case '11.91':
+            pourcentage.value = '11.91 €/h';
+            break;
+        case '13.33':
+            pourcentage.value = '13.33 €/h';
+            break;
+        case '16.64':
+            pourcentage.value = '16.64 €/h';
+            break;
+
+    }
+});
 
 
 
@@ -114,15 +141,16 @@ document.querySelector('.flatpickr').flatpickr({
     const apayerInput = document.querySelector('.apayerInput');
 
     apayerInput.addEventListener('keyup', () => {
-        let apayerValue = apayerInput.value;
+        
+        function getApayerInput(){
+            return apayerInput.value;
+        }
         
         if(apayerValue == ''){
             apayerValue = 0;
         }
-        setTimeout(() => {
-         donsInput.value = parseFloat(apayerValue) - parseFloat(donsInput.value);
-        }, 1000);
     });    
+
 
 
 

@@ -1,19 +1,24 @@
 AVANT DE PASSER A UI UX : 
     mailer pour changer mot de passe marche pas mailHOG
 
-total : 
-heure : fait / heure :: FAIT
-dons / e  :: FAIT 
-a payer / e :: FAIT
-heures valorisées/ e  :: FAIT 
 
-MANQUE A APPEND LE TOUT EN HTML !! 
+                        FAIT : 
+                            total : 
+                            heure : fait / heure :: FAIT
+                            dons / e  :: FAIT 
+                            a payer / e :: FAIT
+                            heures valorisées/ e  :: FAIT 
 
+                            MANQUE A APPEND LE TOUT EN HTML !! 
 
+?? 
 pdf : tableau pareil que recap avec totaux 
+
+
 
 saisie : encadré gris avec pourcentage du groupe choisi
 
+FAIT: 
 enlever contour saisie et mettre border radius 5px 
 don : beug négatif a faire !! nb apres virgule important
 
@@ -21,3 +26,6 @@ don : beug négatif a faire !! nb apres virgule important
 enregister une assoc : 
     -input discipline puis rechercher dans la page toute les assoc 
     -input region et departement
+
+
+    accueil euro pas dollar

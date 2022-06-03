@@ -63,6 +63,8 @@
     width: 15rem;
     height: 2.7rem;
     text-decoration: none;
+    transition: all 0.5s ease-in-out;
+
 }
 .btn-basic:hover{
     background-color: white;
@@ -531,7 +533,7 @@
       width: 70% !important;
       max-width: 4rem !important;
       height: auto;
-      padding: 1rem;
+      padding: 1.1rem;
       margin-left: 0;
     }
     .nav-links:hover{
