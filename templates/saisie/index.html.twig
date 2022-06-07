@@ -104,7 +104,7 @@
                     
                     <div class='rowSaisie'>
                         <label>frais kilométriques</label>
-                        {{form_widget(form.fraisKilometrique, {'attr': {'class': 'fraisInput bottom-input'}}) }}
+                        {{form_widget(form.fraisKilometrique, {'attr': {'class': 'fraisInput bottom-input disabled'}}) }}
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                 <div class="date-assoc">
                     <div class='rowSaisie'>
                         <label>total note de frais</label>
-                        <input  class="totalNote" type="text" name="totalNote" value="0">
+                        <input  class="totalNote disabled" type="text" name="totalNote" value="0" disabled>
                     </div>
 
                     <div class='rowSaisie'>
@@ -152,6 +152,7 @@
 
 {% block javascripts %}
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     {{ encore_entry_script_tags('saisie') }}
     {{ encore_entry_script_tags('sort') }}
 

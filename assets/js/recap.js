@@ -27,7 +27,7 @@ const alertMessage = document.querySelector('.alert-message');
 let baseOption  = document.createElement('option');
 baseOption.text = 'Tous';
 baseOption.value = 'rien';
-baseOption.className = 'select-dd';
+// baseOption.className = 'select-dd';  
 selectYear.add(baseOption);
 
 // OPTION AVEC LES ANNNES 
@@ -37,7 +37,7 @@ while (currentYear >= earliestYear) {
     let dateOption = document.createElement('option');          
     dateOption.text = currentYear;      
     dateOption.value = currentYear;
-    dateOption.className = 'select-dd';
+    // dateOption.className = 'select-dd';
     selectYear.add(dateOption);      
     currentYear -= 1;    
 }

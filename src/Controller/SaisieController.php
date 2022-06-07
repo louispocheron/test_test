@@ -111,6 +111,7 @@ class SaisieController extends AbstractController
                     // 'disabled' => true,
                     'attr' => [
                         'readonly' => true,
+                        'class' => 'disabled'
                     ],
                 ])
                 ->add('association', EntityType::class , [

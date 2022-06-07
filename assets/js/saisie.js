@@ -23,6 +23,7 @@ document.querySelector('.flatpickr').flatpickr({
     const chargesInput = document.querySelector('.chargesInput');
     let groupeSelect = document.querySelector('.groupeSelect');
     const heureValoriseesInput = document.querySelector('.heureValoriseesInput');
+    const payer = document.querySelector('.apayerInput');
 
 
 
@@ -113,12 +114,13 @@ groupeSelect.addEventListener("change", () => {
     fraisInput.value = 0;
     donsInput.value = 0;
     totalNote.value = 0;
+    payer.value = 0;
 
     let baremeValue = bareme.value;
     let kmValue = kmInput.value;
     let coutValue = coutInput.value;
   
-    [bareme, kmInput, coutInput].forEach(evt => {
+    [bareme, kmInput, coutInput, payer].forEach(evt => {
         evt.addEventListener('keyup', () => {
             coutValue = coutInput.value;
             baremeValue = bareme.value;
@@ -129,27 +131,66 @@ groupeSelect.addEventListener("change", () => {
                 coutValue = 0;
             }
 
+            if(isNaN(baremeValue)){
+                baremeValue = 0;
+            }
+
             fraisInput.value = (kmValue * baremeValue).toFixed(2);
 
-            donsInput.value = parseInt(fraisInput.value) + parseInt(coutValue);
+            // donsInput.value = parseFloat(fraisInput.value) + parseInt(coutValue);
             // put donsInput.value in localStorage
-            localStorage.setItem('donsInput', donsInput.value);
+            // localStorage.setItem('donsInput', donsInput.value);
             totalNote.value = parseFloat(fraisInput.value) + parseInt(coutValue);
+            if(parseInt(payer.value) > totalNote.value){
+                payer.style = 'border: 1px solid red;';
+                // donsInput.style = 'background-color: #f2dede;';
+            }
+
+            donsInput.value = totalNote.value - parseInt(payer.value);
+
+        // prevent the NaN output
+        if(isNaN(donsInput.value)){
+            donsInput.value = totalNote.value;
+        }       
+
         });
     });
 
-    const apayerInput = document.querySelector('.apayerInput');
 
-    apayerInput.addEventListener('keyup', () => {
+
+    const apayerInput = document.querySelector('.apayerInput');
+    
+    // apayerInput.value = 0;
+
+    apayerInput.addEventListener('keyup keydown', () => {
+        let apayerValue = apayerInput.value;
+        let donsValue = donsInput.value;
+        let totalNoteValue = totalNote.value;
+
         
-        function getApayerInput(){
-            return apayerInput.value;
-        }
-        
+
+        // console.log(typeof apayerValue);
+
         if(apayerValue == ''){
             apayerValue = 0;
+            // localStorage.setItem('donsInput', donsValue);
         }
-    });    
+        console.log(apayerValue);
+        if (parseFloat(apayerValue) > parseFloat(totalNoteValue)){
+            console.log('trop cher');
+            apayerInput.style.border = '1px solid red';
+        }
+
+        // reduce the value of donsInput
+        if(parseFloat(apayerValue) < parseFloat(totalNoteValue)){
+            console.log('ok');
+            apayerInput.style.border = '1px solid green';
+            donsValue = parseInt(donsValue) - parseInt(apayerValue);
+            // localStorage.setItem('donsInput', donsInput.value);
+        }
+    });
+
+
 
 
 
