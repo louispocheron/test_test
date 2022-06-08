@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,6 +66,27 @@ class RegisterAssociationController extends AbstractController
                             'placeholder' => 'Numéro de siret',
                             ],
                          ])
+                     ->add('region', choiceType::class, [
+                            'label' => 'Région',
+                            'choices' => [
+                                'Auvergne-Rhône-Alpes' => 'Auvergne-Rhône-Alpes',
+                                'Bourgogne-Franche-Comté' => 'Bourgogne-Franche-Comté',
+                                'Bretagne' => 'Bretagne',
+                                'Centre-Val de Loire' => 'Centre-Val de Loire',
+                                'Corse' => 'Corse',
+                                'Grand Est' => 'Grand Est',
+                                'Hauts-de-France' => 'Hauts-de-France',
+                                'Île-de-France' => 'Île-de-France',
+                                'Normandie' => 'Normandie',
+                                'Nouvelle-Aquitaine' => 'Nouvelle-Aquitaine',
+                                'Occitanie' => 'Occitanie',
+                                'Pays de la Loire' => 'Pays de la Loire',
+                                'Provence-Alpes-Côte d\'Azur' => 'Provence-Alpes-Côte d\'Azur',
+                            ],
+                            'attr' => [
+                                'placeholder' => 'Région',
+                                ],
+                            ])
                      ->add('enregister', SubmitType::class, ['label' => 'Enregistrer'])
                      ->getform();
 

@@ -41,6 +41,9 @@ class Associations
     #[ORM\Column(type: 'string', length: 255)]
     private $numeroSiret;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $region;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -166,6 +169,18 @@ class Associations
     public function setNumeroSiret(string $numeroSiret): self
     {
         $this->numeroSiret = $numeroSiret;
+
+        return $this;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?string $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }

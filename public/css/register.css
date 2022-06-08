@@ -99,6 +99,11 @@ align-items: center;
         width: 30%;
     }
     .aside{
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-login{
+        width: 30%;
     }
 }

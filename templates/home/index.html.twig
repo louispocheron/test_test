@@ -7,7 +7,7 @@
 
 <div class="home-container">
 
-<h1 class="h1-home"> Bienvenue sur <span>Saved</span></h1>
+<h1 class="h1-home"> Bienvenue sur <span>SAVED</span></h1>
     {# {% if userIsAdmin == true %}
         vous etes administrateur de :
         {% for association in associations %}
@@ -21,7 +21,6 @@
     <h1 class="h1false"> vous n'avez pas encore fait de saisie </h1>
     <div class="homeCard-container">
             <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
                 <h2>0€</h2>
                 <h3>Dons</h3>
             </div>
@@ -36,7 +35,7 @@
                 <h3>Heure de bénévolat</h3>
             </div>
             <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-dollar svg-homecard"></i>  
+                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
                 <h2>0€</h2>
                 <h3>Bénévolat</h3>
             </div>
@@ -46,7 +45,6 @@
     <div class="homeCard-container">
         {% for recent in latest   %}
             <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
                 <h2>{{ recent.dons }}€</h2>
                 <h3>Dons</h3>
             </div>
@@ -61,7 +59,7 @@
                 <h3>Heure de bénévolat</h3>
             </div>
             <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-dollar svg-homecard"></i>  
+                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
                 <h2>{{ recent.heuresValorisees }}</h2>
                 <h3>Bénévolat</h3>
             </div>
