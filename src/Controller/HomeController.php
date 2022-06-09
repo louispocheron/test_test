@@ -24,6 +24,9 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+
+
+
         $securityContext = $this->container->get('security.authorization_checker');
         $user = $this->getUser();
         
@@ -32,6 +35,11 @@ class HomeController extends AbstractController
             
             $role = $user->getRoles()[0];
             $associations = $repo->findAssociation($this->getUser());
+            // dd($associations);
+            // if(count($associations) > 0){
+            //     // dd('salut');
+                
+            // }
             // loop through the associations and get all their data
         
             
@@ -52,10 +60,11 @@ class HomeController extends AbstractController
             'associations' => $associations ?? false,
             'user' => $user ?? false,
             'latest' => $latest ?? false,
+            'userIsAdmin' => count($associations) > 0
             // 'lastAssoc' => $lastAssoc,
 
             // set variable if user is connected
-            'userIsAdmin' => $userIsAdmin ?? false,
+            // 'userIsAdmin' => $userIsAdmin ?? false,
         ]);
         
     }

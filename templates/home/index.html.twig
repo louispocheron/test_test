@@ -15,7 +15,9 @@
         {% endfor %} #}
 
     {# {% endif %} #}
-
+{% if userIsAdmin == true %}
+<p> test</p>
+{% endif %}
 
 {% if latest == [] %}
     <h1 class="h1false"> vous n'avez pas encore fait de saisie </h1>

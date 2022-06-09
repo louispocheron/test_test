@@ -25,7 +25,9 @@ class AdminController extends AbstractController
         $userId = $user->getId();
 
         $assocId = $request->attributes->get('idAssoc');
+        // dd($assocId);
         $association = $repo->find($assocId);
+        // dd($association);
         
         return $userId != $association->getUser()->getId();
     }
@@ -181,16 +183,16 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_user', ['idAssoc' => $association, 'id' => $userId]);
     }
     
-    #[Route('/admin/user/{userId}/pdf/{actionId}', name: 'pdf_action')]
+    #[Route('/admin/user/{userId}/pdf/{actionId}/{idAssoc}', name: 'pdf_action')]
     public function pdfAction(ActionRepository $actionRepo, $userId, PdfService $pdfService, $actionId, Request $request, AssociationsRepository $repo)
     {
 
         $user = $this->getUser();
 
-        if($this->denyeAcess($request, $repo)){
-            // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
-            return $this->redirectToRoute('home');
-        }
+        // if($this->denyeAcess($request, $repo)){
+        //     // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
+        //     return $this->redirectToRoute('home');
+        // }
 
         $action = $actionRepo->find($actionId);
         $html = $this->renderView('admin/pdf.html.twig', [

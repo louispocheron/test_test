@@ -1,9 +1,9 @@
 {% for action in userAction %}
             {# <a href=" {{path("recapitulatif_remove", { 'id' : action.id } )}} " ><i class="fa-solid fa-trash"></i></a>
             <a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
-
 {# {{dump(action)}} #}
-        <tr onclick="window.location='{{ path("pdf_action", {"actionId": action.id, "userId": user.id } ) }}'" class="trtest">
+{# {{dump(action)}} #}
+        <tr onclick="window.location='{{ path("pdf_action", {"actionId": action.id, "userId": user.id, 'idAssoc': action.association.id } ) }}'" class="trtest">
          
             {#<a href="{{ path("recapitulatif_pdf", {'id': action.id, 'userId': user.id } ) }}" target="_blank"><i class="fa-solid fa-file"></i></a>#}
         <td data-label="Association" class="td">{{ action.association.name }}</td> 

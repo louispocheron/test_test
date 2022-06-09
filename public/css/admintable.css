@@ -1,5 +1,6 @@
 .sortable {
   border-spacing: 0;
+  width: 80%;
 }
 
 .sortable tbody tr:nth-child(odd) {
@@ -65,13 +66,7 @@
   color: inherit;
   content: ' \025B4';
 }
-.content-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-}
+
 .content-info{
   display: flex;
   justify-content: center;
@@ -171,7 +166,7 @@ select{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
 }
 
 @media only screen and (max-width: 964px){
