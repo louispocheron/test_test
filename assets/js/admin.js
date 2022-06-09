@@ -85,7 +85,7 @@ function sendYear(){
         'month': month.value
         })
         .then(data => {
-            const content = document.querySelector('.ajaxDivContent');
+            const trContainer = document.querySelector('.ajaxDivContent');
             let dataUser = data.data.content;
             if(dataUser == ""){
                    // ON RETIRE LE CONTENU DE LA DIV SI ON L'A DEJA AJOUTEE
@@ -139,24 +139,24 @@ function sendYear(){
             font-weight: bold;
             ">${valoriseesSumAjax}€</span> `;
            
-            if(month == ''){
+            if(month.value == ''){
                 
                 totalParagraph.innerHTML = `Total pour l'année <span style="
             color:#152149;
             font-weight: bold;
             ">${year}</span>:`
             }
-            if(data.value == 'rien' && month == ''){
+            if(data.value == 'rien' && month.value == ''){
 
                 totalParagraph.innerHTML = "Total de toutes vos saisies :";
 
             }
-            if(data.value != 'rien' && month != ''){
+            if(data.value != 'rien' && month.value != ''){
 
                 totalParagraph.innerHTML = `Total pour le <span style="
             color:#152149;
             font-weight: bold;
-            ">${month}/${year}</span>:`;
+            ">${month.value}/${year}</span>:`;
             }
         }
         })

@@ -86,14 +86,21 @@ class AdminController extends AbstractController
     $this ->denyAccessUnlessGranted('ROLE_ADMIN'.$association, null, 'Vous n\'avez pas accès à cette page');
 
     $uniqueAssociation = $repo->find($association);
+    $userAction = $actionRepo->findByUsers($uniqueUser);
     $year = $request->get("year");
-    $userAction = $actionRepo->findByAssociationAndUser($uniqueAssociation, $uniqueUser, $year);
-    $actionYear = $actionRepo->findByAssociationAndUserAndYear($uniqueAssociation, $uniqueUser, $year);
+    $month = $request->get("month");
 
-    
-    foreach($actionYear as $action){
-        $duree[] = $action->getDuree();
-    }
+    if($month == ''){
+            $actionYearAndMonth = $actionRepo->findByUserAndYear($uniqueUser, $year);
+        }
+        if($year == 'rien' && $month == ''){
+            $actionYearAndMonth = $actionRepo->findAllActionByUser($uniqueUser);
+        }
+        if($year != 'rien' && $month != ''){
+            $actionYearAndMonth = $actionRepo->findByUserAndYearAndMonth($uniqueUser, $year, $month);
+        }
+
+
 //    dd($actionYear);
 //   ON VERIFIE SI IL Y A DE l'AJAX 
     if($request->get("ajax")){
@@ -103,7 +110,9 @@ class AdminController extends AbstractController
                 'admin/action_user.html.twig', [
                     'association' => $uniqueAssociation,
                     'user' => $uniqueUser,
-                    'userAction' => $actionYear,
+                    'userAction' => $actionYearAndMonth,
+                    'year' => $year,
+                    'month' => $month,
                     'controller_name' => 'AdminController',
                 ]
             )
