@@ -34,22 +34,23 @@ class HomeController extends AbstractController
         if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
             
             $role = $user->getRoles()[0];
-            $associations = $repo->findAssociation($this->getUser());
+            $associations = $repo->AssociationForAdmin($this->getUser());
             // dd($associations);
             // if(count($associations) > 0){
             //     // dd('salut');
                 
             // }
             // loop through the associations and get all their data
+            $salut = 'salut';
         
             
-            $userIsAdmin = false;
+            // $userIsAdmin = false;
 
-            if(strpos($role, 'ROLE_ADMIN') !== false){
-                $userIsAdmin = true;
-            }else{
-                $userIsAdmin = false;
-            }
+                // if(strpos($role, 'ROLE_ADMIN') !== false){
+                //     $userIsAdmin = true;
+                // }else{
+                //     $userIsAdmin = false;
+                // }
 
             $latest = $actionRepo->findLatestAction($user);
         }
@@ -60,7 +61,8 @@ class HomeController extends AbstractController
             'associations' => $associations ?? false,
             'user' => $user ?? false,
             'latest' => $latest ?? false,
-            'userIsAdmin' => count($associations) > 0
+            'userIsAdmin' => count($associations) > 0,
+            'salut' => $salut ?? false,
             // 'lastAssoc' => $lastAssoc,
 
             // set variable if user is connected

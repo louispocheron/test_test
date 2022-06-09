@@ -29,7 +29,7 @@ class AssociationsRepository extends ServiceEntityRepository
         return $query;
     }
 
-    public function findAssociation($user){
+    public function AssociationForAdmin($user){
         return $this->createQueryBuilder('association')
             ->andWhere('association.user = :user')
             ->setParameter('user', $user->getId())

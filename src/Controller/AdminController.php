@@ -21,13 +21,13 @@ class AdminController extends AbstractController
 {
 
     private function denyeAcess(Request $request, AssociationsRepository $repo){
+
         $user = $this->getUser();
         $userId = $user->getId();
 
         $assocId = $request->attributes->get('idAssoc');
         // dd($assocId);
         $association = $repo->find($assocId);
-        // dd($association);
         
         return $userId != $association->getUser()->getId();
     }
@@ -188,7 +188,6 @@ class AdminController extends AbstractController
     {
 
         $user = $this->getUser();
-
         // if($this->denyeAcess($request, $repo)){
         //     // TU PEUX RENVOYER UNE ERREUR ICI CAR LE MEC ESSAYE DE TRICHER
         //     return $this->redirectToRoute('home');
@@ -202,5 +201,19 @@ class AdminController extends AbstractController
         $pdfService->generatePdf($html);
 
     }
+
+    #[Route('/choose', name: 'admin_choose')]
+    public function chooseAssociation(Request $request, AssociationsRepository $repo): Response
+    {
+        $user = $this->getUser();
+
+        $admin = $repo->AssociationForAdmin($user);
+
+        return $this->render('admin/choose.html.twig', [
+            'admin' => $admin,
+            'controller_name' => 'AdminController',
+        ]);
+    }
+
 }
 

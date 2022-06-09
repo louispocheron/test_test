@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}admin{% endblock %}
+
+{% block body %}
+    <link href="{{ asset('css/choose.css') }}" rel="stylesheet">
+
+    <div class="container">
+        {% for association in admin %}
+            {# {{ dump(association)}} #}
+
+            <a href="{{ path('admin', {'idAssoc': association.id}) }}" class="assoc-container">
+                <h2>{{ association.name }}</h2>
+                <img src="{{ asset('/build/logo_directory/' ~ association.logo) }}" class="assoc-img" alt="{{ association.name }}">
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
