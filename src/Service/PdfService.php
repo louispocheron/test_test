@@ -18,6 +18,7 @@ class PdfService {
 
     public function generatePdf($html){
         $this->domPdf->loadHtml($html);
+        $this->domPdf->setPaper('A4', 'landscape');
         $this->domPdf->render();
         $this->domPdf->stream("mon_pdf.pdf", [
             "Attachment" => false

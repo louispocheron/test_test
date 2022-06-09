@@ -9,7 +9,7 @@ main{
 .infoPerso{
     display: flex;
     width: 80%;
-    height: 50%;
+    height: auto;
     flex-direction: column;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -39,6 +39,7 @@ main{
   }
   .moncompte-avatar{
     margin: 0;
+    width: 20%;
   }
   .btn-saisie{
     border-radius: 20px;
@@ -68,6 +69,9 @@ main{
       width: 50%;
       justify-content: center;
       align-items: center;
+    }
+    .moncompte-avatar{
+      width: 10%;
     }
     .infoPerso-container{
       flex-direction: row;

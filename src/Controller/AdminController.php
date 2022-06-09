@@ -172,8 +172,8 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_user', ['idAssoc' => $association, 'id' => $userId]);
     }
     
-    #[Route('/admin/{idAssoc}/user/{id}/pdf/{actionId}', name: 'pdf_action')]
-    public function pdfAction(ActionRepository $actionRepo, $id, PdfService $pdfService, $actionId, Request $request, AssociationsRepository $repo)
+    #[Route('/admin/user/{userId}/pdf/{actionId}', name: 'pdf_action')]
+    public function pdfAction(ActionRepository $actionRepo, $userId, PdfService $pdfService, $actionId, Request $request, AssociationsRepository $repo)
     {
 
         $user = $this->getUser();
