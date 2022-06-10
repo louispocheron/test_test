@@ -77,7 +77,6 @@
         <div class="header-desktop">
         {# {{dump(Assoc.lastAssoc(app.user))}} #}
 
-            {{dump()}}
             <div class="main-assoc">
                 {% if Assoc.lastAssoc(app.user) != false %}
                 <h1 class="h1-assoc">{{ Assoc.lastAssoc(app.user).name }}</h1>
@@ -97,7 +96,7 @@
                     <div class="user-name">
                         <h2 class="user-username"> {{app.user.username}} </h2> 
                         <h3 class="user-email"> {{app.user.email}} </h3>
-                        {% if userIsAdmin == true %}
+                        {% if Assoc.isAdminGlobal(app.user) == true %}
                             <a href="{{ path('admin_choose') }}" class="user-email  "> Administration </a>
                         {% endif %}
                     </div>
