@@ -18,4 +18,13 @@ class GlobalVariables{
         return $assoc; 
     }
 
+    public function isAdminGlobal($user)
+    {
+        $admin = $this->repo->AssociationForAdmin($user);
+        if(count($admin) > 0){
+            return true;
+        }
+        return false;
+    }
+
 }

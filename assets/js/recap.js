@@ -149,19 +149,19 @@ function Ajaxyear(){
             color:#097969;
             font-weight: bold;
             ">${valoriseesSumAjax}€</span> `;
-           
-            if(month == ''){
+           console.log(month);
+            if(year == 'rien' && month == ''){
+                   totalParagraph.innerHTML = "Total de toutes vos saisies :";
+            }
                 
+
+            if(month == ''){
                 totalParagraph.innerHTML = `Total pour l'année <span style="
             color:#152149;
             font-weight: bold;
             ">${year}</span>:`
             }
-            if(data.value == 'rien' && month == ''){
 
-                totalParagraph.innerHTML = "Total de toutes vos saisies :";
-
-            }
             if(data.value != 'rien' && month != ''){
 
                 totalParagraph.innerHTML = `Total pour le <span style="

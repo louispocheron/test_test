@@ -47,11 +47,12 @@
     <div class="homeCard-container">
         {% for recent in latest   %}
             <div class="homeCard">
+                <img src="{{asset('assets/DONS-01.svg') }}" class='svg-home'>
                 <h2>{{ recent.dons }}€</h2>
                 <h3>Dons</h3>
             </div>
             <div class="homeCard">
-                <i class="fa-solid fa-money-check-dollar svg-homecard"></i>
+                <img src="{{asset('assets/REMBOURSEMENT-02.svg') }}" class='svg-home'>
                 <h2>{{ recent.aPayer }}€</h2>
                 <h3>Remboursement</h3>
             </div>
@@ -61,8 +62,8 @@
                 <h3>Heure de bénévolat</h3>
             </div>
             <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
-                <h2>{{ recent.heuresValorisees }}</h2>
+                <img src="{{asset('assets/VALORISATION-01.svg') }}" class='svg-home bene'>
+                <h2>{{ recent.heuresValorisees }}€</h2>
                 <h3>Bénévolat</h3>
             </div>
         {% endfor %}

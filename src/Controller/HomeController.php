@@ -41,7 +41,7 @@ class HomeController extends AbstractController
                 
             // }
             // loop through the associations and get all their data
-            $salut = 'salut';
+            // $salut = 'salut';
         
             
             // $userIsAdmin = false;
@@ -53,6 +53,7 @@ class HomeController extends AbstractController
                 // }
 
             $latest = $actionRepo->findLatestAction($user);
+            // dd($latest);
         }
 
      
@@ -69,5 +70,19 @@ class HomeController extends AbstractController
             // 'userIsAdmin' => $userIsAdmin ?? false,
         ]);
         
+    }
+
+    #[Route('/', name: 'base')]
+public function isAdmin(AssociationsRepository $repo): Response
+    {
+        $user = $this->getUser();
+        $admin = $repo->AssociationForAdmin($user);
+        // dd($latest);
+        $salut = "salut";
+
+        return $this->render('base.html.twig', [
+            'salut' => $salut,
+            'admin' => count($admin) > 0,
+        ]);
     }
 }

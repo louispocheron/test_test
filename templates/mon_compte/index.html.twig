@@ -11,6 +11,11 @@
     <div class="infoPerso-container">
         <p>nom d'utilisateur : </p>
         <p class="server-served">{{ user.username }}</p>
+        {% if app.user.profilPicture != null %}
+            <img src="{{ asset('/build/profil_picture/' ~ app.user.profilPicture) }}" alt="" class="user-avatar moncompte-avatar" />
+        {% else %}
+            <img src="{{ asset('/build/profil_picture/default_profil.png') }}" alt="" class="user-avatar default moncompte-avatar" />
+        {% endif %}
     </div>
      <div class="infoPerso-container">
         <p> adresse email : </p>
@@ -27,14 +32,6 @@
              {{actions}} saisies</p>
         {% endif %}
              <a href="{{ path('recapitulatif') }}"><button class="btn-saisie"><i class="fa-solid fa-eye"></i></button></a>
-    </div>
-    <div class="infoPerso-container">
-        <p>Photo de profil</p>
-        {% if app.user.profilPicture != null %}
-            <img src="{{ asset('/build/profil_picture/' ~ app.user.profilPicture) }}" alt="" class="user-avatar moncompte-avatar" />
-        {% else %}
-            <img src="{{ asset('/build/profil_picture/default_profil.png') }}" alt="" class="user-avatar default moncompte-avatar" />
-        {% endif %}
     </div>
 </div>
 {% endblock %}
