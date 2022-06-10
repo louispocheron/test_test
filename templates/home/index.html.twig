@@ -4,71 +4,58 @@
 
 {% block body %} 
 
+    <div class="home-container">
 
-<div class="home-container">
+    <h1 class="h1-home"> Bienvenue sur <span>SAVED</span></h1>
+    {% if latest == [] %}
+        <h1 class="h1false"> vous n'avez pas encore fait de saisie </h1>
+        <div class="homeCard-container">
+                <div class="homeCard">
+                    <h2>0€</h2>
+                    <h3>Dons</h3>
+                </div>
+                <div class="homeCard">
+                    <i class="fa-solid fa-money-check-dollar svg-homecard"></i>
+                    <h2>0€</h2>
+                    <h3>Remboursement</h3>
+                </div>
+                <div class="homeCard">
+                    <i class="fa-solid fa-clock svg-homecard"></i>
+                    <h2>00h00</h2>
+                    <h3>Heure de bénévolat</h3>
+                </div>
+                <div class="homeCard">
+                    <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
+                    <h2>0€</h2>
+                    <h3>Bénévolat</h3>
+                </div>
+    {% else %}
 
-<h1 class="h1-home"> Bienvenue sur <span>SAVED</span></h1>
-    {# {% if userIsAdmin == true %}
-        vous etes administrateur de :
-        {% for association in associations %}
-            <a href="{{ path('admin', {'idAssoc': association.id}) }}">{{ association.name }},</a>
-        {% endfor %} #}
-
-    {# {% endif %} #}
-{% if userIsAdmin == true %}
-<a href='{{path('admin_choose')}}'> test</a>
-{% endif %}
-
-{% if latest == [] %}
-    <h1 class="h1false"> vous n'avez pas encore fait de saisie </h1>
-    <div class="homeCard-container">
-            <div class="homeCard">
-                <h2>0€</h2>
-                <h3>Dons</h3>
-            </div>
-            <div class="homeCard">
-                <i class="fa-solid fa-money-check-dollar svg-homecard"></i>
-                <h2>0€</h2>
-                <h3>Remboursement</h3>
-            </div>
-            <div class="homeCard">
-                <i class="fa-solid fa-clock svg-homecard"></i>
-                <h2>00h00</h2>
-                <h3>Heure de bénévolat</h3>
-            </div>
-            <div class="homeCard">
-                <i class="fa-solid fa-hand-holding-heart svg-homecard"></i>
-                <h2>0€</h2>
-                <h3>Bénévolat</h3>
-            </div>
-{% else %}
-
-<h3>Dernière saisie :</h3>
-    <div class="homeCard-container">
-        {% for recent in latest   %}
-            <div class="homeCard">
-                <img src="{{asset('assets/DONS-01.svg') }}" class='svg-home'>
-                <h2>{{ recent.dons }}€</h2>
-                <h3>Dons</h3>
-            </div>
-            <div class="homeCard">
-                <img src="{{asset('assets/REMBOURSEMENT-02.svg') }}" class='svg-home'>
-                <h2>{{ recent.aPayer }}€</h2>
-                <h3>Remboursement</h3>
-            </div>
-            <div class="homeCard">
-                <i class="fa-solid fa-clock svg-homecard"></i>
-                <h2>{{ recent.duree }}</h2>
-                <h3>Heure de bénévolat</h3>
-            </div>
-            <div class="homeCard">
-                <img src="{{asset('assets/VALORISATION-01.svg') }}" class='svg-home bene'>
-                <h2>{{ recent.heuresValorisees }}€</h2>
-                <h3>Bénévolat</h3>
-            </div>
-        {% endfor %}
+    <h3>Dernière saisie :</h3>
+        <div class="homeCard-container">
+            {% for recent in latest   %}
+                <div class="homeCard">
+                    <img src="{{asset('assets/DONS-01.svg') }}" class='svg-home'>
+                    <h2>{{ recent.dons }}€</h2>
+                    <h3>Dons</h3>
+                </div>
+                <div class="homeCard">
+                    <img src="{{asset('assets/REMBOURSEMENT-02.svg') }}" class='svg-home'>
+                    <h2>{{ recent.aPayer }}€</h2>
+                    <h3>Remboursement</h3>
+                </div>
+                <div class="homeCard">
+                    <i class="fa-solid fa-clock svg-homecard"></i>
+                    <h2>{{ recent.duree }}</h2>
+                    <h3>Heure de bénévolat</h3>
+                </div>
+                <div class="homeCard">
+                    <img src="{{asset('assets/VALORISATION-01.svg') }}" class='svg-home bene'>
+                    <h2>{{ recent.heuresValorisees }}€</h2>
+                    <h3>Bénévolat</h3>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %} 
     </div>
- {% endif %} 
-</div>
-
 {% endblock %}
