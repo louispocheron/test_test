@@ -97,7 +97,7 @@
                         <h2 class="user-username"> {{app.user.username}} </h2> 
                         <h3 class="user-email"> {{app.user.email}} </h3>
                         {% if Assoc.isAdminGlobal(app.user) == true %}
-                            <a href="{{ path('admin_choose') }}" class="user-email  "> Administration </a>
+                            <a href="{{ path('admin_choose') }}" class="user-email admin">Administration </a>
                         {% endif %}
                     </div>
                 </div>

@@ -61,7 +61,6 @@ class AssociationController extends AbstractController
     
     }
 
-
     // PERMET D'ADHERER A UNE ASSOCIATION
     #[Route('/associations/adherer/{id}', name: 'association_adherer')]
     public function adhererAssociation(Associations $assoc, EntityManagerInterface $entityManager, UserRepository $repo, AssociationsRepository $assocRepo): response
