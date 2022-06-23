@@ -21,10 +21,13 @@
         <a class="btnAdherer" href="{{ path('association_adherer', {'id': association.id}) }}">
             <button type="button" class="btn btn-primary btn-adherer">adherer</button>
         </a>
+        <a class="btnQuitter" href="{{ path('association_quitter', {'id': association.id}) }}">
+            <button type="button" class="btn btn-primary btn-quitter">quitter</button>
+        </a>
+
     </div>
 </div>
 </div>
-
 
 {% endblock %}
 
@@ -35,7 +38,10 @@
     <script>
 
          const getAssocId = document.querySelector('a.btnAdherer');
-        console.log(getAssocId);
+         const quitBtn = document.querySelector('a.btnQuitter');
+
+        console.log(quitBtn);
+        {# console.log(getAssocId); #}
 
   {# FUNCTION APPEL AJAX #}
    function ajaxGet(e){
@@ -62,7 +68,7 @@
             }
             else{
                 Toastify({
-                    text: "vous avez bien quitté l'association",
+                    text: "vous êtes deja adhérant de l'association",
                     duration: 3000,
                     newWindow: true,
                     close: true,
@@ -71,7 +77,7 @@
                     stopOnFocus: true, // Prevents dismissing of toast on hover
                     style: {
                          // red as default
-                        background: "linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)",
+                        background: "linear-gradient(315deg, #bbf0f3 0%, #f6d285 74%)",
                     },
                     onClick: function(){} // Callback after click
                 }).showToast();
@@ -99,11 +105,56 @@
         });
       }; 
 
-
-
     {# APPEL AJAX AU CLICK #}
     getAssocId.addEventListener('click', ajaxGet);
+
+
+    function ajaxQuit(e){
+        e.preventDefault();
+        const url = this.href;
+        const btnquit = document.querySelector(".btn-quitter");
+
+        axios.get(url).then(function(response){
+            console.log(response.data);
+            let adherant = response.data.adherant
+            if(adherant == true){
+                Toastify({
+                    text: "vous avez bien quitté l'association",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                         // red as default
+                        background: "linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)",
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+            }
+            else{
+                 Toastify({
+                    text: "Vous n'êtes pas adherant de l'association",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                         // red as default
+                        background: "linear-gradient(315deg, #bbf0f3 0%, #f6d285 74%)",
+
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+            }
+        })
+    }
     
+    quitBtn.addEventListener('click', ajaxQuit);
+
 
 
 

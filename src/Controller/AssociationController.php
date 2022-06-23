@@ -56,9 +56,6 @@ class AssociationController extends AbstractController
                 'associations' => $association,
             ]);
         }
-
-    
-    
     }
 
     // PERMET D'ADHERER A UNE ASSOCIATION
@@ -72,6 +69,34 @@ class AssociationController extends AbstractController
 
 
         if($assoc->getUsers()->contains($user)){
+            return $this->json([
+                'code' => 200,
+                'message' => 'deja',
+                'adherer' => false
+            ], 200);
+        }
+        else{
+            $assoc->addUser($user);
+                $entityManager->persist($assoc);
+                $entityManager->flush();
+                return $this->json([
+                    'code' => 200,
+                    'message' => 'Vous avez bien adhéré à l\'association',
+                    'adherer' => true
+                ], 200);
+        }
+       
+    }
+
+
+    #[Route('/associations/quitter/{id}', name: 'association_quitter')]
+    public function quitterAssociation(Associations $assoc, EntityManagerInterface $entityManager, UserRepository $repo, AssociationsRepository $assocRepo): response
+    {
+        $user = $this->getUser();
+         if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+      if($assoc->getUsers()->contains($user)){
             $assoc->removeUser($user);
             $entityManager->persist($assoc);
             $entityManager->flush();
@@ -79,19 +104,18 @@ class AssociationController extends AbstractController
             return $this->json([
                 'code' => 200,
                 'message' => 'Vous avez bien quitté l\'association',
-                'adherer' => false
+                'adherer' => false,
+                'adherant' => true
             ], 200);
         }
-
-        $assoc->addUser($user);
-        $entityManager->persist($assoc);
-        $entityManager->flush();
-        return $this->json([
-            'code' => 200,
-            'message' => 'Vous avez bien adhéré à l\'association',
-            'adherer' => true
-        ], 200);
-
-        
+        else{
+            return $this->json([
+                'code' => 200, 
+                'message'=> 'Vous n\'êtes pas adhérant a l\'association',
+                'adherer' => false,
+                'adherant' => false
+            ], 200);
+        }
     }
+
 }

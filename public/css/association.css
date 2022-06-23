@@ -122,11 +122,38 @@ main{
     width: 15rem;
     height: 2.7rem;
     text-decoration: none;
+    transition: all 0.5s ease-in-out;
+
   }
   .btn-adherer:hover{
     background-color: white;
     color: #152149;
     border: 1px solid #152149;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-quitter{
+    border-radius: 20px;
+	border: 2px solid rgb(233, 58, 58);
+	background-color: #ffff;
+	color: #2E2E2E;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;  
+    width: 15rem;
+    height: 2.7rem;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+
+  }
+
+  .btn-quitter:hover{
+    background-color: rgb(233, 58, 58);
+    color: #ffff;
+    border: 1px solid rgb(233, 58, 58);
     font-weight: 600;
     cursor: pointer;
   }
@@ -139,7 +166,7 @@ main{
     text-align: center;
   }
   .assoc-img-first{
-    width: 50%;
+    width: 80%;
     height: auto;
   }
   .arrow-left{
