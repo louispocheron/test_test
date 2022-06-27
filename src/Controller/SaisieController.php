@@ -27,7 +27,7 @@ class SaisieController extends AbstractController
 
 
     #[Route('/saisie', name: 'saisie')]
-    public function index(Request $request, EntityManagerInterface $entityManager,): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, AssociationsRepository $repo): Response
     {
 
         $user = $this->getUser();
@@ -159,12 +159,15 @@ class SaisieController extends AbstractController
 
         $userAssoc = $this->getUser()->getAssociation()->getValues();
 
+        $IsAssoc = $repo->findAssociationByUser($user);
+        
         // $entityManager->persist($action);
         // $entityManager->flush();
 
         return $this->render('saisie/index.html.twig', [
             'controller_name' => 'SaisieController',
             'form' => $form->createView(),
+            'isAssoc' => $IsAssoc,
             'assocs' => $userAssoc,
             'charges' => $charge
         ]);

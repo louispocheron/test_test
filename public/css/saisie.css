@@ -19,7 +19,19 @@ height: 100%;
 .secondary{
     margin-top: -1.5rem !important;
 }
-
+.container-no{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ref{
+    width: 1.7rem;
+    height: 1rem;
+    padding: auto;
+    text-align: center;
+    margin: 1rem !important;
+    align-self: center;
+}
 .evenement1{
     display: flex;
     justify-content: flex-start;
