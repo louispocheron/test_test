@@ -18,17 +18,19 @@ const payerTd = document.querySelectorAll('.payerTd');
 const donTd = document.querySelectorAll('.donTd');
 const valoriseesTd = document.querySelectorAll('.valoriseesTd');
 const alertMessage = document.querySelector('.alert-message');
+const reset = document.querySelector('.arrowTurn');
+
 
 
 
 
 
 // OPTION DE BASE POUR LE SELECT YEAR
-let baseOption  = document.createElement('option');
-baseOption.text = 'Tous';
-baseOption.value = 'rien';
+// let baseOption  = document.createElement('option');
+// baseOption.text = 'Tous';
+// baseOption.value = 'rien';
 // baseOption.className = 'select-dd';  
-selectYear.add(baseOption);
+// selectYear.add(baseOption);
 
 // OPTION AVEC LES ANNNES 
 let currentYear = new Date().getFullYear();    
@@ -150,7 +152,8 @@ function Ajaxyear(){
             font-weight: bold;
             ">${valoriseesSumAjax}€</span> `;
            console.log(month);
-            if(year == 'rien' && month == ''){
+           console.log(year);
+            if(month == "" && year == 'rien'){
                    totalParagraph.innerHTML = "Total de toutes vos saisies :";
             }
                 
@@ -161,6 +164,8 @@ function Ajaxyear(){
             font-weight: bold;
             ">${year}</span>:`
             }
+
+
 
             if(data.value != 'rien' && month != ''){
 
@@ -178,6 +183,23 @@ function Ajaxyear(){
 }
 
 
+// A FAIRE
+// reset.addEventListener('click', () => {
+//     console.log('salut');
+//     let queryString = new URLSearchParams();
+//     let url = new URL(window.location.href);
+//     queryString.append('all', true);
+
+//      axios.post(url.pathname + "?" + queryString.toString() + "&ajax=1",{
+//         'all': true
+//      })
+//      .then(data => {
+//         console.log(data.data);
+//      })
+//         .catch(err => {
+//             console.log(err);
+//         })
+// });
 
 
 
@@ -214,6 +236,9 @@ valoriseeP.innerHTML = `Valorisation : <span style="
             color:#097969;
             font-weight: bold;
             ">${valoriseesSum}€</span>`;
+
+
+
 
     // // ON SPLIT LES HEURES ET LES MINUTES ET ON LES CHANGE EN NUMBER AVEC PARSEINT POUR LES ADDITIONNER
     // let dureeHours = parseInt(duree.split('h')[0]);

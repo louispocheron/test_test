@@ -35,25 +35,8 @@ class HomeController extends AbstractController
             
             $role = $user->getRoles()[0];
             $associations = $repo->AssociationForAdmin($this->getUser());
-            // dd($associations);
-            // if(count($associations) > 0){
-            //     // dd('salut');
-                
-            // }
-            // loop through the associations and get all their data
-            // $salut = 'salut';
-        
-            
-            // $userIsAdmin = false;
-
-                // if(strpos($role, 'ROLE_ADMIN') !== false){
-                //     $userIsAdmin = true;
-                // }else{
-                //     $userIsAdmin = false;
-                // }
-
             $latest = $actionRepo->findLatestAction($user);
-            // dd($latest);
+            $all = $actionRepo->findByUsers($user);
         }
 
      
@@ -63,11 +46,6 @@ class HomeController extends AbstractController
             'user' => $user ?? false,
             'latest' => $latest ?? false,
             'userIsAdmin' => count($associations) > 0,
-            'salut' => $salut ?? false,
-            // 'lastAssoc' => $lastAssoc,
-
-            // set variable if user is connected
-            // 'userIsAdmin' => $userIsAdmin ?? false,
         ]);
         
     }

@@ -39,20 +39,31 @@ class RecapitulatifController extends AbstractController
         
         $year = $request->get("year");
         $month = $request->get("month");
+        // $all = $request->get("all");
 
         if($month == ''){
             $actionYearAndMonth = $actionRepo->findByUserAndYear($uniqueUser, $year);
         }
+        // AJOUT D'UN BOUTON
+
+        // if($all){
+        //     $actionYearAndMonth = $actionRepo->findAllActionByUser($uniqueUser);
+        // }
         if($year == 'rien' && $month == ''){
             $actionYearAndMonth = $actionRepo->findAllActionByUser($uniqueUser);
         }
-        if($year != 'rien' && $month != ''){
+
+        else{
             $actionYearAndMonth = $actionRepo->findByUserAndYearAndMonth($uniqueUser, $year, $month);
         }
 
 
         // dd($actionMonth);
-        
+        // if($request->get('ajax2')){
+        //     return new JsonResponse("ok");
+        // }
+
+
         if($request->get("ajax")){
             return new JsonResponse([
                 'content' => $this->renderView(

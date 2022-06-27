@@ -15,10 +15,7 @@ document.querySelector('.flatpickr').flatpickr({
     const minutesdepart = document.querySelector('#form_heureDepart_minute');
     const heurearrivee = document.querySelector('#form_heureArrivee_hour');
     const minutesarrivee = document.querySelector('#form_heureArrivee_minute');
-    const duree = document.querySelector('.duration');
     const dureeInput = document.querySelector('.dureeInput');
-    const btnSubmitSaisie = document.querySelector('.btnSubmitSaisie');
-
     let chargeData = document.querySelector('#chargeInputId').dataset.charges;
     const chargesInput = document.querySelector('.chargesInput');
     let groupeSelect = document.querySelector('.groupeSelect');
@@ -43,9 +40,26 @@ document.querySelector('.flatpickr').flatpickr({
             minutesDepartBase = minutesdepart.value;
             heureArriveeBase = heurearrivee.value;
             minutesArriveeBase = minutesarrivee.value;
+            
+            heureArriveeBase = parseInt(heureArriveeBase);
+            minutesArriveeBase = parseInt(minutesArriveeBase);
+
+            heureDepartBase = parseInt(heureDepartBase);
+            minutesDepartBase = parseInt(minutesDepartBase);
 
 
-            let dureeHeure = heureArriveeBase - heureDepartBase;
+            console.log(typeof heureDepartBase);
+
+
+            let dureeHeure
+            if(heureDepartBase > heureArriveeBase){
+                dureeHeure = 24 - heureDepartBase + heureArriveeBase
+            }
+            else{
+                 dureeHeure = heureArriveeBase - heureDepartBase;
+            }
+
+
             let dureeMinute = minutesArriveeBase - minutesDepartBase;
             if(dureeMinute < 0){
                 dureeHeure = dureeHeure - 1;
@@ -54,8 +68,6 @@ document.querySelector('.flatpickr').flatpickr({
             if(dureeMinute < 10){
                 dureeMinute = '0' + dureeMinute;
             }
-
-
             
             dureeInput.value = dureeHeure + 'h' + dureeMinute;
 
@@ -125,6 +137,10 @@ groupeSelect.addEventListener("change", () => {
             coutValue = coutInput.value;
             baremeValue = bareme.value;
             kmValue = kmInput.value;
+            console.log(coutValue);
+            console.log(kmValue);
+
+            fraisInput.value = (kmValue * baremeValue).toFixed(2);
 
             //avoid before the NaN output
             if(coutValue == ''){
@@ -135,12 +151,11 @@ groupeSelect.addEventListener("change", () => {
                 baremeValue = 0;
             }
 
-            fraisInput.value = (kmValue * baremeValue).toFixed(2);
 
             // donsInput.value = parseFloat(fraisInput.value) + parseInt(coutValue);
             // put donsInput.value in localStorage
             // localStorage.setItem('donsInput', donsInput.value);
-            totalNote.value = parseFloat(fraisInput.value) + parseInt(coutValue);
+            totalNote.value = parseFloat(fraisInput.value) + parseFloat(coutValue);
             if(parseInt(payer.value) > totalNote.value){
                 payer.style = 'border: 1px solid red;';
                 // donsInput.style = 'background-color: #f2dede;';
@@ -189,8 +204,6 @@ groupeSelect.addEventListener("change", () => {
             // localStorage.setItem('donsInput', donsInput.value);
         }
     });
-
-
 
 
 

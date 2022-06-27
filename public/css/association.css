@@ -134,7 +134,7 @@ main{
   }
 
   .btn-quitter{
-    border-radius: 20px;
+  border-radius: 20px;
 	border: 2px solid rgb(233, 58, 58);
 	background-color: #ffff;
 	color: #2E2E2E;

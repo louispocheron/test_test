@@ -147,6 +147,18 @@ tr:hover{
     font-weight: 600;
     cursor: pointer;
 }
+
+.arrowTurn{
+  font-size: 20px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.arrowTurn:hover{
+  color: #152149;
+  transform: rotate(180deg);
+}
 select{
   width: 100%;
   height: 2.7rem;
