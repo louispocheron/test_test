@@ -33,6 +33,15 @@ const reset = document.querySelector('.arrowTurn');
 // selectYear.add(baseOption);
 
 // OPTION AVEC LES ANNNES 
+
+let baseOption = document.createElement('option');
+baseOption.text = 'Tous';
+baseOption.value = 'rien';
+// baseOption.className = 'select-dd';
+selectYear.add(baseOption);
+
+
+
 let currentYear = new Date().getFullYear();    
 let earliestYear = 1965;     
 while (currentYear >= earliestYear) {      
@@ -214,7 +223,6 @@ dureeP.innerHTML = `Durée : <span style="
 
 // CALCUL AVEC LA FONCTION QU'ON IMPORTE LIGNE 3 ET APPEND POUR LE REMBOURSEMENT
 const dataPayer = Array.from(payerTd).map(el => el.dataset.payer);
-console.log(dataPayer);
 let aPayerSum = sumPay(dataPayer);
 payerP.innerHTML = `A payer :<span style="
             color:#097969;
@@ -240,6 +248,17 @@ valoriseeP.innerHTML = `Valorisation : <span style="
 
 
 
+
+    //  AREVOIR MAIS BONNE PISTE 
+    // TEST OK ON CLICK 
+    // const dataPoubelle = document.querySelectorAll('.hrefPoubelle');
+    // dataPoubelle.forEach(el => {
+    //     const id = el.dataset.poubelle
+    //     el.addEventListener('click', fucntion(id){
+    //         alert(id)
+    //     })
+    // })
+
     // // ON SPLIT LES HEURES ET LES MINUTES ET ON LES CHANGE EN NUMBER AVEC PARSEINT POUR LES ADDITIONNER
     // let dureeHours = parseInt(duree.split('h')[0]);
     // // ALL RESULTS OF DUREEHOURS IN A ARRAY
@@ -256,7 +275,12 @@ valoriseeP.innerHTML = `Valorisation : <span style="
     // SUM TOGETHER THE NUMBERS OF dureeHours AND dureeMinutes
     
     
-    
+    /*
+    *
+    *
+    * 
+    * 
+    */
 
     // newD = 
     // console.log(duree);

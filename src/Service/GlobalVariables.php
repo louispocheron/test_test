@@ -15,7 +15,7 @@ class GlobalVariables{
         $associations = $this->repo->findLatestAssociationByUser($user);
         // dd($associations);
         $assoc = array_pop($associations);
-        return $assoc; 
+        return $assoc;
     }
 
     public function isAdminGlobal($user)
